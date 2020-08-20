@@ -1,0 +1,20 @@
+
+.redips-drag {
+	border-style: none; 
+	cursor: move;
+	margin: 0px;
+	border-collapse: collapse;
+ }
+
+ #redips-drag{
+ 	border-style: none;
+ 	border: 0px
+ }
+/*tables*/
+#orange{
+	border: 2px solid #BF6A30;
+}
+.dark{
+	color: #444;
+	background-color: #e0e0e0;
+}

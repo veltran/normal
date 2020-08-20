@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.o../xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+        <meta name="viewport" http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <script type="text/javascript" language="javaScript" src="Opciones%20Pago%20Archivos/jquery-1.js"></script>
+        <title>Opciones Pago</title>
+        <link type="text/css" rel="stylesheet" href="Opciones%20Pago%20Archivos/theme.css">
+        <link type="text/css" rel="stylesheet" href="Opciones%20Pago%20Archivos/primefaces.css">
+        <script type="text/javascript" src="Opciones%20Pago%20Archivos/jquery.js"></script>
+        <script type="text/javascript" src="Opciones%20Pago%20Archivos/primefaces.js"></script>
+        <script type="text/javascript" src="Opciones%20Pago%20Archivos/jquery-plugins.js"></script>
+        <link type="text/css" rel="stylesheet" href="Opciones%20Pago%20Archivos/estilos-main.css" media="screen">
+        <link type="text/css" rel="stylesheet" href="Opciones%20Pago%20Archivos/estilos-proceso.css" media="screen">
+        <script type="text/javascript" language="javascript" src="Opciones%20Pago%20Archivos/jsval.js"></script>
+        <script type="text/javascript" language="javascript" src="Opciones%20Pago%20Archivos/utils.js"></script>
+
+
+        <script src="Opciones%20Pago%20Archivos/header.js"></script>
+
+        <link rel="stylesheet" href="Opciones%20Pago%20Archivos/responsiveslides.css">
+        <link rel="stylesheet" href="Opciones%20Pago%20Archivos/themes.css">
+        <script src="Opciones%20Pago%20Archivos/responsiveslides.js"></script>
+        <script src="Opciones%20Pago%20Archivos/main.js"></script>
+
+        
+        <script languaje="javascript" type="text/javascript"> 
+var Flag0; 
+function ActualizaReportes (Val) 
+ { 
+switch (Val) 
+{ 
+case 0: 
+ document.frmOpcionesPago.Rep0.value=1; 
+ break; 
+} 
+Flag0=document.frmOpcionesPago.Rep0.value; 
+if ( Flag0==1 ) 
+Redirecciona(); 
+} 
+function ValidaReportes () 
+ { 
+Flag0=document.frmOpcionesPago.Rep0.value; 
+if ( Flag0!=1 ) 
+alert ('Debe imprimir todos los documentos del apartado de FORMATOS.'); 
+} 
+function Redirecciona() 
+{ 
+document.getElementById('Liga0').href="https://www.bancoinbursa.com"; 
+document.getElementById('Liga1').href="http://www.hsbc.com.mx"; 
+document.getElementById('Liga2').href="http://www.banorte.com.mx"; 
+EnviaVisaMastercard(); 
+} 
+</script>
+
+        <script language="javascript">
+
+            document.oncontextmenu = function () {
+                return false;
+            };
+
+            document.onkeydown = function (event) {
+                //alert("tecla"+event.keyCode);
+                if (event) {
+                    if ((event.keyCode == 123))
+                    {
+                        event.preventDefault();
+                        event.cancelBubble = true;
+                        event.returnValue = false;
+                        return false;
+                    }
+                }
+            };
+
+            $(document).ready(function () {
+                window.top.scrollToTop();
+            });
+            function Redir()
+            {
+                document.frmOpcionesPago.submit();
+            }
+        </script>
+
+        
+
+    </head>
+    <body style=" background: #ffffff">
+        
+        <!-- Formulario -->
+        <form id="formulario" name="frmOpcionesPago" method="post">
+            <div id="pleca-proceso-b">
+                <div id="pleca-proceso-logo-b">
+                    <img src="Opciones%20Pago%20Archivos/Icono-Devoluciones.jpg" width="65" height="65">
+                </div>
+                <div id="pleca-proceso-subtitulo-b">
+                    Formulario de Pago Estatal
+                </div>
+                <div id="pleca-proceso-titulo-b">
+
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <iframe class="pasosFormulario" scrolling="no" name="header formulario de solicitud" src="Opciones%20Pago%20Archivos/pasos_formulario_mobile.htm">
+                    Disculpa, tu explorador no soporta iframes, por favor actualiza tu explorador..
+                </iframe>
+            </div>
+
+            <!-- Separador --><hr class="ui-separator ui-state-default ui-corner-all separador">
+
+
+            <!--Aviso cheque y/o cuenta-->
+            <div class="ui-panelgrid ui-widget tabla-datos">
+                <div class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-panelgrid-cell ui-grid-col-2 border-right">                    
+                            <div class="etiquetaSeccion">                        
+                                <div>                            
+                                    <img class="icono-1" src="Opciones%20Pago%20Archivos/datos-contact-grey.png">
+                                    <img class="icono-2" src="Opciones%20Pago%20Archivos/datos-contact-white.png" style="display: inline;">                            
+                                </div>                        
+                                <div>
+                                    <label>Datos de la contribución</label>
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="ui-panelgrid-cell ui-grid-col-10">                        
+                             
+ 
+<table class="ui-datatable ui-widget tabla-dinamica"> 
+ <tbody><tr><td colspan="2" class="ui-state-default tabla-dinamica-columna" role="columnheader" align="center"><span class="ui-column-title"> <br></span></td></tr> 
+<tr class="Text-11pts tabla-dinamica-columna"> 
+<td width="25%" align="left">R.F.C.</td> 
+<td width="75%" align="left"> <strong>QURD630301</strong> </td> 
+</tr> 
+<tr class="Text-11pts tabla-dinamica-columna" bgcolor="#ebeeef"> 
+<td width="25%" align="left">LÍNEA DE CAPTURA</td> 
+<td width="75%" align="left"> <strong>102002099014884534740595212</strong> </td> 
+</tr> 
+<tr> 
+<td width="25%" align="left">FECHA DE EMISIÓN</td> 
+<td width="75%" align="left"> <strong>27/11/2019 </strong></td> 
+</tr> 
+<tr class="Text-11pts tabla-dinamica-columna" bgcolor="#ebeeef"> 
+<td width="25%" align="left">PLACA</td> 
+<td width="75%" align="left"><strong>MJC8827</strong></td> 
+</tr> 
+<tr> 
+<td width="25%" align="left">IMPORTE</td> 
+<td width="75%" align="left"><strong>$ 1,088.00</strong> </td> 
+</tr> 
+ </tbody><tfoot id="formulario:tablaa_foot">   <tr><td colspan="2" class="ui-state-default" tabla-dinamica-columna'=""><span class="tabla-dinamica-footer"><br></span></td>  </tr></tfoot></table> 
+ 
+ 
+ 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Separador --><hr class="ui-separator ui-state-default ui-corner-all separador">                
+            <div class="ui-panelgrid ui-widget tabla-datos">
+                <div class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-panelgrid-cell ui-grid-col-2 border-right">                    
+                            <div class="etiquetaSeccion">                        
+                                <div>                            
+                                    <img class="icono-1" src="Opciones%20Pago%20Archivos/Icono-centro-mensajes.png">
+                                    <img class="icono-2" src="Opciones%20Pago%20Archivos/Icono-centro-mensajes-bco.png" style="display: inline;">                            
+                                </div>                        
+                                <div>
+                                    <label>Centro de Mensajes</label>
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="ui-panelgrid-cell ui-grid-col-10">                        
+                            <div class="Textbox-11pts">
+                                 
+ 
+<table class="table"> 
+<tbody><tr> 
+<td width="100%" bgcolor="#FFFFFF"> 
+<div style="height:auto; width:100%; text-align:justify">Para realizar el pago, debe imprimir su formato (FUP) en el apartado de Pago en Ventanilla</div>  
+</td> 
+</tr> 
+<tr> 
+<td width="100%" bgcolor="#FFFFFF"> 
+<div style="height:auto; width:100%; text-align:justify"><a href="https://sfpya.edomexico.gob.mx/recaudacion/faces/Politicas/PoliticasInternet.xhtml" target="_blank"><span>** Aviso de Privacidad ** </span></a></div>  
+</td> 
+</tr> 
+</tbody></table> 
+ 
+ 
+
+                                <br> 
+                                Asistencia al Contribuyente del Gobierno
+ del Estado de México vía telefónica. En el Valle de Toluca 2-26-17-51 y
+ el resto del Estado 01800-715-43-50  
+                                Por correo electrónico: <a href="mailto:asismex@edomex.gob.mx">asismex@edomex.gob.mx</a>  
+                                Para asesoría personalizada puede acudir al <a href="https://sfpya.edomexico.gob.mx/recaudacion/faces/asistencia/Directorio/DirectorioAtencion.xhtml"> Centro de Servicios Fiscales</a> de su preferencia.</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Separador --><hr class="ui-separator ui-state-default ui-corner-all separador">                
+            <div class="ui-panelgrid ui-widget tabla-datos">
+                <div class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                    <div class="ui-grid-row">
+                        <div class="ui-panelgrid-cell ui-grid-col-2 border-right">                    
+                            <div class="etiquetaSeccion">                        
+                                <div>  
+                                    <p></p>
+                                    <img class="icono-1" src="Opciones%20Pago%20Archivos/information-grey.png">
+                                    <img class="icono-2" src="Opciones%20Pago%20Archivos/information-white.png" style="display: inline;">                            
+                                </div>                        
+                                <div>
+                                    <p></p>
+                                    <label>Aviso</label>
+                                </div>                        
+                            </div>
+                        </div>
+                        <div class="ui-panelgrid-cell ui-grid-col-10">    
+                            <div class="Textbox-11pts">
+                                <br><br>
+                            </div>
+                            <div class="Textbox-11pts">
+                                <b>Estimado Contribuyente:</b> Podrá descargar el CFDI relacionado con su pago, mediante la página web señalada en el Formato Universal de Pago.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Separador --><hr class="ui-separator ui-state-default ui-corner-all separador">     
+
+                <div class="ui-panelgrid ui-widget tabla-datos">
+                    <div class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                        <div class="ui-grid-row">
+                            <div class="ui-panelgrid-cell ui-grid-col-2 border-right">                    
+                                <div class="etiquetaSeccion">                        
+                                    <div>                            
+                                        <img class="icono-1" src="Opciones%20Pago%20Archivos/Icono-Impresion.png">
+                                        <img class="icono-2" src="Opciones%20Pago%20Archivos/Icono-Impresion-bco.png" style="display: inline;">                            
+                                    </div>                        
+                                    <div>
+                                        <label>Pago en ventanilla</label>
+                                    </div>                        
+                                </div>
+                            </div>
+                            <div class="ui-panelgrid-cell ui-grid-col-10">                        
+                                <div class="Textbox-11pts">
+
+                                     
+ 
+<table class="table" border="0"> 
+</table><table width="90%" cellspacing="3" cellpadding="0" border="0"> 
+<tbody><tr> 
+<td onclick="ActualizaReportes(0);" width="0" height="62" bgcolor="#FFFFFF" align="left"> 
+<a target="_blank" href="https://sfpya.edomexico.gob.mx/controlv/tenencia/N_ReciboTen.jsp?HdClaveOperacionServ=148845347&amp;P=2&amp;m=0&amp;v=1"> 
+<strong>Importante: Imprima su formato para tener el soporte documental completo del pago que realiza.</strong> 
+</a></td> 
+</tr> 
+</tbody></table> 
+ 
+ 
+ 
+ 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Separador --><hr class="ui-separator ui-state-default ui-corner-all separador">  
+
+                    <!-- Opciones -->
+                    <div class="ui-fluid">
+                        <div id="panelOpciones" class="ui-panelgrid ui-widget tabla-datos">
+                            <div id="panelOpciones_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                                <div class="ui-grid-row">
+                                    <div class="ui-panelgrid-cell ui-grid-col-2 border-right">
+                                        <div class="etiquetaSeccion">
+                                            <div>
+                                                <img class="icono-1" alt="Opciones" src="Opciones%20Pago%20Archivos/Iconos-formas-pago.png">
+                                                <img class="icono-2" alt="Opciones" src="Opciones%20Pago%20Archivos/Iconos-formas-pago-bco.png" style="display: inline;">
+                                            </div>
+                                            <div><label>Pago en línea</label></div>
+                                        </div>
+                                    </div>
+                                    <!--   <div class="ui-panelgrid-cell ui-grid-col-3">
+                                           <br/><br/>
+                                          
+    
+    
+                                       </div>  -->
+
+                                    <div class="ui-panelgrid-cell ui-grid-col-10">
+
+                                         <div class="panelDatos">   
+<div class="ui-grid-col-2"> <center><table height="20" cellspacing="0" cellpadding="0" border="0" align="center"> 
+<tbody> 
+<tr> 
+<td> <p class="leyendaPrivacidad1" align="center">
+                                       PORTAL BANCOS
+<br><br>                                        </p></td> 
+</tr> 
+<tr> 
+<td onclick="" valign="top" height="20" background="Opciones%20Pago%20Archivos/2.jpg"> 
+<table width="152" cellspacing="0" cellpadding="0" border="0" align="center"> 
+<tbody> 
+<tr> 
+<td class="bluetext" width="7">&nbsp;</td> 
+<td class="bluetext" width="88"> 
+<a target="_blank" id="Liga0" onclick="ValidaReportes();" href="https://www.bancoinbursa.com/"> 
+<strong>Inbursa</strong> 
+</a> 
+</td> 
+<td class="bluetext" width="9" height="5"> 
+<div align="center"> 
+</div> 
+</td> 
+</tr> 
+</tbody> 
+</table> 
+</td> 
+</tr> 
+<tr> 
+<td onclick="" valign="top" height="20" background="Opciones%20Pago%20Archivos/2.jpg"> 
+<table width="152" cellspacing="0" cellpadding="0" border="0" align="center"> 
+<tbody> 
+<tr> 
+<td class="bluetext" width="7">&nbsp;</td> 
+<td class="bluetext" width="88"> 
+<a target="_blank" id="Liga1" onclick="ValidaReportes();" href="http://www.hsbc.com.mx/"> 
+<strong>HSBC</strong> 
+</a> 
+</td> 
+<td class="bluetext" width="9" height="5"> 
+<div align="center"> 
+</div> 
+</td> 
+</tr> 
+</tbody> 
+</table> 
+</td> 
+</tr> 
+<tr> 
+<td onclick="" valign="top" height="20" background="Opciones%20Pago%20Archivos/2.jpg"> 
+<table width="152" cellspacing="0" cellpadding="0" border="0" align="center"> 
+<tbody> 
+<tr> 
+<td class="bluetext" width="7">&nbsp;</td> 
+<td class="bluetext" width="88"> 
+<a target="_blank" id="Liga2" onclick="ValidaReportes();" href="http://www.banorte.com.mx/"> 
+<strong>Banorte</strong> 
+</a> 
+</td> 
+<td class="bluetext" width="9" height="5"> 
+<div align="center"> 
+</div> 
+</td> 
+</tr> 
+</tbody> 
+</table> 
+</td> 
+</tr> 
+<tr> 
+<td valign="top" height="20'" background="Opciones%20Pago%20Archivos/1.jpg">&nbsp;</td> 
+</tr> 
+</tbody> 
+</table> 
+</center> </div> 
+    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+                                    </div> 
+
+                                </div>                        
+                            </div>
+
+                        
+
+                    
+
+
+
+                
+
+                <!-- Separador --><hr class="ui-separator ui-state-default ui-corner-all separador">   
+
+                <!-- Opciones -->
+                <div class="ui-fluid">
+                    <div id="panelOpciones" class="ui-panelgrid ui-widget tabla-datos">
+                        <div id="panelOpciones_content" class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+                            <div class="ui-grid-row">
+                                <div class="ui-panelgrid-cell ui-grid-col-2 border-right">
+                                    <div class="etiquetaSeccion">
+                                        <div>
+                                            <img class="icono-1" alt="Opciones" src="Opciones%20Pago%20Archivos/Icono-TiposTramite.png">
+                                            <img class="icono-2" alt="Opciones" src="Opciones%20Pago%20Archivos/Icono-TiposTramite-bco.png" style="display: inline;">
+                                        </div>
+                                        <div><label></label></div>
+                                    </div>
+                                </div>
+
+                                <div class="ui-panelgrid-cell ui-grid-col-10">
+
+
+
+
+                                    <nav id="navMenuInformativo">
+
+                                        <ul id="menuInformativo">
+
+                                            <li>
+                                                <a id="pagolineaLink" class="linkA togglemenu1" href="#">
+                                                    Pagos en Línea
+                                                </a>
+                                                <ul class="toggle_container1" style="display: none;">
+                                                    <li>
+                                                        <p style="text-align: justify;">Puedes
+ realizar el pago de los distintos servicios que proporciona el Gobierno
+ del Estado de México, en línea o a través de las distintas ventanillas 
+de los Centros Autorizados de Pago, a fin de acudir a la Dependencia con
+ tu comprobante de pago y los demás requisitos que se establezcan para 
+cada trámite.</p>
+                                                        <!--       <p style="text-align: justify;">Realiza tu pago en l?nea mediante transferencia s? eres cliente de banca electr?nica; adicionalmente, s? pagas la tenencia con derechos de control vehicular, podr?s realizarlo con cargo a tu tarjeta Visa/Master Card, emitida por cualquier Instituci?n Financiera o Tarjeta American Express.</p> -->
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a id="requisitosLink" class="linkA togglemenu2" href="#">
+                                                    Requisitos Pago en Línea
+                                                </a>
+                                                <ul class="toggle_container2" style="display: none;">
+                                                    <li>
+                                                        <p style="text-align: justify;">Ser cliente de banca electrónica.</p>
+                                                        <p style="text-align: justify;">Contar
+ con dispositivo electrónico de autenticación o tarjeta de claves de 
+acceso, mismos que cada institución Bancaria proporciona.</p>
+
+                                                        <!--  <p style="text-align: justify;">Tener cuenta de cheques o tarjeta de cr?dito y contrase?a.</p>
+                                                          <p style="text-align: justify;">Obtener la l?nea de referencia a pagar.</p> -->
+
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a id="centrosLink" class="linkA hideHeaderBarFooter" href="https://sfpya.edomexico.gob.mx/recaudacion/faces/asistencia/CAPs.xhtml" target="_blank">                                            
+                                                    Centros Autorizados de Pago
+                                                </a>
+                                                <ul class="toggle_container3" style="display: none;">
+                                                    <li>
+                                                        <br>
+                                                        <p style="text-align: justify;">Las sucursales de las instituciones financieras: <strong>Banamex
+ y Corresponsales, Banca Afirme, Banco Azteca, Banco del Bajío, Banorte,
+ Bansefi, BBVA Bancomer, CI Banco, HSBC, INBURSA, IXE, Santander, 
+Scotiabank.</strong></p>
+                                                        <!-- <p style="text-align: justify;">Y los establecimientos: <strong>Comercial Mexicana, Soriana, Sumesa, Telecomm Telegrafos, XCD Desarrolladora(ANTAD).</strong></p>-->
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+
+                                    </nav>
+
+
+
+
+
+
+
+                                </div> 
+
+                            </div>                        
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            
+
+            <!-- Separador --><hr class="ui-separator ui-state-default ui-corner-all separador">   
+
+            <input type="hidden" id="m" name="m" value="0">
+            <input type="hidden" id="Plataforma" name="Plataforma" value="2"> 
+
+
+
+
+            <input type="hidden" name="Rep0" id="Rep0" value="1"> 
+
+        </form>
+
+
+
+        <script type="text/javascript" src="Opciones%20Pago%20Archivos/iframeResizer.js"></script>
+
+    
+            
+                
+<div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div></body></html>
