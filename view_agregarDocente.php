@@ -95,7 +95,7 @@
 													</div>
 												</div>	
 											</form>	
-											<div class="text-right">
+											<div class="text-centerS">
 													<buttom class="btn"><a href="view_docentes.php" class="btn btn-danger">Cancelar</a></buttom>
 												
 														<a type="button" class="btn btn-success" href="view_docentes.php" id="enviar">Guardar</a>
