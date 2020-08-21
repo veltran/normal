@@ -28,17 +28,7 @@
 				<div class="row">
 					
 					<div class="col-sm-2 pr-2"> 
-						<div class="row">
 						
-								<ul class=" nav  estilo-menu bg-light">
-									<li>
-										<a id="l1"class=" nav-link texto-menu 	bg-light" href=""> Nuevo
-										</a>
-									</li>
-									
-								</ul>
-						
-						</div>
 						
 					</div> 
 					<div id="contenido" class="col-10  ">
@@ -65,7 +55,7 @@
 															Apellido paterno
 													 </label>
 													 <div class="col-sm-6"> 
-													 	<input class="form-control input-sm" type="text" id="apellidoP"required>
+													 	<input class="form-control input-sm" type="text" id="apellidoP" required="true">
 													 </div>
 												</div>
 												<div class="ml-4 form-group row">
@@ -95,7 +85,7 @@
 												<div class="ml-4 form-group row">	<label for="" class="		col-sm-4">Agregar categoria
 													</label>
 													<div class="col-sm-6 " >
-														<select name="" class="form-control" id="categoria">
+														<select name="" class="form-control" id="categoria" required>
 															<option value=""></option>
 															<option value="60">Profesor Horas clase Base</option>
 															<option value="61">Pedagogo "A" Base C.C.P</option>
