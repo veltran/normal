@@ -9,18 +9,20 @@ redipsInit=function(){
 	rd.clone.sendBack='true';
 	var matriz= new Array(5);
 	var	cont=200; 
-	for (var i=0;i<10;i++)
+	for (var i=0;i<11;i++)
 	{
 		matriz[i]=new Array(5);
 	}
 
 	for(var i=1;i<6;i++){
-		for (var j = 1; j <10; j++) {
+		for (var j = 1; j <11; j++) {
 			
 			matriz[j][i]=cont;
 			console.log("matriz "+j+","+i+"="+matriz[j][i]+"");
 			cont++;
 		}
+		
+		
 ///////////////////////////////////
 	}
 	rd.event.dropped=function()
