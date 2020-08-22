@@ -42,8 +42,8 @@ console.log("imprime"+pos+"fila "+row+"col "+col);
 			}
 
 		 // =	document.getElementById('2').innerHTML;
-		 
-		 	var ruta="I="+b+"&loc="+matriz[row][col];
+		
+			var ruta="I="+b+"&loc="+matriz[row][col];
 console.log("imprime"+matriz[row][col]);
 		 	 $.ajax({
                 data:  ruta, //datos que se envian a traves de ajax

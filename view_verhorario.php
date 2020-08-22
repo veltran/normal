@@ -9,13 +9,15 @@
 	}
 	 echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
 	 echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
- echo "CARRERA:". $_SESSION["carrera"]."<br>";
-  echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
+ 	 echo "CARRERA:". $_SESSION["carrera"]."<br>";
+	 echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
+	  
   			$carr=0;
   			$sem=0;
 
   			$carr=$_SESSION["carrera"];
-  			$sem=$_SESSION["semestre"];
+			  $sem=$_SESSION["semestre"];
+			  $id_as=$_SESSION["asigna_h"];
 
 
  ?><!DOCTYPE html>
@@ -99,6 +101,34 @@
 									<div>
 										<div class="text-center redips-mark">
 											<h2 class="redips-mark">Horario Grupo</h2>
+											<h6 class="aling-lefth">
+												<?php 
+													if(empty($id_as)){
+
+													}
+													else{
+
+												
+														$consulta=mysqli_query($sql, "SELECT carreras.nom_carrera as carrera,semestres.des_semestre as semestre
+														from asigna_horario,carreras,periodos,semestres WHERE asigna_horario.id_carrera=carreras.id_carrera and
+														asigna_horario.id_semestre=semestres.id_semestre and id_asigna_h=$id_as");
+													while($roow=mysqli_fetch_array($consulta)){
+														$carrera=$roow['carrera'];
+														$semestre=$roow['semestre'];
+													} 
+													if(!$consulta)
+													{
+														
+													}else
+													{
+											
+													}
+														echo "Carrera:". $carrera. "   " ;
+														echo  "".$semestre ;
+												}
+												?>
+											</h6>
+											
 										</div>
 										<?php 	
 										include "conexion.php";
@@ -121,12 +151,12 @@
 	
 	}else{
 		while($row=mysqli_fetch_array($con)){
-					 $id_as=$row["id_asigna_m"];
-					$id_as_bh=$row["id_asigna_bh"];
-					$arreglo[]=$id_as_bh;
-				}
+		$id_as=$row["id_asigna_m"];
+		$id_as_bh=$row["id_asigna_bh"];
+		$arreglo[]=$id_as_bh;
+		}
 	
- $row_cnt = $con->num_rows;
+	$row_cnt = $con->num_rows;
 				
 			for ($i=0; $i<50 ; $i++) {
 			// echo $i."<br>"; 
@@ -150,7 +180,7 @@
 	}					
 		
 
-										 ?>
+										?>
 										<table id="right" class="table table-striped table-bordered">
 												<colgroup>
 													<col width="100"/>

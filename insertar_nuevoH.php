@@ -12,9 +12,10 @@ session_start();
 $consulta= mysqli_query($sql,"SELECT asigna_horario.id_asigna_h as id_ash from asigna_horario where asigna_horario.id_periodo=$Periodo and asigna_horario.id_carrera=$Carrera and asigna_horario.id_semestre=$Semestre;");
 while($row=mysqli_fetch_array($consulta)){
             $id=$row['id_ash'];
-      } 
+	  } 
+	
 $_SESSION["asigna_h"]=$id; 
-
+$id="";  
 if (mysqli_num_rows($consulta)==0) {
 
 	$insertar=mysqli_query($sql,"INSERT INTO asigna_horario(id_asigna_h,id_periodo,id_carrera,id_semestre) VALUES (Null,'$Periodo','$Carrera','$Semestre') ");

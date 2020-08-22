@@ -49,7 +49,7 @@
 											<select  class="col-sm-6 form-control"name		="" id="carrera">
 												<option value="31">Licenciatura en Edicaccion Primaria</option>
 												<option value="32">Licenciatura en Educacion Secundaria Quimica</option>
-												<option value="34">Licenciatura en educacion Secuandaria Biologia</option>
+												<option value="33">Licenciatura en educacion Secuandaria Biologia</option>
 											</select>
 										</div>
 										<div class="form-group row">

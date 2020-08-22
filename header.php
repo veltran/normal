@@ -16,8 +16,7 @@
     $p=$_SESSION["idperiodo"];
     
     
-          $consulta=mysqli_query($sql, "SELECT des_periodo from periodos WHERE periodos.id_periodo=$p
-           ");
+          $consulta=mysqli_query($sql, "SELECT des_periodo from periodos WHERE periodos.id_periodo=$p");
           while($roow=mysqli_fetch_array($consulta)){
             $per=$roow['des_periodo'];
             
