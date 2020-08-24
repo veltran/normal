@@ -1,8 +1,6 @@
 "use strict";
 var redipsInit;
-
 redipsInit=function(){
-	
 	var rd=REDIPS.drag;
 	rd.init();
 	rd.dropMode='single';
@@ -13,39 +11,39 @@ redipsInit=function(){
 	{
 		matriz[i]=new Array(5);
 	}
-
+	//Llenar matriz a comparar
 	for(var i=1;i<6;i++){
 		for (var j = 1; j <11; j++) {
-			
 			matriz[j][i]=cont;
-			console.log("matriz "+j+","+i+"="+matriz[j][i]+"");
+			//console.log("matriz "+j+","+i+"="+matriz[j][i]+"");
 			cont++;
 		}
-		
-		
-///////////////////////////////////
-	}
+	}//Evento arratrar un objeto
 	rd.event.dropped=function()
 	{	
 		var pos=0;
 		var pos=rd.getPosition(),
 		row = pos[1],
 		col = pos[2];
-console.log("imprime"+pos+"fila "+row+"col "+col);
+			console.log("imprime"+pos+"fila "+row+"col "+col);
 			var b="";
-			var	mens=	rd.obj.id;
-
-
-			for (var i = 0; i < mens.length-2; i++) {
-				b+=mens[i];
-
+			var	mensaje=rd.obj.id;
+			
+			console.log("imprimir"+mensaje.length+'contenido'+mensaje);
+			if(mensaje.length==4){
+					for (var i = 0; i < mensaje.length-2; i++) {
+									b+=mensaje[i];
+								}
+			}else{
+					b=mensaje;
 			}
-
+			
+			
+			
+			console.log("imprimir"+b);
 		 // =	document.getElementById('2').innerHTML;
-		
 			var ruta="I="+b+"&loc="+matriz[row][col];
-console.log("imprime"+matriz[row][col]);
-		 	 $.ajax({
+		 	$.ajax({
                 data:  ruta, //datos que se envian a traves de ajax
                 url:   'save_datos.php', //archivo que recibe la peticion
                 type:  'post', //método de envio
@@ -77,7 +75,6 @@ console.log("imprime"+matriz[row][col]);
 		// delete element (AJAX handler is not needed)
 			});
                 }
-
         });
 		 // rd.ajaxCall('\save_datos.php?p=' + b + '_' + matriz[row][col]);
 	};
@@ -91,7 +88,6 @@ console.log("imprime"+matriz[row][col]);
 				b+=mes[i];
 			}
 		 // =	document.getElementById('2').innerHTML;
-		 
 		 	var ruta="I="+b+"&loc="+matriz[row][col];
  				$.ajax({
                 data:  ruta, //datos que se envian a traves de ajax
@@ -101,7 +97,6 @@ console.log("imprime"+matriz[row][col]);
                 //         $("#resultado").html("Procesando, espere por favor...");
                 // },
                 success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-            
                 }
 		// delete element (AJAX handler is not needed)
 			});

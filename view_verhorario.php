@@ -49,14 +49,14 @@
 						
 									<?php 
 								include 'conexion.php';
-								 ?>
-								 <table id="left" class="table table-striped table-hover ">
-								 	<thead >
-								 		<tr>
-								 			<td class="redips-mark">MATERIAS</td>
-								 		</tr>
-								 	</thead>
-								 	<tbody>
+								?>
+								<table id="left" class="table table-striped table-hover ">
+									<thead >
+										<tr>
+											<td class="redips-mark">MATERIAS</td>
+										</tr>
+									</thead>
+									<tbody>
 								 		<?php
 
 								 		if($carr==0 ){
@@ -71,8 +71,7 @@
 								 			echo "No se han agregado materias";
 								 		}
 								 		else{
-								 			
-								 		}
+ 								 		}
 								 		 ?>
 										
 											<?php 
@@ -101,7 +100,7 @@
 									<div>
 										<div class="text-center redips-mark">
 											<h2 class="redips-mark">Horario Grupo</h2>
-											<h6 class="aling-lefth">
+											<h6 class="aling-lefth"><!--mensaje carrera-->
 												<?php 
 													if(empty($id_as)){
 
@@ -176,10 +175,7 @@
 				// echo $mat[$i]."<br>";
 
 			}
-
 	}					
-		
-
 										?>
 										<table id="right" class="table table-striped table-bordered">
 												<colgroup>
@@ -190,226 +186,238 @@
 													<col width="180"/>
 													<col width="180"/>
 													<col width="180"/>
-													
-
 												</colgroup>
 											<thead class="table-primary" style="background-color: #007bff; color:white; font-weight: bold;">
 												<tr>
-												<td class="redips-mark">hora</td>
-												<td class="redips-mark">Lunes</td>
-												<td class="redips-mark">Martes</td>
-												<td class="redips-mark">Miercoles</td>
-												<td class="redips-mark">Jueves</td>
-												<td class="redips-mark">Viernes</td>
-												<td class="redips-mark text-center">Eliminar</td>
-												
+													<td class="redips-mark">hora</td>
+													<td class="redips-mark">Lunes</td>
+													<td class="redips-mark">Martes</td>
+													<td class="redips-mark">Miercoles</td>
+													<td class="redips-mark">Jueves</td>
+													<td class="redips-mark">Viernes</td>
+													<td class="redips-mark text-center">Eliminar</td>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
 													<td class="redips-mark " id="hora">7:00-8:00</td>
 													<td >
-														<div class="redips-drag" style="border: 0px;">
-														<?php
+													<?php
 														$val=0;
-														
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-
-																	$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
 																$des_mat="";
 															}
-
-														 ?>
-													 	
-													 </div></td>
+														?>
+												    	</div>
+												</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
 														<?php 
 														$val=10;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																	echo $mat[$val]."<br>";
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
-
-														</div>
+															?>
+															<div class="redips-drag "  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+														?>
+													</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
 														<?php 
 														$val=20;
-																if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
-													 	
-													 </div>
+															?>
+															<div class="redips-drag "  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+														?>
+													</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 														$val=30;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
-
+															?>
+															<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+														?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
 														<?php 
-
 														$val=40;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {									echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
-
+															?>
+															<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+														?>
 														</div>
 													</td>
 													
 												</tr> 
 												<tr>
 													<td class="redips-mark dark">8:00-9:00</td>
-													<td><div class="redips-drag" style="border: 0px;">
+													<td>
 														<?php 
 														$val=1;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
-
+															?>
+															<div class="redips-drag "  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+															?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
-														<?php $val="";
+														<?php 
 															$val=11;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																	$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=21;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=31;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=41;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
@@ -417,197 +425,228 @@
 												<tr>
 													<td class="redips-mark dark">9:00-10:00</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
 														<?php 
 															$val=2;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");	
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
 														<?php 
 														$val=12;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
+															?>
+															<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+															?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=22;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");	
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=32;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=42;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 												</tr>
 												<tr>
 													<td class="redips-mark dark">10:00-11:00</td>
-													<td><div class="redips-drag" style="border: 0px;">
+													<td>
 														<?php 
 															$val=3;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div></td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=13;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=23;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=33;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");	
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=43;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
@@ -615,305 +654,345 @@
 												<tr>
 													<td class="redips-mark dark">11:00-12:00</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=4;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																	$hor=$mat[4];
-
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=14;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 														$val=24;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
-
+															?>
+															<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+															?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=34;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+													
 														<?php 
 															$val=44;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 												</tr>
 												<tr>
-													<td class="redips-mark dark">12:00-13:00</td>
+												<td class="redips-mark dark">12:00-13:00</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=5;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=15;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																	
-																$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 														$val=25;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
-
+															?>
+															<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+															?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=35;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																	
-
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+													
 														<?php 
 															$val=45;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																	$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 												</tr>
 												<tr>
 													<td class="redips-mark dark">13:00-14:00</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=6;
 															
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-																	while($row=mysqli_fetch_array($ver)){
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=16;
-																if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=26;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
-													<td><div class="redips-drag" style="border: 0px;">
+													<td>
 														<?php 
 														$val=36;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
+															?>
+															<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+															?>
 
 														</div></td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=46;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
@@ -923,290 +1002,336 @@
 												</tr>
 												<tr>
 													<td class="redips-mark dark">14:00-15:00</td>
-													<td><div class="redips-drag" style="border: 0px;">
+													<td>
 														<?php 
 															$val=7;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div></td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 														$val=17;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+														if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+														}
+														else{
+															$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															while($row=mysqli_fetch_array($ver)){
+																$id_asm=$row["id_as"];
+																$des_mat=$row["materia"];
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
+															?>
+															<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+															<?php
+															echo $des_mat;
+															$des_mat="";
+														}
+															?>
 
 														</div>
 													</td>
-													<td><div class="redips-drag" style="border: 0px;">
+													<td>
 														<?php 
 															$val=27;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div></td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=37;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=47;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 												</tr>
 												<tr>
-													<td class="redips-mark dark">15:00-16:00</td>
+												<td class="redips-mark dark">15:00-16:00</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+													
 														<?php 
 															$val=8;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+												
 														<?php 
 															$val=18;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
-													<td><div class="redips-drag" style="border: 0px;">
+													<td>
 														<?php 
 															$val=28;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div></td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=38;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=48;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
 												</tr>
 												<tr>
 													<td class="redips-mark dark">16:00-17:00</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=9;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														
 														<?php 
 															$val=19;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
+																?>
 														</div>
 													</td>
-													<td><div class="redips-drag" style="border: 0px;">
+													<td>
 														<?php 
 															$val=29;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
-
-														</div></td>
-													<td><div class="redips-drag" style="border: 0px;">
-														<?php 
-															$val=39;
-															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
-															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
-																while($row=mysqli_fetch_array($ver)){
-																	$des_mat=$row["materia"];
-																}
-																echo $des_mat;
-															}
-
-														 ?>
+																?>
 
 														</div></td>
 													<td>
-														<div class="redips-drag" style="border: 0px;">
+														<?php 
+															$val=39;
+															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
+																
+															}
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
+																	$des_mat=$row["materia"];
+																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
+																echo $des_mat;
+																$des_mat="";
+															}
+																?>
+
+														</div></td>
+													<td>
+														
 														<?php 
 															$val=49;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
-																echo "Disponible";
+																
 															}
-																else{
-																		$ver=mysqli_query($sql," SELECT horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");	
+															else{
+																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
 																while($row=mysqli_fetch_array($ver)){
+																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];
 																}
+																?>
+																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<?php
 																echo $des_mat;
+																$des_mat="";
 															}
-
-														 ?>
+																?>
 
 														</div>
 													</td>

@@ -5,11 +5,10 @@
 
   // echo "CARRERA:". $_SESSION["carrera"]."<br>";
   // echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
- 
   if ($_SESSION["idperiodo"]=="") {
-     $per="";
+    $per="";
      // $_SESSION["periodo"]="Septiembre 2020-Febrero 2021";
-     $per= "Septiembre 2020-Febrero 2021";
+    $per= "Septiembre 2020-Febrero 2021";
   }else{
     $p="";
     $per="";
@@ -29,9 +28,8 @@
           {
 
           }
-         
   }            
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
