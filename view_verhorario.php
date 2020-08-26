@@ -58,10 +58,9 @@
 									</thead>
 									<tbody>
 								 		<?php
-
-								 		if($carr==0 ){
-								 			echo "No ha elegido horario";
-								 		}
+								        	if($carr==0 ){
+								 				echo "No ha elegido horario";
+								 			}
 								 		else{
 
 								 		$consulta="SELECT asigna_materias.id_asigna_m as id_as,docentes.nom_docente,materias.nom_materia as nombre from asigna_materias,docentes,materias,carreras,semestres where asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente and  materias.id_carrera=carreras.id_carrera AND materias.id_semestre=semestres.id_semestre AND carreras.id_carrera=$carr AND semestres.id_semestre=$sem;";
@@ -1336,11 +1335,8 @@
 														</div>
 													</td>
 												</tr>
-
 												<?php 
-												
-													
-												 ?>
+												?>
 											</tbody>
 											<tfoot>
 												<tr></tr>

@@ -62,7 +62,7 @@ include "conexion.php";
 					</div> 
 					<div id="contenido" class="col-10  ">
 						
-							 
+						
 							
 								<div class="row bg-light ml-3">
 									<div class="container col-12">
@@ -76,9 +76,6 @@ include "conexion.php";
 									
 									
 								</div> 
-						
-							
-					
 						
 					</div>
 				</div>
