@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-12">
-		<table id="tDocentes" class="table  table-condensed table-bordered">
+		<table id="tDocentes" class="table table-striped table-bordered">
 			<thead style="background-color: #007bff; color:white; font-weight: bold;">
 			<tr>
 				<td>#</td>
@@ -11,7 +11,6 @@
 				<td>Categoria</td>
 				<td>Estado </td>
 				<td>Editar</td>
-
 			</tr>
 			</thead>
 			<?php

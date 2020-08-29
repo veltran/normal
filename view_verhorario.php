@@ -1,26 +1,19 @@
 <?php 
 	session_start();
 	$nombre=$_SESSION["usuario"];
-	
 	if($nombre== null || $nombre==''){
-		
 		header("location:index.php");
-
 	}
-	 echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
-	 echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
- 	 echo "CARRERA:". $_SESSION["carrera"]."<br>";
-	 echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
-	  
-  			$carr=0;
-  			$sem=0;
-
-  			$carr=$_SESSION["carrera"];
-			  $sem=$_SESSION["semestre"];
-			  $id_as=$_SESSION["asigna_h"];
-
-
- ?><!DOCTYPE html>
+	echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
+	echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
+	echo "CARRERA:". $_SESSION["carrera"]."<br>";
+	echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
+			$carr=0;
+			$sem=0;
+			$carr=$_SESSION["carrera"];
+			$sem=$_SESSION["semestre"];
+			$id_as=$_SESSION["asigna_h"];
+?><!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -32,8 +25,6 @@
 		<link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">
 		<script type="text/javascript" src="js/redips-drag-min.js"></script>
 		<script type="text/javascript" src="js/script_Docente.js"></script>
-		
-
 	</head>
 	<body onload="REDIPS.drag.init()">
 		<?php
@@ -57,21 +48,19 @@
 										</tr>
 									</thead>
 									<tbody>
-								 		<?php
-								        	if($carr==0 ){
-								 				echo "No ha elegido horario";
-								 			}
-								 		else{
-
-								 		$consulta="SELECT asigna_materias.id_asigna_m as id_as,docentes.nom_docente,materias.nom_materia as nombre from asigna_materias,docentes,materias,carreras,semestres where asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente and  materias.id_carrera=carreras.id_carrera AND materias.id_semestre=semestres.id_semestre AND carreras.id_carrera=$carr AND semestres.id_semestre=$sem;";
-
-								 		$con=mysqli_query($sql,$consulta);
-								 		if (mysqli_num_rows($con)==0) {
-								 			echo "No se han agregado materias";
-								 		}
-								 		else{
- 								 		}
-								 		 ?>
+										<?php
+									if($carr==0 ){
+											echo "No ha elegido horario";
+										}
+									else{
+										$consulta="SELECT asigna_materias.id_asigna_m as id_as,docentes.nom_docente,materias.nom_materia as nombre from asigna_materias,docentes,materias,carreras,semestres where asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente and  materias.id_carrera=carreras.id_carrera AND materias.id_semestre=semestres.id_semestre AND carreras.id_carrera=$carr AND semestres.id_semestre=$sem;";
+										$con=mysqli_query($sql,$consulta);
+										if (mysqli_num_rows($con)==0) {
+											echo "No se han agregado materias";
+										}
+										else{
+										}
+										?>
 										
 											<?php 
 											foreach ($con as $key => $row):?>
@@ -88,8 +77,8 @@
 											<?php endforeach; 
 
 										}?>
-								 	</tbody>
-								 </table>
+									</tbody>
+								</table>
 						</div>
 						
 					</div> 
@@ -98,7 +87,7 @@
 							<div class="container col-12">
 									<div>
 										<div class="text-center redips-mark">
-											<h2 class="redips-mark">Horario Grupo</h2>
+											<h5 class="redips-mark">Horario Grupo</h5>
 											<h6 class="aling-lefth"><!--mensaje carrera-->
 												<?php 
 													if(empty($id_as)){
@@ -176,7 +165,7 @@
 			}
 	}					
 										?>
-										<table id="right" class="table table-striped table-bordered">
+										<table id="right" class="table table-striped table-bordered ">
 												<colgroup>
 													<col width="100"/>
 													<col width="180"/>
@@ -197,10 +186,10 @@
 													<td class="redips-mark text-center">Eliminar</td>
 												</tr>
 											</thead>
-											<tbody>
+											<tbody >
 												<tr>
 													<td class="redips-mark " id="hora">7:00-8:00</td>
-													<td >
+													<td>
 													<?php
 														$val=0;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
@@ -213,13 +202,13 @@
 																	$des_mat=$row["materia"];
 																}
 																?>
-																<div class="redips-drag"  id="<?php echo $id_asm?> " style="border: 0px;">
+																<div class="redips-drag "  id="<?php echo $id_asm?> " style="border: 0px;">
 																<?php
 																echo $des_mat;
 																$des_mat="";
 															}
 														?>
-												    	</div>
+													</div>
 												</td>
 													<td>
 														<?php 
@@ -442,7 +431,6 @@
 																$des_mat="";
 															}
 																?>
-
 														</div>
 													</td>
 													<td>
@@ -464,11 +452,9 @@
 															$des_mat="";
 														}
 															?>
-
 														</div>
 													</td>
 													<td>
-														
 														<?php 
 															$val=22;
 															if (mysqli_num_rows($con)==0||$mat[$val]==""||$mat[$val]==0) {
@@ -1349,16 +1335,17 @@
 										</div>
 									</div>
 							</div>
+							<button class="btn btn-success">
+								<a href="pruebadomp.php">Imrimir pdf</a>
+							</button>
 						</div> 
 					</div>
 				</div>
 			</div>
 		</div>
-		
 		<?php
 		include('view_footer.php');
 		?>
-		
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		

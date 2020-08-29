@@ -69,13 +69,10 @@
                 </td>
                 <td>
                 <div class="estilo_t" >
-                   <a>ESCUELA NORMAL DE VALLE DE BRAVO </a></br>
-                   <a style="margin-top:1px;"> CLAVE DE CENTRO DE TRABAJO: 15ENL0036U</a></br>
-                   <a style="margin-top:1px;"> TURNO DISCONTINUO  </a>    </br>
-                   <a style="margin-top:1px;">TELEFONO: 017262623378 </a>  
-                     
-               
-                    
+                    <a>ESCUELA NORMAL DE VALLE DE BRAVO </a></br>
+                    <a style="margin-top:1px;"> CLAVE DE CENTRO DE TRABAJO: 15ENL0036U</a></br>
+                    <a style="margin-top:1px;"> TURNO DISCONTINUO  </a>    </br>
+                    <a style="margin-top:1px;">TELEFONO: 017262623378 </a>  
                 </div>
             </td>
                 <td >
@@ -545,9 +542,7 @@
                         ?>
                         </div>
                     </td>
-
                 </tr>
-                
             </tbody>
         </table>
     </div>
