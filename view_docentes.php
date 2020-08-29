@@ -1,15 +1,10 @@
  <?php 
 	session_start();
-	$nombre=$_SESSION["usuario"];
-	
-	if($nombre== null || $nombre==''){
-		
-		header("location:index.php");
-
-	}
-
+		$nombre=$_SESSION["usuario"];
+			if($nombre== null || $nombre==''){
+				header("location:index.php");
+		}
  ?>		
-		
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -30,8 +25,6 @@
 			<!--Menú orizontal -->
 			<div class="col-12" id="Principal">
 				<div class="row">
-					
-			
 					<div id="contenido" class="col-12  ">
 						<div class="row bg-light ml-3">
 							<div class="container col-12">
@@ -95,10 +88,11 @@
 									$id=$row['id_perfil'];
 									$des=$row['des_perfil'];
 								?>
+									<option>   </option>
 									<option value="<?php echo $id; ?>"><?php echo $des?></option>
 								<?php
 								}
-							 ?>
+							?>
 							
 						</select>
 						<label for="">Categoria</label>
@@ -116,9 +110,7 @@
 									<option  value="<?php echo $id ?>"> <?php echo $desc ?></option>
 									<?php
 								}
-
-							 ?>
-
+							?>
 						</select>
 						<label for="">Estado</label>
 						<br>

@@ -1,12 +1,15 @@
 <?php
 session_start();
+$asigna_h=$_SESSION["asigna_h"];
 	include 'conexion.php';
 	$id= $_POST['I'];
 	$bloque=$_POST['loc'];
-echo "id".$id ."id de bloque = ".$bloque;
-		$consulta= mysqli_query($sql,"SELECT horarios.id_asigna_bh from horarios,asigna_bloque_h where horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_asigna_bh=$bloque;");
+	echo "id".$id ."id de bloque = ".$bloque;
+
+		$consulta= mysqli_query($sql,"SELECT horarios.id_asigna_bh,asigna_materias.id_asigna_h, horarios.id_aula,horarios.id_grupo from horarios,asigna_bloque_h,asigna_materias where horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_asigna_bh=200 and horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_asigna_h=148;");
 		if (mysqli_num_rows($consulta)==0) {
-				$query=mysqli_query($sql,"INSERT INTO horarios (id_horario,id_asigna_m,id_aula,id_asigna_bh,id_grupo)values(null,$id,21,$bloque,260);");
+				$query=mysqli_query($sql,"INSERT INTO horarios (id_horario,id_asigna_m,id_aula,id_asigna_bh,id_grupo)values
+				(null,$id,21,$bloque,260);");
 				if(!$query){
 				//	echo "Error en query";
 				}
