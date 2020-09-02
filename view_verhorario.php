@@ -34,53 +34,50 @@
 			<!--Menú orizontal -->
 			<div class="col-12" id="Principal">
 				<div class="row" id="redips-drag">
-					
 					<div class="col-sm-2 pr-2"> 
 						<div class="row">
-						
-									<?php 
+							<?php 
 								include 'conexion.php';
-								?>
-								<table id="left" class="table table-striped table-hover ">
-									<thead >
-										<tr>
-											<td class="redips-mark">MATERIAS</td>
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-									if($carr==0 ){
-											echo "No ha elegido horario";
-										}
+							?>
+							<table id="left" class="table table-striped table-hover ">
+								<thead >
+									<tr>
+										<td class="redips-mark">MATERIAS</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+								if($carr==0 ){
+										echo "No ha elegido horario";
+									}
+								else{
+									$consulta="SELECT asigna_materias.id_asigna_m as id_as,docentes.nom_docente,materias.nom_materia as nombre from asigna_materias,docentes,materias,carreras,semestres where asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente and  materias.id_carrera=carreras.id_carrera AND materias.id_semestre=semestres.id_semestre AND carreras.id_carrera=$carr AND semestres.id_semestre=$sem;";
+									$con=mysqli_query($sql,$consulta);
+									if (mysqli_num_rows($con)==0) {
+										echo "No se han agregado materias";
+									}
 									else{
-										$consulta="SELECT asigna_materias.id_asigna_m as id_as,docentes.nom_docente,materias.nom_materia as nombre from asigna_materias,docentes,materias,carreras,semestres where asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente and  materias.id_carrera=carreras.id_carrera AND materias.id_semestre=semestres.id_semestre AND carreras.id_carrera=$carr AND semestres.id_semestre=$sem;";
-										$con=mysqli_query($sql,$consulta);
-										if (mysqli_num_rows($con)==0) {
-											echo "No se han agregado materias";
-										}
-										else{
-										}
-										?>
+									}
+									?>
+									
+										<?php 
+										foreach ($con as $key => $row):?>
+									<div>
+										<tr >
+											<td dragable="true" class="redips-mark" >
+												<div  class="redips-drag redips-clone  climit1_4 " id="<?php echo $row['id_as']; ?>" style="border: 0px;">
+												<?php echo $row['nombre']; ?>
+												</div>
+											</td>
+										</tr>
 										
-											<?php 
-											foreach ($con as $key => $row):?>
-										<div>
-											<tr >
-												<td dragable="true" class="redips-mark" >
-													<div  class="redips-drag redips-clone  climit1_4 " id="<?php echo $row['id_as']; ?>" style="border: 0px;">
-													<?php echo $row['nombre']; ?>
-													</div>
-												</td>
-											</tr>
-											
-										</div>
-											<?php endforeach; 
+									</div>
+										<?php endforeach; 
 
-										}?>
-									</tbody>
-								</table>
+									}?>
+								</tbody>
+							</table>
 						</div>
-						
 					</div> 
 					<div id="contenido" class="col-10  ">
 						<div class="row bg-light ml-3">
@@ -91,80 +88,70 @@
 											<h6 class="aling-lefth"><!--mensaje carrera-->
 												<?php 
 													if(empty($id_as)){
-
 													}
 													else{
-
-												
 														$consulta=mysqli_query($sql, "SELECT carreras.nom_carrera as carrera,semestres.des_semestre as semestre
 														from asigna_horario,carreras,periodos,semestres WHERE asigna_horario.id_carrera=carreras.id_carrera and
 														asigna_horario.id_semestre=semestres.id_semestre and id_asigna_h=$id_as");
-													while($roow=mysqli_fetch_array($consulta)){
-														$carrera=$roow['carrera'];
-														$semestre=$roow['semestre'];
-													} 
-													if(!$consulta)
-													{
-														
-													}else
-													{
-											
-													}
+														while($roow=mysqli_fetch_array($consulta)){
+															$carrera=$roow['carrera'];
+															$semestre=$roow['semestre'];
+														} 
+														if(!$consulta){
+
+														}
+														else{
+
+														}
 														echo "Carrera:". $carrera. "   " ;
 														echo  "".$semestre ;
-												}
+													}
 												?>
 											</h6>
-											
 										</div>
 										<?php 	
 										include "conexion.php";
-
 											$arreglo= array();
-	$a= array();
-	$mat=array();
-	$cont=200;
-	$c=0;
-	$f=0;
-	for ($i=0; $i<50  ; $i++) { 
-		$a[$i]=$cont;
-		$cont++;
-	}
+					$a= array();
+					$mat=array();
+					$cont=200;
+					$c=0;
+					$f=0;
+					for ($i=0; $i<50  ; $i++) { 
+						$a[$i]=$cont;
+						$cont++;
+					}
+					$con= mysqli_query($sql,"SELECT id_asigna_m, id_asigna_bh from horarios ORDER BY
+					horarios.id_asigna_bh asc;");
+					if (mysqli_num_rows($con)==0) {
+					echo "No se han agregado materias";
+					}else{
+						while($row=mysqli_fetch_array($con)){
+						$id_as=$row["id_asigna_m"];
+						$id_as_bh=$row["id_asigna_bh"];
+						$arreglo[]=$id_as_bh;
+						}
+					$row_cnt = $con->num_rows;
+						for ($i=0; $i<50 ; $i++) {
+						// echo $i."<br>"; 
+							$h=$a[$i];
+							if ($arreglo[$c]==$h) {
+							$mat[$i]=$arreglo[$c];
+							// echo $mat[$i]."<br>";
+							if($c< $row_cnt-1){
+								$c++;
+							}
+							}else{
 
-	$con= mysqli_query($sql,"SELECT id_asigna_m, id_asigna_bh from horarios ORDER BY horarios.id_asigna_bh asc;
-	");
-	if (mysqli_num_rows($con)==0) {
-	echo "No se han agregado materias";
-	
-	}else{
-		while($row=mysqli_fetch_array($con)){
-		$id_as=$row["id_asigna_m"];
-		$id_as_bh=$row["id_asigna_bh"];
-		$arreglo[]=$id_as_bh;
-		}
-	
-	$row_cnt = $con->num_rows;
-				
-			for ($i=0; $i<50 ; $i++) {
-			// echo $i."<br>"; 
-				$h=$a[$i];
-				if ($arreglo[$c]==$h) {
-				$mat[$i]=$arreglo[$c];
-				// echo $mat[$i]."<br>";
-				if($c< $row_cnt-1){
-					$c++;
-				}
-				}else{
+								$mat[$i]="";
+								// echo $mat[$i];
+							}
+							$h="";
+							// echo $mat[$i]."<br>";
 
-					$mat[$i]="";
-					// echo $mat[$i];
-				}
-				$h="";
-				// echo $mat[$i]."<br>";
-
-			}
-	}					
-										?>
+						}
+					}					
+			?>
 										<table id="right" class="table table-striped table-bordered ">
 												<colgroup>
 													<col width="100"/>
@@ -196,7 +183,14 @@
 																
 															}
 															else{
-																$ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE horarios.id_asigna_m=asigna_materias.id_asigna_m and asigna_materias.id_materia=materias.id_materia and horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h and horarios.id_asigna_bh=$mat[$val];");
+																$ver=mysqli_query($sql," SELECT horarios.id_asigna_m as
+																 id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
+																  horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
+																  horarios.id_asigna_m=asigna_materias.id_asigna_m and
+																   asigna_materias.id_materia=materias.id_materia and 
+																   horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
+																   asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
+																and horarios.id_asigna_bh=200 and asigna_materias.id_asigna_h=149;");
 																while($row=mysqli_fetch_array($ver)){
 																	$id_asm=$row["id_as"];
 																	$des_mat=$row["materia"];

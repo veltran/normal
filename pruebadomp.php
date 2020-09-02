@@ -31,19 +31,19 @@
 }
 
 
-</style>
-<?php
+</style> 
+<?php //Fucnion para mostrar materias
     function mostrar_mat($v){
        
         include 'conexion.php';
-            $ver=mysqli_query($sql," SELECT  horarios.id_asigna_m as id_as,horarios.id_horario,
-        bloques_h.h_inicio as Hora,materias.nom_materia as materia,dias.des_dia as Dia 
-        FROM horarios,asigna_materias,materias,asigna_bloque_h,dias,bloques_h WHERE
-        horarios.id_asigna_m=asigna_materias.id_asigna_m and
-        asigna_materias.id_materia=materias.id_materia and 
-        horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
-        asigna_bloque_h.id_dia=dias.id_dia and asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h
-        and horarios.id_asigna_bh=$v");
+            $ver=mysqli_query($sql,"  SELECT horarios.id_asigna_m as
+            id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
+             horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
+             horarios.id_asigna_m=asigna_materias.id_asigna_m and
+              asigna_materias.id_materia=materias.id_materia and 
+              horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
+              asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
+           and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=149");
 
         if(mysqli_num_rows($ver)==0){
         return $mensaje="";
