@@ -14,14 +14,9 @@
 	echo "id_asigna:".$_SESSION["asigna_h"];
 	echo "<br> id_carrera:".$_SESSION["carrera"];
 	echo "<br> id_semestre".$_SESSION["semestre"];
-	echo "<br> id_periodo:".$_SESSION["periodo"];
- ?><?php 
-
- include 'conexion.php';
-
- 								
-
- ?>
+	echo "<br> id_periodo:".$_SESSION["idperiodo"];
+include 'conexion.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

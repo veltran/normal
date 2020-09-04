@@ -1,4 +1,20 @@
-
+<?php 
+	session_start();
+	$nombre=$_SESSION["usuario"];
+	if($nombre== null || $nombre==''){
+		header("location:index.php");
+	}
+	echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
+	echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
+	echo "CARRERA:". $_SESSION["carrera"]."<br>";
+	echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
+			$carr=0;
+			$sem=0;
+			$carr=$_SESSION["carrera"];
+			$sem=$_SESSION["semestre"];
+			$id_as=$_SESSION["asigna_h"];
+			
+?>
 <style>
 .tab_h{
     width:98%;
@@ -33,17 +49,17 @@
 
 </style> 
 <?php //Fucnion para mostrar materias
-    function mostrar_mat($v){
+    function mostrar_mat($v,$as){
        
         include 'conexion.php';
             $ver=mysqli_query($sql,"  SELECT horarios.id_asigna_m as
             id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
              horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
              horarios.id_asigna_m=asigna_materias.id_asigna_m and
-              asigna_materias.id_materia=materias.id_materia and 
+            asigna_materias.id_materia=materias.id_materia and 
               horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
               asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
-           and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=149");
+           and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as");
 
         if(mysqli_num_rows($ver)==0){
         return $mensaje="";
@@ -130,7 +146,7 @@
                         <div>	
                         <?php   
                         $val=200;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -138,7 +154,7 @@
                     <div>	
                         <?php   
                         $val=210;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -146,7 +162,7 @@
                     <div>	
                         <?php   
                         $val=220;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -154,14 +170,14 @@
                     <div>	
                         <?php   
                         $val=230;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=240;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -172,7 +188,7 @@
                         <div>	
                         <?php   
                         $val=201;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -180,7 +196,7 @@
                     <div>	
                         <?php   
                         $val=211;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -188,7 +204,7 @@
                     <div>	
                         <?php   
                         $val=221;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -196,14 +212,14 @@
                     <div>	
                         <?php   
                         $val=231;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=241;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -214,7 +230,7 @@
                         <div>	
                         <?php   
                         $val=202;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -222,7 +238,7 @@
                     <div>	
                         <?php   
                         $val=212;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -230,7 +246,7 @@
                     <div>	
                         <?php   
                         $val=222;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -238,14 +254,14 @@
                     <div>	
                         <?php   
                         $val=232;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=242;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -256,7 +272,7 @@
                         <div>	
                         <?php   
                         $val=203;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -264,7 +280,7 @@
                     <div>	
                         <?php   
                         $val=213;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -272,7 +288,7 @@
                     <div>	
                         <?php   
                         $val=223;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -280,14 +296,14 @@
                     <div>	
                         <?php   
                         $val=233;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=243;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -298,7 +314,7 @@
                         <div>	
                         <?php   
                         $val=204;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -306,7 +322,7 @@
                     <div>	
                         <?php   
                         $val=214;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -314,7 +330,7 @@
                     <div>	
                         <?php   
                         $val=224;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -322,14 +338,14 @@
                     <div>	
                         <?php   
                         $val=234;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=244;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -340,7 +356,7 @@
                         <div>	
                         <?php   
                         $val=205;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -348,7 +364,7 @@
                     <div>	
                         <?php   
                         $val=215;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -356,7 +372,7 @@
                     <div>	
                         <?php   
                         $val=225;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -364,14 +380,14 @@
                     <div>	
                         <?php   
                         $val=235;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=245;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -382,7 +398,7 @@
                         <div>	
                         <?php   
                         $val=206;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -390,7 +406,7 @@
                     <div>	
                         <?php   
                         $val=216;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -398,7 +414,7 @@
                     <div>	
                         <?php   
                         $val=226;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -406,14 +422,14 @@
                     <div>	
                         <?php   
                         $val=236;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=246;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -423,7 +439,7 @@
                         <div>	
                         <?php   
                         $val=207;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -431,7 +447,7 @@
                     <div>	
                         <?php   
                         $val=217;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -439,7 +455,7 @@
                     <div>	
                         <?php   
                         $val=227;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -447,14 +463,14 @@
                     <div>	
                         <?php   
                         $val=237;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=247;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -465,7 +481,7 @@
                         <div>	
                         <?php   
                         $val=208;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -473,7 +489,7 @@
                     <div>	
                         <?php   
                         $val=218;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -481,7 +497,7 @@
                     <div>	
                         <?php   
                         $val=228;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -489,14 +505,14 @@
                     <div>	
                         <?php   
                         $val=238;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=248;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -507,7 +523,7 @@
                         <div>	
                         <?php   
                         $val=209;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -515,7 +531,7 @@
                     <div>	
                         <?php   
                         $val=219;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -523,7 +539,7 @@
                     <div>	
                         <?php   
                         $val=229;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
@@ -531,14 +547,14 @@
                     <div>	
                         <?php   
                         $val=239;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
                     <td  class="borderf">
                         <?php   
                         $val=249;
-                            echo( mostrar_mat($val));
+                            echo( mostrar_mat($val,$id_as));
                         ?>
                         </div>
                     </td>
