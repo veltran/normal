@@ -28,54 +28,42 @@ redipsInit=function(){
 			console.log("imprime"+pos+"fila "+row+"col "+col);
 			var b="";
 			var	mensaje=rd.obj.id;
-			
 			console.log("imprimir"+mensaje.length+'contenido'+mensaje);
 			if(mensaje.length==4){
-					for (var i = 0; i < mensaje.length-2; i++) {
-									b+=mensaje[i];
-								}
+				for (var i = 0; i < mensaje.length-2; i++) {
+				b+=mensaje[i];
+			}
 			}else{
 					b=mensaje;
 			}
 			
-			
-			
 			console.log("imprimir"+b);
-		 // =	document.getElementById('2').innerHTML;
 			var ruta="I="+b+"&loc="+matriz[row][col];
-		 	$.ajax({
+			$.ajax({
                 data:  ruta, //datos que se envian a traves de ajax
                 url:   'save_datos.php', //archivo que recibe la peticion
                 type:  'post', //método de envio
-                // beforeSend: function () {
-                //         $("#resultado").html("Procesando, espere por favor...");
-                // },
-                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                	var pos=rd.getPosition(),
-			row_d = pos[4],
-			col_d = pos[5];
-			var bh="";
-			var	mess=	rd.obj.id;
-			for (var i = 0; i < mess.length-2; i++) {
-				bh+=mess[i];
-			}
-		 // =	document.getElementById('2').innerHTML;
-		 
-		 	var ruta="I="+bh+"&loc="+matriz[row_d][col_d];
- 				$.ajax({
-                data:  ruta, //datos que se envian a traves de ajax
-                url:   'delete_datos.php', //archivo que recibe la peticion
-                type:  'post', //método de envio
-                // beforeSend: function () {
-                //         $("#resultado").html("Procesando, espere por favor...");
-                // },
-                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-            
+				success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+					$('#respuesta').html(response);
+					var pos=rd.getPosition(),
+					row_d = pos[4],
+					col_d = pos[5];
+					var bh="";
+					var	mess=	rd.obj.id;
+					console.log("imprime");
+					for (var i = 0; i < mess.length-2; i++) {
+						bh+=mess[i];
+					}
+					var ruta="I="+mess+"&loc="+matriz[row_d][col_d];
+					$.ajax({
+						data:  ruta, //datos que se envian a traves de ajax
+						url:   'delete_datos.php', //archivo que recibe la peticion
+						type:  'post', //método de envio
+						success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+						}
+					});
                 }
-		// delete element (AJAX handler is not needed)
 			});
-                }
-        });
 		 // rd.ajaxCall('\save_datos.php?p=' + b + '_' + matriz[row][col]);
 	};
 	rd.event.deleted = function () {
@@ -84,12 +72,14 @@ redipsInit=function(){
 			col = pos[5];
 			var b="";
 			var	mes=	rd.obj.id;
+			
 			for (var i = 0; i < mes.length-2; i++) {
 				b+=mes[i];
 			}
-		 // =	document.getElementById('2').innerHTML;
-		 	var ruta="I="+b+"&loc="+matriz[row][col];
- 				$.ajax({
+			
+			var ruta="I="+mes+"&loc="+matriz[row][col];
+			console.log(ruta);
+			$.ajax({
                 data:  ruta, //datos que se envian a traves de ajax
                 url:   'delete_datos.php', //archivo que recibe la peticion
                 type:  'post', //método de envio
@@ -98,7 +88,7 @@ redipsInit=function(){
                 // },
                 success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
                 }
-		// delete element (AJAX handler is not needed)
+					// delete element (AJAX handler is not needed)
 			});
 	};
 

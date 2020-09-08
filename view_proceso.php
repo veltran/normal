@@ -38,32 +38,61 @@
 										<div class="text-center form-group row">
 											<label class="col-sm-2 control-label" for="">Ingresar ciclo escolar</label>
 											<select class="col-sm-6 form-control" name="" id="periodo">
-												
-												<option value="80">Septiembre 2020-Enero 2021</option>
-												<option value="81">Marzo 2021-Agosto 2021</option>
-												<option value="82">Septiembre 2021-Enero 2022</option>
+											<?php 
+												$consulta="SELECT * FROM periodos" ;
+												$res=mysqli_query($sql,$consulta);
+
+												while($row=mysqli_fetch_array($res)){
+												$id=$row['id_periodo'];
+												$materia=$row['des_periodo'];
+
+											?>
+											<option id="id_periodo" name="id_periodo" value="<?php echo $id; ?>"><?php echo $materia; ?></option>
+											<?php	
+
+											}
+
+											?>
 											</select>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-2 control-label" for="">Selecciona carrera</label>
 											<select  class="col-sm-6 form-control"name		="" id="carrera">
-												<option value="31">Licenciatura en Edicaccion Primaria</option>
-												<option value="32">Licenciatura en Educacion Secundaria Quimica</option>
-												<option value="33">Licenciatura en educacion Secuandaria Biologia</option>
+											<?php 
+												$consulta="SELECT * FROM carreras" ;
+												$res=mysqli_query($sql,$consulta);
+
+												while($row=mysqli_fetch_array($res)){
+												$id=$row['id_carrera'];
+												$materia=$row['nom_carrera'];
+
+											?>
+											<option id="id_carrera" name="id_carrera" value="<?php echo $id; ?>"><?php echo $materia; ?></option>
+											<?php	
+
+											}
+
+											?>
 											</select>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-2 control-label" for="">Selecciona semestre</label>
 											<select class="col-sm-6 form-control" name="" id="semestre">
-												<option value="11">Primer semestre</option>
-												<option value="12">Segundo semestre</option>
-												<option value="13">Tercer semestre</option>
-												<option value="14">Caurto semestre</option>
-												<option value="15">Quinto semestre</option>
-												<option value="16">Sexto semestre</option>
-												<option value="17">Septimo semestre</option>
-												<option value="18">Octavo semestre</option>
+											<?php 
+												$consulta="SELECT * FROM semestres" ;
+												$res=mysqli_query($sql,$consulta);
 
+												while($row=mysqli_fetch_array($res)){
+												$id=$row['id_semestre'];
+												$materia=$row['des_semestre'];
+
+											?>
+											<option id="id_semestre" name="id_semestre" value="<?php echo $id; ?>"><?php echo $materia; ?></option>
+											<?php	
+
+											}
+
+											?>
 											</select>
 										</div>
 										

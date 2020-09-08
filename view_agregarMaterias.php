@@ -53,7 +53,7 @@ include 'conexion.php';
 									</div>
 									<div class="text-right">
 										<button class="btn"><a class="btn btn-danger" href="">Cancelar</a></button>
-										<button class="btn"><a class="btn btn-success" href="view_dicenarHorario.php">Aceptar</a></button>
+										<button class="btn"><a class="btn btn-success" href="view_verhorario.php">Aceptar</a></button>
 									</div>
 								</div>
 					

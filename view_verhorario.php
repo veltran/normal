@@ -86,6 +86,7 @@
 									<div>
 										<div class="text-center redips-mark">
 											<h5 class="redips-mark">Horario Grupo</h5>
+											<div id="respuesta"></div>
 											<h6 class="aling-lefth"><!--mensaje carrera-->
 												<?php 
 													if(empty($id_as)){
@@ -106,25 +107,20 @@
 											</h6>
 										</div>
 										<?php 	
-									
 											$arreglo= array();
 					
-				
-					function consulta($v,$as ){
-							$queri="  SELECT horarios.id_asigna_m as
-							id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
-							 horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
-							 horarios.id_asigna_m=asigna_materias.id_asigna_m and
-							asigna_materias.id_materia=materias.id_materia and 
-							  horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
-							  asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
-						   and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as";
-							return $queri;
-					}
-       
-					
-				
-			?>
+										function consulta($v,$as ){
+												$queri="  SELECT horarios.id_asigna_m as
+												id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
+												horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
+												horarios.id_asigna_m=asigna_materias.id_asigna_m and
+												asigna_materias.id_materia=materias.id_materia and 
+												horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
+												asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
+												and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as";
+												return $queri;
+										}
+										?>
 										<table id="right" class="table table-striped table-bordered ">
 												<colgroup>
 													<col width="100"/>
@@ -1104,16 +1100,20 @@
 												<tr></tr>
 											</tfoot>
 										</table>
+										<div id="tabla_info">
+											<?php include('tabla_infoMAt.php'); ?>
+										</div>
 										<div class="text-right">
 											<button class="btn">
 												<a class="btn btn-primary"href="view_dicenarHorario.php">Regresar</a>
+											</button>	
+											<button class="btn btn-success">
+												<a href="pruebadomp.php">Imrimir pdf</a>
 											</button>
 										</div>
 									</div>
 							</div>
-							<button class="btn btn-success">
-								<a href="pruebadomp.php">Imrimir pdf</a>
-							</button>
+						
 						</div> 
 					</div>
 				</div>
@@ -1124,6 +1124,7 @@
 		?>
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
 		
 	</body>
 </html>
