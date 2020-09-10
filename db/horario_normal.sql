@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 21-08-2020 a las 18:02:28
--- Versión del servidor: 5.7.26
--- Versión de PHP: 7.2.18
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-09-2020 a las 18:49:21
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,14 +27,10 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `asigna_bloque_h`
 --
 
-DROP TABLE IF EXISTS `asigna_bloque_h`;
-CREATE TABLE IF NOT EXISTS `asigna_bloque_h` (
+CREATE TABLE `asigna_bloque_h` (
   `id_asigna_bh` int(11) NOT NULL,
   `id_dia` int(11) DEFAULT NULL,
-  `id_bloque_h` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_asigna_bh`),
-  KEY `o_idx` (`id_dia`),
-  KEY `u_idx` (`id_bloque_h`)
+  `id_bloque_h` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -100,17 +95,12 @@ INSERT INTO `asigna_bloque_h` (`id_asigna_bh`, `id_dia`, `id_bloque_h`) VALUES
 -- Estructura de tabla para la tabla `asigna_horario`
 --
 
-DROP TABLE IF EXISTS `asigna_horario`;
-CREATE TABLE IF NOT EXISTS `asigna_horario` (
-  `id_asigna_h` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `asigna_horario` (
+  `id_asigna_h` int(11) NOT NULL,
   `id_periodo` int(11) DEFAULT NULL,
   `id_carrera` int(11) DEFAULT NULL,
-  `id_semestre` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_asigna_h`),
-  KEY `carrera_idx` (`id_carrera`),
-  KEY `semestre_idx` (`id_semestre`),
-  KEY `periodo` (`id_periodo`)
-) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8;
+  `id_semestre` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `asigna_horario`
@@ -122,7 +112,13 @@ INSERT INTO `asigna_horario` (`id_asigna_h`, `id_periodo`, `id_carrera`, `id_sem
 (137, 80, 32, 11),
 (138, 80, 32, 12),
 (139, 80, 31, 12),
-(140, 80, 31, 18);
+(140, 80, 31, 18),
+(141, 80, 32, 15),
+(143, 80, 33, 12),
+(144, 80, 33, 13),
+(145, 80, 31, 13),
+(146, 80, 31, 15),
+(147, 80, 33, 11);
 
 -- --------------------------------------------------------
 
@@ -130,35 +126,34 @@ INSERT INTO `asigna_horario` (`id_asigna_h`, `id_periodo`, `id_carrera`, `id_sem
 -- Estructura de tabla para la tabla `asigna_materias`
 --
 
-DROP TABLE IF EXISTS `asigna_materias`;
-CREATE TABLE IF NOT EXISTS `asigna_materias` (
-  `id_asigna_m` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `asigna_materias` (
+  `id_asigna_m` int(11) NOT NULL,
   `id_materia` int(11) DEFAULT NULL,
   `id_docente` int(11) DEFAULT NULL,
   `id_asigna_p` int(11) DEFAULT NULL,
-  `id_asigna_h` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_asigna_m`),
-  KEY `materia_idx` (`id_materia`),
-  KEY `docente_idx` (`id_docente`),
-  KEY `pertenece_p` (`id_asigna_p`),
-  KEY `sesion` (`id_asigna_h`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
+  `id_asigna_h` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `asigna_materias`
 --
 
 INSERT INTO `asigna_materias` (`id_asigna_m`, `id_materia`, `id_docente`, `id_asigna_p`, `id_asigna_h`) VALUES
-(77, 302, 512, NULL, 136),
-(78, 300, 507, NULL, 136),
-(79, 351, 507, NULL, 138),
-(80, 307, 507, NULL, 139),
-(81, 305, 507, NULL, 135),
-(82, 305, 507, NULL, 135),
-(83, 344, 507, NULL, 137),
-(84, 345, 512, NULL, 137),
-(85, 300, 507, NULL, 135),
-(86, 300, 507, NULL, 135);
+(35, 300, 507, NULL, 135),
+(37, 301, 512, NULL, 135),
+(39, 302, 513, NULL, 135),
+(40, 303, 503, NULL, 135),
+(41, 304, 511, NULL, 135),
+(42, 305, 504, NULL, 135),
+(43, 306, 504, NULL, 135),
+(44, 344, 507, NULL, 137),
+(46, 345, 512, NULL, 137),
+(47, 307, 507, NULL, 139),
+(48, 308, 512, NULL, 139),
+(50, 310, 503, NULL, 139),
+(51, 309, 513, NULL, 139),
+(52, 311, 511, NULL, 139),
+(53, 312, 504, NULL, 139);
 
 -- --------------------------------------------------------
 
@@ -166,16 +161,11 @@ INSERT INTO `asigna_materias` (`id_asigna_m`, `id_materia`, `id_docente`, `id_as
 -- Estructura de tabla para la tabla `asigna_plantillas`
 --
 
-DROP TABLE IF EXISTS `asigna_plantillas`;
-CREATE TABLE IF NOT EXISTS `asigna_plantillas` (
-  `id_asigna_p` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `asigna_plantillas` (
+  `id_asigna_p` int(11) NOT NULL,
   `id_docente` int(11) DEFAULT NULL,
   `id_plantilla` int(11) DEFAULT NULL,
-  `id_asigna_h` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_asigna_p`),
-  KEY `necesita_idx` (`id_docente`),
-  KEY `as_h_idx` (`id_asigna_h`),
-  KEY `plantillas` (`id_plantilla`)
+  `id_asigna_h` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -184,11 +174,9 @@ CREATE TABLE IF NOT EXISTS `asigna_plantillas` (
 -- Estructura de tabla para la tabla `aulas`
 --
 
-DROP TABLE IF EXISTS `aulas`;
-CREATE TABLE IF NOT EXISTS `aulas` (
+CREATE TABLE `aulas` (
   `id_aulas` int(11) NOT NULL,
-  `des_aula` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_aulas`)
+  `des_aula` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -213,12 +201,10 @@ INSERT INTO `aulas` (`id_aulas`, `des_aula`) VALUES
 -- Estructura de tabla para la tabla `bloques_h`
 --
 
-DROP TABLE IF EXISTS `bloques_h`;
-CREATE TABLE IF NOT EXISTS `bloques_h` (
+CREATE TABLE `bloques_h` (
   `id_bloque_h` int(11) NOT NULL,
   `h_inicio` varchar(45) DEFAULT NULL,
-  `h_final` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_bloque_h`)
+  `h_final` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -246,12 +232,10 @@ INSERT INTO `bloques_h` (`id_bloque_h`, `h_inicio`, `h_final`) VALUES
 -- Estructura de tabla para la tabla `carreras`
 --
 
-DROP TABLE IF EXISTS `carreras`;
-CREATE TABLE IF NOT EXISTS `carreras` (
-  `id_carrera` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_carrera` varchar(150) DEFAULT NULL,
-  PRIMARY KEY (`id_carrera`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+CREATE TABLE `carreras` (
+  `id_carrera` int(11) NOT NULL,
+  `nom_carrera` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `carreras`
@@ -268,12 +252,10 @@ INSERT INTO `carreras` (`id_carrera`, `nom_carrera`) VALUES
 -- Estructura de tabla para la tabla `categorias`
 --
 
-DROP TABLE IF EXISTS `categorias`;
-CREATE TABLE IF NOT EXISTS `categorias` (
-  `id_cat` int(11) NOT NULL AUTO_INCREMENT,
-  `des_cat` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_cat`)
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
+CREATE TABLE `categorias` (
+  `id_cat` int(11) NOT NULL,
+  `des_cat` varchar(200) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -291,12 +273,10 @@ INSERT INTO `categorias` (`id_cat`, `des_cat`) VALUES
 -- Estructura de tabla para la tabla `dias`
 --
 
-DROP TABLE IF EXISTS `dias`;
-CREATE TABLE IF NOT EXISTS `dias` (
-  `id_dia` int(11) NOT NULL AUTO_INCREMENT,
-  `des_dia` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_dia`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+CREATE TABLE `dias` (
+  `id_dia` int(11) NOT NULL,
+  `des_dia` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `dias`
@@ -317,21 +297,16 @@ INSERT INTO `dias` (`id_dia`, `des_dia`) VALUES
 -- Estructura de tabla para la tabla `docentes`
 --
 
-DROP TABLE IF EXISTS `docentes`;
-CREATE TABLE IF NOT EXISTS `docentes` (
-  `id_docente` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `docentes` (
+  `id_docente` int(11) NOT NULL,
   `nom_docente` varchar(45) DEFAULT NULL,
   `ap_paterno` varchar(45) DEFAULT NULL,
   `ap_materno` varchar(45) DEFAULT NULL,
   `id_perfil` int(11) DEFAULT NULL,
   `id_cat` int(11) DEFAULT NULL,
   `tot_horas_clase` int(11) DEFAULT NULL,
-  `id_estado` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_docente`),
-  KEY `id_cat_idx` (`id_cat`),
-  KEY `esta_idx` (`id_estado`),
-  KEY `pertenece_idx` (`id_perfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=514 DEFAULT CHARSET=utf8;
+  `id_estado` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `docentes`
@@ -340,16 +315,16 @@ CREATE TABLE IF NOT EXISTS `docentes` (
 INSERT INTO `docentes` (`id_docente`, `nom_docente`, `ap_paterno`, `ap_materno`, `id_perfil`, `id_cat`, `tot_horas_clase`, `id_estado`) VALUES
 (500, ' MTRO. Laura Veronica', ' Quirroga ', ' Rojas', 103, 60, 0, 10),
 (501, '	MTRO Romero 	', '      Rivera 	', '	Serrano	', 102, 60, 20, 9),
-(502, '	LIC. Jesus 	', '	Mondragon 	', '	Rebollar', 104, 60, 0, 9),
+(502, '	Lic. Jesus 	', '	Mondragon 	', '	Rebollar', 101, 60, 20, 9),
 (503, '	ISC. Aldo	', '	Villa franca 	', '	Jimenez', 100, 61, 0, 9),
 (504, '	LIC. Angel 	', '	Guadarrama	', '	 Valdez', 100, 61, 0, 9),
 (505, 'Lic. Elvia', 'Velazquez ', 'Farjado', 102, 61, 0, 9),
 (506, 'MTRA. Liliana Patricia', 'Pedraza', 'Mendoza', 100, 60, 0, 10),
 (507, 'ISC Juan Carlos ', 'GarduÃ±o ', 'Miralrio', 101, 60, 0, 9),
 (508, 'M en ISC Mariana Carolyn', 'Cruz', 'Mendoza', 101, 61, 0, 9),
-(509, 'Lic. Carlos ', 'MatÃ­as ', 'DomÃ­nguez', 102, 61, 0, 9),
-(510, 'Mtra. Emma Yolanda', 'CortÃ©s ', 'Soto', 107, 62, 0, 9),
-(511, 'Julio Cesar', 'GonzÃ¡lez ', 'Urbina', 107, 60, 0, 9),
+(509, 'Lic. Carlos ', 'Matí­as ', 'Domínguez', 102, 61, 0, 9),
+(510, 'Mtra. Emma Yolanda', 'Cortés ', 'Soto', 107, 62, 0, 9),
+(511, 'Julio Cesar', 'González ', 'Urbina', 107, 60, 0, 9),
 (512, 'Isc Misael', 'Lopez', 'Vargas', 100, 60, 0, 9),
 (513, 'Isc Misael', 'Lopez', 'Vargas', 100, 60, 0, 9);
 
@@ -359,12 +334,10 @@ INSERT INTO `docentes` (`id_docente`, `nom_docente`, `ap_paterno`, `ap_materno`,
 -- Estructura de tabla para la tabla `estados`
 --
 
-DROP TABLE IF EXISTS `estados`;
-CREATE TABLE IF NOT EXISTS `estados` (
-  `id_estado` int(11) NOT NULL AUTO_INCREMENT,
-  `des_estado` varchar(45) NOT NULL,
-  PRIMARY KEY (`id_estado`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+CREATE TABLE `estados` (
+  `id_estado` int(11) NOT NULL,
+  `des_estado` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `estados`
@@ -380,11 +353,9 @@ INSERT INTO `estados` (`id_estado`, `des_estado`) VALUES
 -- Estructura de tabla para la tabla `grupos`
 --
 
-DROP TABLE IF EXISTS `grupos`;
-CREATE TABLE IF NOT EXISTS `grupos` (
+CREATE TABLE `grupos` (
   `id_grupo` int(11) NOT NULL,
-  `des_grupo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_grupo`)
+  `des_grupo` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='	';
 
 --
@@ -401,44 +372,40 @@ INSERT INTO `grupos` (`id_grupo`, `des_grupo`) VALUES
 -- Estructura de tabla para la tabla `horarios`
 --
 
-DROP TABLE IF EXISTS `horarios`;
-CREATE TABLE IF NOT EXISTS `horarios` (
-  `id_horario` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `horarios` (
+  `id_horario` int(11) NOT NULL,
   `id_asigna_m` int(11) DEFAULT NULL,
   `id_aula` int(11) DEFAULT NULL,
   `id_asigna_bh` int(11) DEFAULT NULL,
-  `id_grupo` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_horario`),
-  KEY `a_idx` (`id_asigna_m`),
-  KEY `e_idx` (`id_aula`),
-  KEY `i_idx` (`id_asigna_bh`),
-  KEY `as_idx` (`id_grupo`)
-) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8;
+  `id_grupo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `horarios`
 --
 
 INSERT INTO `horarios` (`id_horario`, `id_asigna_m`, `id_aula`, `id_asigna_bh`, `id_grupo`) VALUES
-(71, 82, 21, 204, 260),
-(72, 82, 21, 205, 260),
-(73, 82, 21, 206, 260),
-(77, 82, 21, 208, 260),
-(78, 77, 21, 209, 260),
-(83, 78, 21, 214, 260),
-(84, 78, 21, 215, 260),
-(86, 82, 21, 218, 260),
-(89, 81, 21, 217, 260),
-(94, 82, 21, 220, 260),
-(95, 82, 21, 244, 260),
-(97, 82, 21, 239, 260),
-(98, 81, 21, 227, 260),
-(99, 77, 21, 200, 260),
-(102, 77, 21, 201, 260),
-(103, 78, 21, 211, 260),
-(104, 78, 21, 212, 260),
-(105, 81, 21, 213, 260),
-(106, 82, 21, 210, 260);
+(71, 35, 21, 200, 260),
+(72, 35, 21, 201, 260),
+(73, 37, 21, 210, 260),
+(74, 37, 21, 211, 260),
+(75, 35, 21, 212, 260),
+(76, 35, 21, 213, 260),
+(77, 37, 21, 202, 260),
+(78, 37, 21, 203, 260),
+(79, 40, 21, 220, 260),
+(80, 40, 21, 221, 260),
+(81, 41, 21, 230, 260),
+(82, 41, 21, 231, 260),
+(83, 41, 21, 224, 260),
+(85, 43, 21, 240, 260),
+(86, 43, 21, 241, 260),
+(87, 43, 21, 222, 260),
+(88, 43, 21, 223, 260),
+(90, 41, 21, 225, 260),
+(91, 46, 21, 200, 260),
+(112, 47, 21, 203, 260),
+(113, 47, 21, 202, 260);
 
 -- --------------------------------------------------------
 
@@ -446,12 +413,9 @@ INSERT INTO `horarios` (`id_horario`, `id_asigna_m`, `id_aula`, `id_asigna_bh`, 
 -- Estructura de tabla para la tabla `horario_docentes`
 --
 
-DROP TABLE IF EXISTS `horario_docentes`;
-CREATE TABLE IF NOT EXISTS `horario_docentes` (
+CREATE TABLE `horario_docentes` (
   `id_horario_docente` int(11) NOT NULL,
-  `id_horario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_horario_docente`),
-  KEY `horadoc_idx` (`id_horario`)
+  `id_horario` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -460,12 +424,9 @@ CREATE TABLE IF NOT EXISTS `horario_docentes` (
 -- Estructura de tabla para la tabla `horario_grupos`
 --
 
-DROP TABLE IF EXISTS `horario_grupos`;
-CREATE TABLE IF NOT EXISTS `horario_grupos` (
+CREATE TABLE `horario_grupos` (
   `id_horario_grupo` int(11) NOT NULL,
-  `id_horario_docente` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_horario_grupo`),
-  KEY `hace_idx` (`id_horario_docente`)
+  `id_horario_docente` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -474,17 +435,13 @@ CREATE TABLE IF NOT EXISTS `horario_grupos` (
 -- Estructura de tabla para la tabla `materias`
 --
 
-DROP TABLE IF EXISTS `materias`;
-CREATE TABLE IF NOT EXISTS `materias` (
-  `id_materia` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `materias` (
+  `id_materia` int(11) NOT NULL,
   `nom_materia` varchar(120) DEFAULT NULL,
   `tot_horas` int(11) DEFAULT NULL,
   `id_semestre` int(11) DEFAULT NULL,
-  `id_carrera` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_materia`),
-  KEY `es_idx` (`id_carrera`),
-  KEY `cursa_idx` (`id_semestre`)
-) ENGINE=InnoDB AUTO_INCREMENT=443 DEFAULT CHARSET=utf8;
+  `id_carrera` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `materias`
@@ -492,148 +449,148 @@ CREATE TABLE IF NOT EXISTS `materias` (
 
 INSERT INTO `materias` (`id_materia`, `nom_materia`, `tot_horas`, `id_semestre`, `id_carrera`) VALUES
 (300, '	Desarrollo y aprendisaje', 20, 11, 31),
-(301, '	El sujeto y su formacion Profecional', 20, 11, 31),
-(302, '	Lenguaje y comunicación	', 20, 11, 31),
-(303, '	Aritmetica numeros naturales	', 20, 11, 31),
-(304, '	Introduccion a la naturaleza de la ciencia', 20, 11, 31),
-(305, '	Herramientas para la observacion y analisis de la practica educativa	', 20, 11, 31),
-(306, 'Inglés. inicio de la comunicación basica ', 6, 11, 31),
-(307, 'PlaneaciÃ³n y evaluaciÃ³n de la enseÃ±anza y el aprendizaje ', 6, 12, 31),
-(308, 'PrÃ¡cticas sociales del lenguaje.', 6, 12, 31),
-(309, 'AritmÃ©tica. NÃºmeros decimales y fracciones.', 6, 12, 31),
+(301, 'El sujeto y su formación Profesional', 20, 11, 31),
+(302, 'Lenguaje y comunicación	', 20, 11, 31),
+(303, '	Aritmética números naturales	', 20, 11, 31),
+(304, '	Introducción a la naturaleza de la ciencia', 20, 11, 31),
+(305, '	Herramientas para la observación y análisis de la practica educativa	', 20, 11, 31),
+(306, 'Inglés. inicio de la comunicación básica ', 6, 11, 31),
+(307, 'Planeación y evaluación de la enseñanza y el aprendizaje.', 6, 12, 31),
+(308, 'Practicas sociales del lenguaje.', 6, 12, 31),
+(309, 'Aritmética Números decimales y fracciones.', 6, 12, 31),
 (310, 'Estudio del medio ambiente y la naturaleza.', 6, 12, 31),
-(311, 'ObservaciÃ³n y anÃ¡lisis de prÃ¡cticas y contextos escolares.', 4, 12, 31),
-(312, 'InglÃ©s. Desarrollo de conversaciones elementales.', 6, 12, 31),
-(313, 'EducaciÃ³n Socioemocional.', 4, 13, 31),
+(311, 'Observación y análisis de practicas y contextos escolares.', 4, 12, 31),
+(312, 'Ingles. Desarrollo de conversaciones elementales.', 6, 12, 31),
+(313, 'Educación Socio emocional.', 4, 13, 31),
 (314, 'Desarrollo de competencia lectora.', 6, 13, 31),
-(315, 'Ãlgebra', 6, 13, 31),
-(316, 'GeografÃ­a.', 6, 13, 31),
-(317, 'IniciaciÃ³n al trabajo docente.', 6, 13, 31),
-(318, 'InglÃ©s. Intercambio de informaciÃ³n e ideas.', 6, 13, 31),
-(319, 'AtenciÃ³n a la diversidad   ', 4, 14, 31),
-(320, 'Modelos pedagÃ³gicos.', 4, 14, 31),
-(321, 'ProducciÃ³n de textos escritos.', 6, 14, 31),
-(322, 'GeometrÃ­a.', 6, 14, 31),
+(315, 'Álgebra', 6, 13, 31),
+(316, 'Geografía.', 6, 13, 31),
+(317, 'Iniciación al trabajo docente.', 6, 13, 31),
+(318, 'Inglés. Intercambio de información e ideas.', 6, 13, 31),
+(319, 'Atención a la diversidad   ', 4, 14, 31),
+(320, 'Modelos pedagógicos.', 4, 14, 31),
+(321, 'Producción de textos escritos.', 6, 14, 31),
+(322, 'Geometría.', 6, 14, 31),
 (323, 'Historia.', 4, 14, 31),
-(324, 'Estrategias de trabajo docente.', 6, 14, 31),
-(325, 'InglÃ©s. Fortalecimiento de la confianza en la conversaciÃ³n.', 6, 14, 31),
-(326, 'EducaciÃ³n Inclusiva.', 4, 15, 31),
-(327, 'Herramientas bÃ¡sicas para la investigaciÃ³n educativa.', 4, 15, 31),
+(324, '', 6, 14, 31),
+(325, 'Inglés. Fortalecimiento de la confianza en la conversación.', 6, 14, 31),
+(326, 'Educación Inclusiva.', 4, 15, 31),
+(327, 'Herramientas básicas para la investigación educativa.', 4, 15, 31),
 (328, 'Literatura.', 6, 15, 31),
-(329, 'Probabilidad y estadÃ­stica.', 6, 15, 31),
-(330, 'Estrategias para la enseÃ±anza de la historia.', 4, 15, 31),
-(331, 'InnovaciÃ³n y trabajo docente.', 6, 15, 31),
-(332, 'InglÃ©s. Hacia nuevas perspectivas globales.', 6, 15, 31),
-(333, 'Bases legales y normativas de la educaciÃ³n bÃ¡sica.', 4, 16, 31),
+(329, 'Probabilidad y estadí­stica.', 6, 15, 31),
+(330, 'Estrategias para la enseñanza de la historia.', 4, 15, 31),
+(331, 'Innovación y trabajo docente.', 6, 15, 31),
+(332, 'Inglés. Hacia nuevas perspectivas globales.', 6, 15, 31),
+(333, 'Bases legales y normativas de la educación básica.', 4, 16, 31),
 (334, 'Estrategias para el desarrollo socioemocional.', 6, 16, 31),
-(335, 'MÃºsica, expresiÃ³n corporal y danza.', 4, 16, 31),
-(336, 'FormaciÃ³n cÃ­vica y Ã©tica.', 6, 16, 31),
+(335, 'Música, expresión corporal y danza.', 4, 16, 31),
+(336, 'Formación cívica y ética.', 6, 16, 31),
 (337, 'Trabajo docente y proyectos de mejora escolar.', 6, 16, 31),
-(338, 'InglÃ©s. Convertirse en comunicadores independientes.', 6, 16, 31),
-(339, 'GestiÃ³n educativa centrada en la mejora del aprendizaje.', 4, 17, 31),
+(338, 'Inglés. Convertirse en comunicadores independientes.', 6, 16, 31),
+(339, 'Gestión educativa centrada en la mejora del aprendizaje.', 4, 17, 31),
 (340, 'Teatro y artes visuales.', 4, 17, 31),
-(341, 'EducaciÃ³n FÃ­sica.', 6, 17, 31),
+(341, 'Educación física.', 6, 17, 31),
 (342, 'Aprendizaje en el Servicio.', 6, 17, 31),
 (343, 'Aprendizaje en el Servicio.', 20, 18, 31),
 (344, 'Desarrollo en la adolecencia', 4, 11, 32),
-(345, 'Problemas socioeconÃ³micos y polÃ­ticos de MÃ©xico', 4, 11, 32),
-(346, 'QuÃ­mica en la historia', 6, 11, 32),
-(347, 'Nociones bÃ¡sicas de QuÃ­mica ', 6, 11, 32),
-(348, 'QuÃ­mica: una ciencia fÃ¡tica', 5, 11, 32),
-(349, 'Herramientas para la observaciÃ³n y anÃ¡lisis de la escuela y comunidad ', 4, 11, 32),
-(350, 'InglÃ©s. Inicio de la comunicaciÃ³n bÃ¡sica', 6, 11, 32),
+(345, 'Problemas socioeconómicos y políticos de México', 4, 11, 32),
+(346, 'Química en la historia', 6, 11, 32),
+(347, 'Nociones básicas de Química ', 6, 11, 32),
+(348, 'Química: una ciencia fática', 5, 11, 32),
+(349, '', 4, 11, 32),
+(350, 'Inglés. Inicio de la comunicación básica', 6, 11, 32),
 (351, 'Desarrollo socioemocional y aprendizaje', 4, 12, 32),
-(352, 'TeorÃ­as y modelos de aprendizaje', 4, 12, 32),
-(353, 'FilosofÃ­a y epistemoogia de la ciencia', 4, 12, 32),
+(352, 'Teorías y modelos de aprendizaje', 4, 12, 32),
+(353, 'Filosofía y epistemología de la ciencia', 4, 12, 32),
 (354, 'Estrucura y propiedades', 4, 12, 32),
-(355, 'QuÃ­mica experimental', 6, 12, 32),
-(356, 'InstrucciÃ³n al anÃ¡lisis instrumental', 4, 12, 32),
-(357, 'Observacion y anÃ¡lisis de la cultura escolar.', 4, 12, 32),
-(358, 'InglÃ©s. Desarrollo de conversaciones elementales.', 6, 12, 32),
-(359, 'PlaneaciÃ³n y evaluaciÃ³n ', 6, 13, 32),
-(360, 'La tecnologÃ­a en la enseÃ±anza de la QuÃ­mica', 4, 13, 32),
-(361, 'Enlace quÃ­mico ', 4, 13, 32),
-(362, 'Reacciones quÃ­micas              ', 6, 13, 32),
-(363, 'IntroducciÃ³n a los mÃ©todos espectrofotomÃ©tricos.', 4, 13, 32),
-(364, 'PrÃ¡ctica docente en el aula', 6, 13, 32),
-(365, 'InglÃ©s. Intercambio de informaciÃ³n e ideas                         ', 6, 13, 32),
+(355, 'Química experimental', 6, 12, 32),
+(356, 'Instrucción al análisis instrumental', 4, 12, 32),
+(357, 'Observación y análisis de la cultura escolar.', 4, 12, 32),
+(358, 'Inglés. Desarrollo de conversaciones elementales.', 6, 12, 32),
+(359, 'Planeación y evaluación ', 6, 13, 32),
+(360, 'La tecnología en la enseñanza de la Química', 4, 13, 32),
+(361, 'Enlace quí­mico ', 4, 13, 32),
+(362, 'Reacciones químicas              ', 6, 13, 32),
+(363, 'Introducción a los métodos espectrofotométricos.', 4, 13, 32),
+(364, 'Práctica docente en el aula', 6, 13, 32),
+(365, 'Inglés. Intercambio de información e ideas                         ', 6, 13, 32),
 (366, 'Neurociencia en la adolescencia                   ', 4, 14, 32),
-(367, 'GestiÃ³n del centro educativo', 4, 14, 32),
-(368, 'MetodologÃ­a de la enseÃ±anza de la QuÃ­mica', 4, 14, 32),
-(369, 'MatemÃ¡ticas aplicadas a la QuÃ­mica', 4, 14, 32),
-(370, 'Equilibrio quÃ­mico', 4, 14, 32),
-(371, 'MÃ©todos Ã³pticos', 4, 14, 32),
+(367, 'Gestión del centro educativo', 4, 14, 32),
+(368, 'Metodología de la enseñanza de la Química', 4, 14, 32),
+(369, 'Matemáticas aplicadas a la Química', 4, 14, 32),
+(370, 'Equilibrio químico', 4, 14, 32),
+(371, 'Métodos ópticos', 4, 14, 32),
 (372, 'Estrategias de trabajo docente', 6, 14, 32),
-(373, 'InglÃ©s. Fortalecimiento de la confianza en la conversaciÃ³n', 6, 14, 32),
-(374, 'EducaciÃ³n inclusiva', 4, 15, 32),
-(375, 'MetodologÃ­a de la investigaciÃ³n', 4, 15, 32),
-(376, 'Cambio conceptual en la enseÃ±anza de la QuÃ­mica', 4, 15, 32),
-(377, 'FisicoquÃ­mica', 4, 15, 32),
-(378, 'AnÃ¡lisis quÃ­mico', 4, 15, 32),
-(379, 'MÃ©todos electromÃ©tricos', 4, 15, 32),
-(380, 'InnovaciÃ³n para la docencia', 6, 15, 32),
-(381, 'InglÃ©s. Hacia nuevas perspectivas globales                  ', 6, 15, 32),
-(382, 'Fundamentos de la educaciÃ³n', 4, 16, 32),
-(383, 'Pensamiento pedagÃ³gico', 4, 16, 32),
-(384, 'Modelizar y contextualizar la QuÃ­mica', 4, 16, 32),
-(385, 'EstadÃ­stica ', 4, 16, 32),
-(386, 'QuÃ­mica orgÃ¡nica', 4, 16, 32),
-(387, 'MÃ©todos cromatogrÃ¡ficos', 4, 16, 32),
-(388, 'Proyectos de intervenciÃ³n docente', 6, 16, 32),
-(389, 'InglÃ©s. Convertirse en comunicadores independientes', 6, 16, 32),
-(390, 'Retos actuales de la educaciÃ³n en MÃ©xico', 4, 17, 32),
-(391, 'InstrumentaciÃ³n bÃ¡sica ', 6, 17, 32),
-(392, 'QuÃ­mica y sustentabilidad', 5, 17, 32),
-(393, 'CinÃ©tica quÃ­mica', 4, 17, 32),
-(394, 'IntroducciÃ³n a la bioquÃ­mica', 4, 17, 32),
-(395, 'PrÃ¡ctica profesional y vida escolar', 6, 17, 32),
+(373, 'Inglés. Fortalecimiento de la confianza en la conversación', 6, 14, 32),
+(374, 'Educación inclusiva', 4, 15, 32),
+(375, 'Metodología de la investigación', 4, 15, 32),
+(376, 'Cambio conceptual en la enseñanza de la Química', 4, 15, 32),
+(377, 'Fisicoquímica', 4, 15, 32),
+(378, 'Análisis químico', 4, 15, 32),
+(379, 'Métodos electrométricos', 4, 15, 32),
+(380, 'Innovación para la docencia', 6, 15, 32),
+(381, 'Inglés. Hacia nuevas perspectivas globales                  ', 6, 15, 32),
+(382, 'Fundamentos de la educación', 4, 16, 32),
+(383, 'Pensamiento pedagógico', 4, 16, 32),
+(384, 'Modelizar y contextualizar la Química', 4, 16, 32),
+(385, 'Estadística ', 4, 16, 32),
+(386, 'Química orgánica', 4, 16, 32),
+(387, 'Métodos cromatográficos', 4, 16, 32),
+(388, 'Proyectos de intervención docente', 6, 16, 32),
+(389, 'Inglés. Convertirse en comunicadores independientes', 6, 16, 32),
+(390, 'Retos actuales de la educación en México', 4, 17, 32),
+(391, 'Instrumentación básica ', 6, 17, 32),
+(392, 'Química y sustentabilidad', 5, 17, 32),
+(393, 'Cinética química', 4, 17, 32),
+(394, 'Introducción a la bioquí­mica', 4, 17, 32),
+(395, 'Práctica profesional y vida escolar', 6, 17, 32),
 (396, 'Aprendizaje en el Servicio', 20, 18, 32),
-(397, 'El sujeto y su formaciÃ³n profesional como docente', 5, 11, 33),
-(398, 'Historia de la educaciÃ³n en MÃ©xico ', 4, 11, 33),
-(399, 'Panorama actual de la educaciÃ³n bÃ¡sica en MÃ©xico ', 4, 11, 33),
-(400, 'AritmÃ©tica: su aprendizaje y enseÃ±anza ', 6, 11, 33),
-(401, 'Desarrollo fÃ­sico y salud ', 4, 11, 33),
-(402, 'Las TIC en la educaciÃ³n', 4, 11, 33),
-(403, 'ObservaciÃ³n y anÃ¡lisis de la prÃ¡ctica educativa', 6, 11, 33),
-(404, 'PlaneaciÃ³n educativa ', 4, 12, 33),
-(405, 'Bases psicolÃ³gicas del aprendizaje', 4, 12, 33),
-(406, 'PrÃ¡cticas sociales del lenguaje ', 6, 12, 33),
-(407, 'Ãlgebra: su aprendizaje y enseÃ±anza ', 6, 12, 33),
+(397, 'El sujeto y su formación profesional como docente', 5, 11, 33),
+(398, 'Historia de la educación en México ', 4, 11, 33),
+(399, 'Panorama actual de la educación básica en México ', 4, 11, 33),
+(400, 'Aritmética: su aprendizaje y enseñanza ', 6, 11, 33),
+(401, 'Desarrollo físico y salud ', 4, 11, 33),
+(402, 'Las TIC en la educación', 4, 11, 33),
+(403, 'Observación y análisis de la práctica educativa', 6, 11, 33),
+(404, 'Planeación educativa ', 4, 12, 33),
+(405, 'Bases psicológicas del aprendizaje', 4, 12, 33),
+(406, 'Prácticas sociales del lenguaje ', 6, 12, 33),
+(407, 'Álgebra: su aprendizaje y enseñanza ', 6, 12, 33),
 (408, 'Acercamiento a las ciencias naturales en la primaria', 6, 12, 33),
-(409, 'La tecnologÃ­a informÃ¡tica aplicada a los centros escolares ', 4, 12, 33),
-(410, 'ObservaciÃ³n y anÃ¡lisis de la prÃ¡ctica escolar ', 6, 12, 33),
-(411, 'AdecuaciÃ³n curricular ', 4, 13, 33),
+(409, 'La tecnología informática aplicada a los centros escolares ', 4, 12, 33),
+(410, 'Observación y análisis de la práctica escolar ', 6, 12, 33),
+(411, 'Adecuación curricular ', 4, 13, 33),
 (412, 'Ambientes de aprendizaje   ', 4, 13, 33),
-(413, 'EducaciÃ³n histÃ³rica en el aula ', 4, 13, 33),
-(414, 'Procesos de alfabetizaciÃ³n inicial ', 6, 13, 33),
-(415, 'GeometrÃ­a: su aprendizaje y enseÃ±anza ', 6, 13, 33),
+(413, 'Educación histórica en el aula ', 4, 13, 33),
+(414, 'Procesos de alfabetización inicial ', 6, 13, 33),
+(415, 'Geometría: su aprendizaje y enseñanza ', 6, 13, 33),
 (416, 'Ciencias naturales ', 6, 13, 33),
-(417, 'InglÃ©s A1 ', 4, 13, 33),
-(418, 'IniciaciÃ³n al trabajo docente ', 6, 13, 33),
-(419, 'TeorÃ­a pedagÃ³gica', 4, 14, 33),
-(420, 'EvaluaciÃ³n para el aprendizaje ', 4, 14, 33),
-(421, 'EducaciÃ³n histÃ³rica en diversos contextos ', 4, 14, 33),
-(422, 'Estrategias didÃ¡cticas con propÃ³sitos comunicativos ', 6, 14, 33),
-(423, 'Procesamiento de informaciÃ³n estadÃ­stica ', 6, 14, 33),
+(417, 'Inglés A1 ', 4, 13, 33),
+(418, 'Iniciación al trabajo docente ', 6, 13, 33),
+(419, 'Teorí­a pedagógica', 4, 14, 33),
+(420, 'Evaluación para el aprendizaje ', 4, 14, 33),
+(421, 'Educación histórica en diversos contextos ', 4, 14, 33),
+(422, 'Estrategias didácticas con propósitos comunicativos ', 6, 14, 33),
+(423, 'Procesamiento de información estadística ', 6, 14, 33),
 (424, 'Optativo', 4, 14, 33),
-(425, 'InglÃ©s A2 ', 4, 14, 33),
+(425, 'Inglés A2 ', 4, 14, 33),
 (426, 'Estrategias de trabajo docente ', 6, 14, 33),
-(427, 'Herramientas bÃ¡sicas para la investigaciÃ³n educativa', 4, 15, 33),
-(428, 'AtenciÃ³n a la diversidad', 4, 15, 33),
-(429, 'EducaciÃ³n fÃ­sica', 4, 15, 33),
-(430, 'ProducciÃ³n de textos escritos ', 6, 15, 33),
-(431, 'EducaciÃ³n artÃ­stica (mÃºsica, expresiÃ³n corporal y danza) ', 4, 15, 33),
+(427, 'Herramientas básicas para la investigación educativa', 4, 15, 33),
+(428, 'Atención a la diversidad', 4, 15, 33),
+(429, 'Educación física', 4, 15, 33),
+(430, 'Producción de textos escritos ', 6, 15, 33),
+(431, 'Educación artística (música, expresión corporal y danza) ', 4, 15, 33),
 (432, 'Optativo ', 4, 15, 33),
-(433, 'InglÃ©s B1-', 4, 15, 33),
-(434, 'Trabajo docente e innovaciÃ³n ', 6, 16, 33),
-(435, 'FilosofÃ­a de la educaciÃ³n', 4, 16, 33),
-(436, 'Diagnostico e intervenciÃ³n socioeducativa', 4, 16, 33),
-(437, 'FormaciÃ³n cÃ­vica y Ã©tica ', 4, 16, 33),
-(438, 'EducaciÃ³n geogrÃ¡fica ', 4, 16, 33),
-(439, 'EducaciÃ³n artÃ­stica (artes visuales y teatro) ', 4, 16, 33),
+(433, 'Inglés B1-', 4, 15, 33),
+(434, 'Trabajo docente e innovación ', 6, 16, 33),
+(435, 'Filosofía de la educación', 4, 16, 33),
+(436, 'Diagnostico e intervención socioeducativa', 4, 16, 33),
+(437, 'Formación cívica y ética ', 4, 16, 33),
+(438, 'Educación geográfica ', 4, 16, 33),
+(439, 'Educación artística (artes visuales y teatro) ', 4, 16, 33),
 (440, 'Optativo ', 4, 16, 33),
-(441, 'InglÃ©s B1 ', 4, 16, 33),
-(442, 'Proyectos de intervenciÃ³n socioeducativa ', 6, 16, 33);
+(441, 'Inglés B1 ', 4, 16, 33),
+(442, 'Proyectos de intervención socioeducativa ', 6, 16, 33);
 
 -- --------------------------------------------------------
 
@@ -641,12 +598,10 @@ INSERT INTO `materias` (`id_materia`, `nom_materia`, `tot_horas`, `id_semestre`,
 -- Estructura de tabla para la tabla `perfiles`
 --
 
-DROP TABLE IF EXISTS `perfiles`;
-CREATE TABLE IF NOT EXISTS `perfiles` (
-  `id_perfil` int(11) NOT NULL AUTO_INCREMENT,
-  `des_perfil` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_perfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
+CREATE TABLE `perfiles` (
+  `id_perfil` int(11) NOT NULL,
+  `des_perfil` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `perfiles`
@@ -668,12 +623,10 @@ INSERT INTO `perfiles` (`id_perfil`, `des_perfil`) VALUES
 -- Estructura de tabla para la tabla `periodos`
 --
 
-DROP TABLE IF EXISTS `periodos`;
-CREATE TABLE IF NOT EXISTS `periodos` (
-  `id_periodo` int(11) NOT NULL AUTO_INCREMENT,
-  `des_periodo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_periodo`)
-) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8;
+CREATE TABLE `periodos` (
+  `id_periodo` int(11) NOT NULL,
+  `des_periodo` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `periodos`
@@ -690,12 +643,10 @@ INSERT INTO `periodos` (`id_periodo`, `des_periodo`) VALUES
 -- Estructura de tabla para la tabla `plantillas`
 --
 
-DROP TABLE IF EXISTS `plantillas`;
-CREATE TABLE IF NOT EXISTS `plantillas` (
-  `id_plantilla` int(11) NOT NULL AUTO_INCREMENT,
-  `des_plantilla` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_plantilla`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+CREATE TABLE `plantillas` (
+  `id_plantilla` int(11) NOT NULL,
+  `des_plantilla` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `plantillas`
@@ -714,26 +665,24 @@ INSERT INTO `plantillas` (`id_plantilla`, `des_plantilla`) VALUES
 -- Estructura de tabla para la tabla `semestres`
 --
 
-DROP TABLE IF EXISTS `semestres`;
-CREATE TABLE IF NOT EXISTS `semestres` (
-  `id_semestre` int(11) NOT NULL AUTO_INCREMENT,
-  `des_semestre` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id_semestre`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+CREATE TABLE `semestres` (
+  `id_semestre` int(11) NOT NULL,
+  `des_semestre` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `semestres`
 --
 
 INSERT INTO `semestres` (`id_semestre`, `des_semestre`) VALUES
-(11, '1Â° Semestre'),
-(12, '2Â° Semestre'),
-(13, '3Â° Semestre'),
-(14, '4Â° Semestre'),
-(15, '5Â° Semestre'),
-(16, '6Â° Semestre'),
-(17, '7Â° Semestre'),
-(18, '8Â° Semestre');
+(11, '1° Semestre'),
+(12, '2° Semestre'),
+(13, '3° Semestre'),
+(14, '4° Semestre'),
+(15, '5° Semestre'),
+(16, '6° Semestre'),
+(17, '7° Semestre'),
+(18, '8° Semestre');
 
 -- --------------------------------------------------------
 
@@ -741,13 +690,11 @@ INSERT INTO `semestres` (`id_semestre`, `des_semestre`) VALUES
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id_usu` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `usuarios` (
+  `id_usu` int(11) NOT NULL,
   `usuario` varchar(255) DEFAULT NULL,
-  `passwor` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id_usu`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+  `passwor` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -763,6 +710,253 @@ INSERT INTO `usuarios` (`id_usu`, `usuario`, `passwor`) VALUES
 (16, 'uriel', '$2y$10$IExuYOFUDIiruVwQJugWHujItwYIEDytXzbrZ0MZsO0SwCAmA/xga'),
 (17, 'u', '$2y$10$9B6.1Vy/DRaE/Hrl0XUJpeW3MoJlCovJ3FUWkaSB9P/oP4SoboTtm'),
 (18, 'Admin', '$2y$10$NytGvG/3gjr/agpb85P14OWhMg7kuqFxibH97DRqQE.kcagBI27Aq');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `asigna_bloque_h`
+--
+ALTER TABLE `asigna_bloque_h`
+  ADD PRIMARY KEY (`id_asigna_bh`),
+  ADD KEY `o_idx` (`id_dia`),
+  ADD KEY `u_idx` (`id_bloque_h`);
+
+--
+-- Indices de la tabla `asigna_horario`
+--
+ALTER TABLE `asigna_horario`
+  ADD PRIMARY KEY (`id_asigna_h`),
+  ADD KEY `carrera_idx` (`id_carrera`),
+  ADD KEY `semestre_idx` (`id_semestre`),
+  ADD KEY `periodo` (`id_periodo`);
+
+--
+-- Indices de la tabla `asigna_materias`
+--
+ALTER TABLE `asigna_materias`
+  ADD PRIMARY KEY (`id_asigna_m`),
+  ADD KEY `materia_idx` (`id_materia`),
+  ADD KEY `docente_idx` (`id_docente`),
+  ADD KEY `pertenece_p` (`id_asigna_p`),
+  ADD KEY `sesion` (`id_asigna_h`);
+
+--
+-- Indices de la tabla `asigna_plantillas`
+--
+ALTER TABLE `asigna_plantillas`
+  ADD PRIMARY KEY (`id_asigna_p`),
+  ADD KEY `necesita_idx` (`id_docente`),
+  ADD KEY `as_h_idx` (`id_asigna_h`),
+  ADD KEY `plantillas` (`id_plantilla`);
+
+--
+-- Indices de la tabla `aulas`
+--
+ALTER TABLE `aulas`
+  ADD PRIMARY KEY (`id_aulas`);
+
+--
+-- Indices de la tabla `bloques_h`
+--
+ALTER TABLE `bloques_h`
+  ADD PRIMARY KEY (`id_bloque_h`);
+
+--
+-- Indices de la tabla `carreras`
+--
+ALTER TABLE `carreras`
+  ADD PRIMARY KEY (`id_carrera`);
+
+--
+-- Indices de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id_cat`);
+
+--
+-- Indices de la tabla `dias`
+--
+ALTER TABLE `dias`
+  ADD PRIMARY KEY (`id_dia`);
+
+--
+-- Indices de la tabla `docentes`
+--
+ALTER TABLE `docentes`
+  ADD PRIMARY KEY (`id_docente`),
+  ADD KEY `id_cat_idx` (`id_cat`),
+  ADD KEY `esta_idx` (`id_estado`),
+  ADD KEY `pertenece_idx` (`id_perfil`);
+
+--
+-- Indices de la tabla `estados`
+--
+ALTER TABLE `estados`
+  ADD PRIMARY KEY (`id_estado`);
+
+--
+-- Indices de la tabla `grupos`
+--
+ALTER TABLE `grupos`
+  ADD PRIMARY KEY (`id_grupo`);
+
+--
+-- Indices de la tabla `horarios`
+--
+ALTER TABLE `horarios`
+  ADD PRIMARY KEY (`id_horario`),
+  ADD KEY `a_idx` (`id_asigna_m`),
+  ADD KEY `e_idx` (`id_aula`),
+  ADD KEY `i_idx` (`id_asigna_bh`),
+  ADD KEY `as_idx` (`id_grupo`);
+
+--
+-- Indices de la tabla `horario_docentes`
+--
+ALTER TABLE `horario_docentes`
+  ADD PRIMARY KEY (`id_horario_docente`),
+  ADD KEY `horadoc_idx` (`id_horario`);
+
+--
+-- Indices de la tabla `horario_grupos`
+--
+ALTER TABLE `horario_grupos`
+  ADD PRIMARY KEY (`id_horario_grupo`),
+  ADD KEY `hace_idx` (`id_horario_docente`);
+
+--
+-- Indices de la tabla `materias`
+--
+ALTER TABLE `materias`
+  ADD PRIMARY KEY (`id_materia`),
+  ADD KEY `es_idx` (`id_carrera`),
+  ADD KEY `cursa_idx` (`id_semestre`);
+
+--
+-- Indices de la tabla `perfiles`
+--
+ALTER TABLE `perfiles`
+  ADD PRIMARY KEY (`id_perfil`);
+
+--
+-- Indices de la tabla `periodos`
+--
+ALTER TABLE `periodos`
+  ADD PRIMARY KEY (`id_periodo`);
+
+--
+-- Indices de la tabla `plantillas`
+--
+ALTER TABLE `plantillas`
+  ADD PRIMARY KEY (`id_plantilla`);
+
+--
+-- Indices de la tabla `semestres`
+--
+ALTER TABLE `semestres`
+  ADD PRIMARY KEY (`id_semestre`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usu`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `asigna_horario`
+--
+ALTER TABLE `asigna_horario`
+  MODIFY `id_asigna_h` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+
+--
+-- AUTO_INCREMENT de la tabla `asigna_materias`
+--
+ALTER TABLE `asigna_materias`
+  MODIFY `id_asigna_m` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT de la tabla `asigna_plantillas`
+--
+ALTER TABLE `asigna_plantillas`
+  MODIFY `id_asigna_p` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `carreras`
+--
+ALTER TABLE `carreras`
+  MODIFY `id_carrera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT de la tabla `categorias`
+--
+ALTER TABLE `categorias`
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT de la tabla `dias`
+--
+ALTER TABLE `dias`
+  MODIFY `id_dia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `docentes`
+--
+ALTER TABLE `docentes`
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=514;
+
+--
+-- AUTO_INCREMENT de la tabla `estados`
+--
+ALTER TABLE `estados`
+  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `horarios`
+--
+ALTER TABLE `horarios`
+  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+
+--
+-- AUTO_INCREMENT de la tabla `materias`
+--
+ALTER TABLE `materias`
+  MODIFY `id_materia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=443;
+
+--
+-- AUTO_INCREMENT de la tabla `perfiles`
+--
+ALTER TABLE `perfiles`
+  MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+
+--
+-- AUTO_INCREMENT de la tabla `periodos`
+--
+ALTER TABLE `periodos`
+  MODIFY `id_periodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT de la tabla `plantillas`
+--
+ALTER TABLE `plantillas`
+  MODIFY `id_plantilla` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT de la tabla `semestres`
+--
+ALTER TABLE `semestres`
+  MODIFY `id_semestre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restricciones para tablas volcadas

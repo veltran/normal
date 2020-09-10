@@ -67,3 +67,10 @@ div#redips-drag td {
 	color: white;
 	background-color: SteelBlue;
 }
+#btncon {
+	padding: 0;
+	
+	}
+   #btncon li{
+	display: inline;
+   }
