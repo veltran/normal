@@ -31,7 +31,9 @@ $periodo=$_SESSION["idperiodo"];
 				
 		}else{
 			//echo  "El docente ya tiene una materia a la misma hora ";
-			echo '<script language="javascript">alert("El docente ya tiene una materia a esta hora");</script>';
+			echo '<script language="javascript">alert("El docente ya tiene una materia a esta hora '; 
+			echo  'Porfavor elija otra hora");</script>';
+			
 		}	
 		
 

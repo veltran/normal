@@ -47,7 +47,7 @@ include 'conexion.php';
 								<!-- contenido -->
 								<div class=" bg-light">
 									<div class="text-center">
-										<h4>Agregar Materias</h4>
+										<h6>Agregar Materias</h6>
 									</div>
 									<div id="tAsignarM"class="text-centerx pt-3 ">
 									</div>
@@ -107,10 +107,8 @@ include 'conexion.php';
 								?>
 								<option id="id_materia" name="id_materia" value="<?php echo $id; ?>"><?php echo $materia; ?></option>
 								<?php	
-
 								}
-
-							 ?>
+							?>
 						</select>
 				</div>
 				<div class="modal-footer">

@@ -5,19 +5,15 @@
 	if($nombre== null || $nombre==''){
 		header("location:index.php");
 	}
-	echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
-	echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
-	echo "CARRERA:". $_SESSION["carrera"]."<br>";
-	echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
 			$carr=0;
 			$sem=0;
 			$per=0;
-			$per=$_SESSION["idperiodo"];
-			$carr=$_SESSION["carrera"];
-			$sem=$_SESSION["semestre"];
-			$id_as=$_SESSION["asigna_h"];
-			
-?><!DOCTYPE html>
+			$per=
+			$carr
+			$sem=
+			$id_as=
+?>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -89,7 +85,7 @@
 									<div>
 										<div class="text-center redips-mark">
 											<h5 class="redips-mark">Horario Grupo</h5>
-											<div id="respuesta"></div>
+										
 										
 											<h6 class="aling-lefth"><!--mensaje carrera-->
 												<?php 
@@ -103,7 +99,6 @@
 															$carrera=$roow['carrera'];
 															$semestre=$roow['semestre'];
 														} 
-														
 														echo "Carrera:". $carrera. "   " ;
 														echo  "  ".$semestre ;
 													}

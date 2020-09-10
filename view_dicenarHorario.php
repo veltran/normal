@@ -37,7 +37,7 @@
 									<label class="btn form-control" for=""> <a class="btn btn-info" href="view_horarioDocente.php">Horario Docente</a>
 									</label>
 									<label class="btn form-control" for=""><a class="btn btn-info" href="view_horarioGrupo.php">Horario Grupo</a></label>
-									<label class="btn form-control" for=""><a class="btn btn-info" href="view_verhorario.php"> Ver Horario Grupo</a></label>
+									<label class="btn form-control" for=""><a class="btn btn-info" href="view_Horarios.php"> Ver Horario Grupo</a></label>
 
 								</form>
 								
