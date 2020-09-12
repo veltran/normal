@@ -1,18 +1,20 @@
 <?php 
-session_start();
 	$nombre=$_SESSION["usuario"];
-	if($nombre== null || $nombre==''){
-	//header("location:index.php");
-	}
-	echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
-	echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
-	echo "CARRERA:". $_SESSION["carrera"]."<br>";
-	echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
+	// if($nombre== null || $nombre==''){
+	// header("location:index.php");
+	// }
+	// echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
+	// echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
+	// echo "CARRERA:". $_SESSION["carrera"]."<br>";
+	// echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
 			$carr=0;
-			$sem=0;
+            $sem=0;
+            $id_as=$_SESSION["asigna_h"];
 			$carr=$_SESSION["carrera"];
-			$sem=$_SESSION["semestre"];
-			$id_as=$_SESSION["asigna_h"];
+            $sem=$_SESSION["semestre"];
+
+            
+			
 ?>
 <style>
 .tab_h{
@@ -48,18 +50,17 @@ session_start();
 
 </style> 
 <?php //Fucnion para mostrar materias
+
     function mostrar_mat($v,$as){
-       
         include 'conexion.php';
             $ver=mysqli_query($sql,"  SELECT horarios.id_asigna_m as
             id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
-             horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
-             horarios.id_asigna_m=asigna_materias.id_asigna_m and
+            horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
+            horarios.id_asigna_m=asigna_materias.id_asigna_m and
             asigna_materias.id_materia=materias.id_materia and 
-              horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
-              asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
-           and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as");
-
+            horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
+            asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
+        and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as");
         if(mysqli_num_rows($ver)==0){
         return $mensaje="";
         }else{
@@ -71,10 +72,7 @@ session_start();
         }
     }
 ?>
-
     <div id="head">
-       
-        
         <table class="tab_h">
             <tr>
                 <td style="margin:0px;"> 
@@ -114,18 +112,15 @@ session_start();
                 <td >
                     <div row>
                         <a style="text-align:left;">GRADO: PRIMERO</a> 
-                                
                         <a style="text-align:right;">GRUPO:U</a>
                     </div>
                 </td>
                 <td >
-                    
                     <div ><a > SEMESTRE: PRIMERO</a></div>
                 </td>
             </tr>
         </table>
     </div>
-    
     <div>
         <table class="table" id="table2" >
             <thead class="borderf" >

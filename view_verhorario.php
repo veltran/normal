@@ -1107,10 +1107,12 @@
 											<?php include('tabla_infoMAt.php'); ?>
 										</div>
 										<div class="text-right">
-											<label  id="pdf_asigna" value="<?php	echo $id_as;?>" for="" ><?php	echo $id_as;?></label>
-											<label id="pdf_carrera" value="<?php echo $carr; ?>" for="" ><?php echo $carr; ?></label>
-											<label id="pdf_semestre" value="<?php	echo $sem; ?>" for="" ><?php	echo $sem; ?></label>
-											<label id="pdf_periodo" value="<?php	echo $per; ?>" for="" ><?php	echo $per; ?></label>
+											<input  id="pdf_asigna" name="asigna" value="<?php	echo $id_as;?>" for="" ><?php	echo $id_as;?></input>
+											<input id="pdf_carrera" name="carrera" value="<?php echo $carr; ?>" for="" ><?php echo $carr; ?></input>
+											<input id="pdf_semestre"name="semestre"  value="<?php	echo $sem; ?>" for="" ><?php	echo $sem; ?></input>
+											<input
+
+											 id="pdf_periodo" name="periodo" value="<?php	echo $per; ?>" for="" ><?php	echo $per; ?></input>
 
 											<button class="btn">
 												<a class="btn btn-primary"href="view_dicenarHorario.php">Regresar</a>
@@ -1137,11 +1139,11 @@
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script>
 			$('#enviar').click(function(){
-						var asigna=document.getElementById('pdf_asigna').innerHTML;
-						var	periodo=document.getElementById('pdf_carrera').innerHTML;
-						var carrera=document.getElementById('pdf_semestre').innerHTML;
+						var Asigna=document.getElementById('pdf_asigna').value;
+						var	Periodo=document.getElementById('pdf_carrera').value;
+						var Carrera=document.getElementById('pdf_semestre').value;
 						//var semestre=document.getElementById('pdf_periodo').innerHTML;
-						var ruta="as="+asigna;
+						var ruta="As="+Asigna+"&Per="+Periodo+"&Car="+Carrera;
 						console.log(ruta);
 						$.ajax({
 							url:'pruebadomp.php',
