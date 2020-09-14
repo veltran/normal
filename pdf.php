@@ -1,8 +1,21 @@
 <?php 
   session_start();
+  $p=$_SESSION['asigna_h'];
+  include 'conexion.php';
+$id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,semestres.des_semestre
+ FROM asigna_horario,periodos,carreras,semestres WHERE
+  asigna_horario.id_periodo=periodos.id_periodo and asigna_horario.id_carrera=carreras.id_carrera 
+  and asigna_horario.id_semestre=semestres.id_semestre and asigna_horario.id_asigna_h=$p ");
+    while($row=mysqli_fetch_array($id_periodo)){
+        $per=$row['des_periodo'];   
+        $car=$row['nom_carrera'];     
+        $des_sem=$row['des_semestre'];          
+    }
     use Dompdf\Dompdf;
     include "librerias/dompdf/autoload.inc.php";
+
     $pdf=new Dompdf();
+    $pdf->set_option('defaultFont', 'Arial');  
    ob_start();
 ?>
 <?php 
@@ -53,7 +66,10 @@
     border: 1px solid black;
     font-size:11px;
 }
-
+#tab3{
+    margin-top:3px;
+    padding-top:5px;
+}
 
 </style> 
 <?php //Fucnion para mostrar materias
@@ -89,9 +105,9 @@
                 </td>
                 <td>
                 <div class="estilo_t" >
-                    <a>ESCUELA NORMAL DE VALLE DE BRAVO </a></br>
-                    <a style="margin-top:1px;"> CLAVE DE CENTRO DE TRABAJO: 15ENL0036U</a></br>
-                    <a style="margin-top:1px;"> TURNO DISCONTINUO  </a>    </br>
+                    <a>ESCUELA NORMAL DE VALLE DE BRAVO </a><br>
+                    <a style="margin-top:1px;"> CLAVE DE CENTRO DE TRABAJO: 15ENL0036U</a><br>
+                    <a style="margin-top:1px;"> TURNO DISCONTINUO  </a>    <br>
                     <a style="margin-top:1px;">TELEFONO: 017262623378 </a>  
                 </div>
             </td>
@@ -101,9 +117,9 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style=" text-transform: uppercase;">
                 <td class="estilo_t fuente">
-                    <div><a> CICLO ESCOLAR:2020-2021</a>  </div>
+                    <div><a><?php echo $per; ?></a>  </div>
                 </td>
                 <td class="fuente">
                     <div><a> HORARIO POR GRUPO DE ASIGNATURAS O CURSOS CURRICULARES</a></div>
@@ -112,18 +128,18 @@
                     <div></div>
                 </td>
             </tr>
-            <tr >
+            <tr style=" text-transform: uppercase;" >
                 <td class="estilo_t fuente">
-                    <div><a >LICENCIATURA EN EZEÑANZA Y APRENDIZAJE </br> DE LA QUIMICA EN EDUCACION SECUNDARIA </a></div>
+                    <div><a ><?php echo $car;?></a></div>
                 </td>
                 <td >
                     <div row>
-                        <a style="text-align:left;">GRADO: PRIMERO</a> 
-                        <a style="text-align:right;">GRUPO:U</a>
+                        <a style="text-align:left; margin-right:15px;">GRADO: PRIMERO</a> 
+                        <a style="text-align:right;margin-left:15px;">GRUPO:U</a>
                     </div>
                 </td>
                 <td >
-                    <div ><a > SEMESTRE: PRIMERO</a></div>
+                    <div ><a > SEMESTRE: <?php echo $des_sem;?></a></div>
                 </td>
             </tr>
         </table>
@@ -585,7 +601,7 @@
             docentes.nom_docente as docente,categorias.des_cat as cat from asigna_materias,docentes,materias,carreras,semestres,categorias
             where asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente AND
             docentes.id_cat=categorias.id_cat AND materias.id_carrera=carreras.id_carrera AND
-            materias.id_semestre=semestres.id_semestre AND asigna_materias.id_asigna_h=135");
+            materias.id_semestre=semestres.id_semestre AND asigna_materias.id_asigna_h=$id_as");
             while($row=mysqli_fetch_array($consulta)){
                 $nombre=$row["materia"];
                 $hora=$row["horas"];
@@ -602,6 +618,42 @@
             }
         ?>
     </tbody>
+    <table id="tab3" style="">
+    <thead>
+        <tr class="tab_h">
+            <td>ELABORÓ</td>
+            <td>REVISÓ</td>
+            <td>AUTORIZÓ</td>
+            <td>Vo. Bo.</td>
+            <td>VALIDA</td>
+        </tr>
+    </thead>
+    <tbody class="tab_h" >
+        
+        <tr style="font-weight: bold;">
+            <td>MTRA. MELANIA OROZCO TAPIA</td>
+            <td>MTRO. JOSÉ LUIS GOZÁLEZ GARCIA </td>
+            <td>DRA. IRERI BAEZCHAVEZ</td>
+            <td>MTRO. MARCO ANTONIO TRUJILLO MARTÍNEZ</td>
+            <td>MTRO. EDGAR ALFONSO OROZCO MENDOZA</td>
+        </tr>
+        <tr >
+            <td>RESPONSABLE DEL DEPATATAMENTO DE RECUSUSOS HUMANOS </td>
+            <td>SUBDIRECTOR ADMINISTRATIVO</td>
+            <td>ENCARGADA DEL DESPACHO DE LA DIRECCIÓ ESCOLAR</td>
+            <td>EN SUPLENCIA DEL SUBDIRECTOR DE ESCUELAS NORMALES, DE ACUERDO CON EL OFICIONo. 21013A000000000/14/2019
+            DEL SUBDIRECTOR DE EDUCACIÓN SUPERIOR Y NORMAL</td>
+            <td>DIRECTOR DE EDUCACIÓN NORMAL Y FORTALECIMIENTO PROFECIONAL</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+    </table>
 </table>
     </div>
 
@@ -610,8 +662,9 @@ $html=ob_get_contents();
 ob_end_clean();
 
     $pdf->loadHtml($html);
-    $pdf->setPaper("A2","landigpage");
+    //Establecer el tamaño de hoja en DOMPDF
+    $pdf->setPaper(array(0,0,700.1,960.9),"landscape");
     $pdf->render();
-    $pdf->stream();
+    $pdf->stream("Horario.pdf");
 
 ?>

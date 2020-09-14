@@ -1106,19 +1106,30 @@
 										<div id="tabla_info">
 											<?php include('tabla_infoMAt.php'); ?>
 										</div>
-										<div class="text-right">
-											<input  id="pdf_asigna" name="asigna" value="<?php	echo $id_as;?>" for="" ><?php	echo $id_as;?></input>
-											<input id="pdf_carrera" name="carrera" value="<?php echo $carr; ?>" for="" ><?php echo $carr; ?></input>
-											<input id="pdf_semestre"name="semestre"  value="<?php	echo $sem; ?>" for="" ><?php	echo $sem; ?></input>
-											<input
-
-											 id="pdf_periodo" name="periodo" value="<?php	echo $per; ?>" for="" ><?php	echo $per; ?></input>
-
+										<div class="text-right row" >
+											<div class="col">
+												<label for="">ELABORÓ</label>
+												<input type="text">
+											</div>
+											<div class="col">
+												<label for=""> REVISÓ</label>
+												<input type="text">
+											</div>
+											<div class="col">
+												<label for="">Vo. Bo.</label>
+												<input type="text">
+											</div>
+											<div class="col">
+												<label> VALIDA </label>
+												<input for="">
+											</div>
+										</div>
+										<div>
 											<button class="btn">
 												<a class="btn btn-primary"href="view_dicenarHorario.php">Regresar</a>
 											</button>	
-											<button  class="btn btn-success">
-												<a type="button" class="btn btn-success" href="pdf.php" id="enviar">Crear PDF</a>
+											<button class="btn" >
+												<a class="btn btn-success" href="pdf.php" id="enviar">Crear PDF</a>
 													
 											</button>
 
@@ -1138,22 +1149,22 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 		<script>
-			$('#enviar').click(function(){
-						var Asigna=document.getElementById('pdf_asigna').value;
-						var	Periodo=document.getElementById('pdf_carrera').value;
-						var Carrera=document.getElementById('pdf_semestre').value;
-						//var semestre=document.getElementById('pdf_periodo').innerHTML;
-						var ruta="As="+Asigna+"&Per="+Periodo+"&Car="+Carrera;
-						console.log(ruta);
-						$.ajax({
-							url:'pruebadomp.php',
-							type:'POST',
-							data:ruta,
-						}).done(function(res){
+			// $('#enviar').click(function(){
+			// 			var Asigna=document.getElementById('pdf_asigna').value;
+			// 			var	Periodo=document.getElementById('pdf_carrera').value;
+			// 			var Carrera=document.getElementById('pdf_semestre').value;
+			// 			//var semestre=document.getElementById('pdf_periodo').innerHTML;
+			// 			var ruta="As="+Asigna+"&Per="+Periodo+"&Car="+Carrera;
+			// 			console.log(ruta);
+			// 			$.ajax({
+			// 				url:'pruebadomp.php',
+			// 				type:'POST',
+			// 				data:ruta,
+			// 			}).done(function(res){
 							
-						});
-						//$('#tabla_armarP').load('tabla_docentesP.php');
-					});
+			// 			});
+			// 			//$('#tabla_armarP').load('tabla_docentesP.php');
+			// 		});
 		</script>
 		
 	</body>

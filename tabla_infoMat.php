@@ -35,4 +35,41 @@
             }
         ?>
     </tbody>
+
+    <table>
+    <thead>
+        <tr class="text-center">
+            <td>ELABORÓ</td>
+            <td>REVISÓ</td>
+            <td>AUTORIZÓ</td>
+            <td>Vo. Bo.</td>
+            <td>VALIDA</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+        <tr class="fotn-weight-bold">
+            <td>MTRA. MELANIA OROZCO TAPIA</td>
+            <td>MTRO. JOSÉ LUIS GOZÁLEZ GARCIA </td>
+            <td>DRA. IRERI BAEZCHAVEZ</td>
+            <td>MTRO. MARCO ANTONIO TRUJILLO MARTÍNEZ</td>
+            <td>MTRO. EDGAR ALFONSO OROZCO MENDOZA</td>
+        </tr>
+        <tr>
+            <td>RESPONSABLE DEL DEPATATAMENTO DE RECUSUSOS HUMANOS </td>
+            <td>SUBDIRECTOR ADMINISTRATIVO</td>
+            <td>ENCARGADA DEL DESPACHO DE LA DIRECCIÓ ESCOLAR</td>
+            <td>EN SUPLENCIA DEL SUBDIRECTOR DE ESCUELAS NORMALES, DE ACUERDO CON EL OFICIONo. 21013A000000000/14/2019
+            DEL SUBDIRECTOR DE EDUCACIÓN SUPERIOR Y NORMAL</td>
+            <td>DIRECTOR DE EDUCACIÓN NORMAL Y FORTALECIMIENTO PROFECIONAL</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+    </table>
 </table>
