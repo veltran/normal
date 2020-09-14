@@ -90,8 +90,6 @@
 										<div class="text-center redips-mark">
 											<h5 class="redips-mark">Horario Grupo</h5>
 											<div id="respuesta"></div>
-										
-											<h6 class="aling-lefth"><!--mensaje carrera-->
 												<?php 
 													if(empty($id_as)){
 													}
@@ -102,13 +100,17 @@
 														while($roow=mysqli_fetch_array($consulta)){
 															$carrera=$roow['carrera'];
 															$semestre=$roow['semestre'];
-														} 
-														
-														echo "Carrera:". $carrera. "   " ;
-														echo  "  ".$semestre ;
-													}
-												?>
-											</h6>
+														} ?>
+											<div class="row">
+											
+												<h6 class="aling-lefth"><!--mensaje carrera-->		
+													<?php	echo "Carrera:". $carrera. "   " ; ?>
+												</h6>	
+												<h6 class="pl-4">
+												<?php		echo  "  ".$semestre ;
+													}?>
+												</h6>
+											</div>
 										</div>
 										<?php 	
 											$arreglo= array();
@@ -627,6 +629,9 @@
 															?>
 														</div>
 													</td>
+													<td class="redips-trash " title="Trash" style="text-align:center;">
+													<i  class="far fa-trash-alt" style="color:red; font-size: 80px;"></i>
+													</td>
 												</tr>
 												<tr>
 												<td class="redips-mark dark">12:00-13:00</td>
@@ -813,9 +818,7 @@
 															?>
 														</div>
 													</td>
-													<td class="redips-trash bg-danger" title="Trash">
-													Eliminar
-													</td>
+												
 												</tr>
 												<tr>
 													<td class="redips-mark dark">14:00-15:00</td>

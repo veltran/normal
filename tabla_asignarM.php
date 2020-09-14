@@ -5,7 +5,7 @@
 ?>
 <div class="row">
 	<div class="col-sm-12">
-		<table id="tDocentes" class="table table-hover table-condensed table-bordered">
+		<table id="tDocentes" class="table table-hover table-condensed table-striped table-bordered">
 			<thead style="background-color:#007bff ; color:white; font-weight: bold;">
 			<tr>
 				<!-- <td>#</td> -->
@@ -33,7 +33,7 @@
 				<td><?php echo $row['ap_materno'];?></td>
 				<td><?php echo $row['des_perfil'];?></td>
 				<td><?php echo $row['tot_horas_clase'];?></td>
-				<td> <a type="button" class="btn btn-primary " 
+				<td class="text-center"> <a type="button" class="btn btn-outline-primary " 
 
 						data-toggle="modal"
 						data-target="#ModalAgregarMateria"
@@ -48,7 +48,7 @@
 
 				</a> </td>
 				<td style="text-align:  center;">
-					<a type="button" class="btn btn-warning editar_btn" id="<?php echo $row['id_docente'] ?>"
+					<a type="button" class="btn btn-outline-warning editar_btn" id="<?php echo $row['id_docente'] ?>"
 					data-toggle="modal"
 					data-target="#ModalEditarMateria"
 					

@@ -66,9 +66,21 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
     border: 1px solid black;
     font-size:11px;
 }
-#tab3{
-    margin-top:3px;
-    padding-top:5px;
+#tab3  {
+    width:98%;
+ 
+border-collapse: collapse;
+}
+.borders{ 
+         font-size:11px;
+    font-family: arial;
+    text-transform: uppercase;
+
+  border-style:none none solid none;
+}
+#txt{
+    height:30px;
+    text-align:center;
 }
 
 </style> 
@@ -145,20 +157,20 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
         </table>
     </div>
     <div>
-        <table class="table" id="table2" >
+        <table class="table" id="table2" style="font-family: Arial;">
             <thead class="borderf" >
                 <tr class="borderf fuente" style="text-align:center;">
                     <td  class="borderf">HORA</td>
                     <td  class="borderf">LUNES</td>
                     <td  class="borderf">MARTES</td>
-                    <td  class="borderf">MIERCOLES</td>
+                    <td  class="borderf">MIéRCOLES</td>
                     <td  class="borderf">JUEVES</td>
                     <td  class="borderf">VIERNES</td>
                 </tr>
             </thead>
             <tbody class="borderf" >
                 <tr class="borderf">
-                    <td  class="borderf">7:00-8:00</td>
+                    <td  class="borderf" id="txt">7:00-8:00</td>
                     <td class="borderf">
                         <div>	
                         <?php   
@@ -200,8 +212,8 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                 <tr>
-                    <td  class="borderf">8:00-9:00</td>
-                    <td>
+                    <td  class="borderf" id="txt">8:00-9:00</td>
+                    <td class="borderf">
                         <div>	
                         <?php   
                         $val=201;
@@ -242,8 +254,8 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                 <tr>
-                        <td  class="borderf">9:00-10:00</td>
-                    <td  class="borderf">
+                        <td  class="borderf" id="txt">9:00-10:00</td>
+                    <td >
                         <div>	
                         <?php   
                         $val=202;
@@ -284,7 +296,7 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                 <tr>
-                <td  class="borderf">10:00-11:00</td>
+                <td  class="borderf" id="txt">10:00-11:00</td>
                     <td  class="borderf">
                         <div>	
                         <?php   
@@ -326,7 +338,7 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                 <tr>
-                    <td  class="borderf">11:00-12:00</td>
+                    <td  class="borderf" id="txt">11:00-12:00</td>
                     <td  class="borderf">
                         <div>	
                         <?php   
@@ -368,7 +380,7 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                 <tr>
-                    <td  class="borderf">12:00-13:00</td>
+                    <td  class="borderf" id="txt">12:00-13:00</td>
                     <td  class="borderf">
                         <div>	
                         <?php   
@@ -410,7 +422,7 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                     <tr>
-                    <td  class="borderf">13:00-14:00</td>
+                    <td  class="borderf" id="txt">13:00-14:00</td>
                     <td  class="borderf">
                         <div>	
                         <?php   
@@ -451,7 +463,7 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                         </div>
                     </td>
                 </tr><tr>
-                <td  class="borderf">14:00 15:00</td>
+                <td  class="borderf" id="txt">14:00 15:00</td>
                     <td  class="borderf">
                         <div>	
                         <?php   
@@ -493,7 +505,7 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                 <tr>
-                    <td  class="borderf">15:00 16:00</td>
+                    <td  class="borderf" id="txt">15:00 16:00</td>
                     <td  class="borderf">
                         <div>	
                         <?php   
@@ -535,7 +547,7 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                     </td>
                 </tr>
                 <tr>
-                    <td  class="borderf">16:00 17:00</td>
+                    <td  class="borderf" id="txt">16:00 17:00</td>
                     <td  class="borderf">
                         <div>	
                         <?php   
@@ -581,8 +593,8 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
     </div>
     </br>
     <div>
-    <table class="table" id=" table2">
-    <thead class=" borderf fuente" style="text-align:center;">
+    <table class="" id="tab3">
+    <thead class=" borderf fuente" style="text-align:center; border:0px;">
         <tr>
             <td>
                 ASIGNATURA O CURSO
@@ -608,19 +620,20 @@ $id_periodo=mysqli_query($sql,"SELECT periodos.des_periodo,carreras.nom_carrera,
                 $docente=$row["docente"];
                 $categoria=$row["cat"];
         ?>
-        <tr>
-            <td  class="borderf "><?php echo $nombre?></td>
-            <td class="borderf "><?php echo $hora?></td>
-            <td class="borderf"><?php echo $docente?></td>
-            <td class="borderf"><?php echo $categoria?></td>
+        <tr id="bunico">
+            <td  class="borders "><?php echo $nombre?></td>
+            <td class="borders "><?php echo $hora?></td>
+            <td class="borders"><?php echo $docente?></td>
+            <td class="borders"><?php echo $categoria?></td>
         </tr>
         <?php
             }
         ?>
     </tbody>
-    <table id="tab3" style="">
-    <thead>
-        <tr class="tab_h">
+    <br>
+    <table id="tabla_info" style="border-style:none;">
+    <thead style="">
+        <tr class="tab_h " style=" ">
             <td>ELABORÓ</td>
             <td>REVISÓ</td>
             <td>AUTORIZÓ</td>
