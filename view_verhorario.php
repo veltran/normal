@@ -115,15 +115,15 @@
 										<?php 	
 											$arreglo= array();
 										function consulta($v,$as ){
-												$queri="  SELECT horarios.id_asigna_m as
-												id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
-												horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
-												horarios.id_asigna_m=asigna_materias.id_asigna_m and
-												asigna_materias.id_materia=materias.id_materia and 
-												horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
-												asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
-												and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as";
-												return $queri;
+											$queri="  SELECT horarios.id_asigna_m as
+											id_as,asigna_materias.id_asigna_h, materias.nom_materia as materia FROM
+											horarios,asigna_materias,materias,asigna_bloque_h,bloques_h WHERE 
+											horarios.id_asigna_m=asigna_materias.id_asigna_m and
+											asigna_materias.id_materia=materias.id_materia and 
+											horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
+											asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
+											and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as";
+											return $queri;
 										}
 										?>
 										<table id="right" class="table table-striped table-bordered ">
@@ -138,10 +138,10 @@
 												</colgroup>
 											<thead class="table-primary" style="background-color: #007bff; color:white; font-weight: bold;">
 												<tr>
-													<td class="redips-mark">hora</td>
+													<td class="redips-mark">Hora</td>
 													<td class="redips-mark">Lunes</td>
 													<td class="redips-mark">Martes</td>
-													<td class="redips-mark">Miercoles</td>
+													<td class="redips-mark">Miércoles</td>
 													<td class="redips-mark">Jueves</td>
 													<td class="redips-mark">Viernes</td>
 													<td class="redips-mark text-center">Eliminar</td>
@@ -175,16 +175,13 @@
 												</td>
 													<td>
 													<?php
-													
 													$val=210;
 													$ver=mysqli_query($sql,consulta($val,$id_as));
 													// var_dump($ver);
-												
 													if(mysqli_num_rows($ver)==0){
 														//echo "llego aqui";
 													}else{	
 													while($row=mysqli_fetch_array($ver)){
-													
 														$id_asm=$row["id_as"];
 														$des_mat=$row["materia"];
 														}
@@ -202,12 +199,10 @@
 													$val=220;
 													$ver=mysqli_query($sql,consulta($val,$id_as));
 													// var_dump($ver);
-												
 													if(mysqli_num_rows($ver)==0){
 														//echo "llego aqui";
 													}else{	
 													while($row=mysqli_fetch_array($ver)){
-													
 														$id_asm=$row["id_as"];
 														$des_mat=$row["materia"];
 														}
@@ -254,6 +249,8 @@
 																	}	
 															?>
 														</div>
+													</td>
+													<td rowspan="10"  class="redips-trash " title="Trash" style="text-align:center;"><i  class="far fa-trash-alt" style="color:red; font-size: 40px;padding-top:200px;"></i>
 													</td>
 													
 												</tr> 
@@ -535,6 +532,8 @@
 															?>
 														</div>
 													</td>
+													
+													
 												</tr>
 												<tr>
 													<td class="redips-mark dark">11:00-12:00</td>
@@ -629,9 +628,7 @@
 															?>
 														</div>
 													</td>
-													<td class="redips-trash " title="Trash" style="text-align:center;">
-													<i  class="far fa-trash-alt" style="color:red; font-size: 80px;"></i>
-													</td>
+													
 												</tr>
 												<tr>
 												<td class="redips-mark dark">12:00-13:00</td>
@@ -1109,7 +1106,7 @@
 										<div id="tabla_info">
 											<?php include('tabla_infoMAt.php'); ?>
 										</div>
-										<div class="text-right row" >
+										<!-- <div class="text-right row" >
 											<div class="col">
 												<label for="">ELABORÓ</label>
 												<input type="text">
@@ -1126,10 +1123,10 @@
 												<label> VALIDA </label>
 												<input for="">
 											</div>
-										</div>
+										</div> -->
 										<div>
 											<button class="btn">
-												<a class="btn btn-primary"href="view_dicenarHorario.php">Regresar</a>
+												<a class="btn btn-primary"href="view_agregarMaterias.php">Regresar</a>
 											</button>	
 											<button class="btn" >
 												<a class="btn btn-success" href="pdf.php" id="enviar">Crear PDF</a>

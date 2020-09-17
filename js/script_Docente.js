@@ -37,11 +37,8 @@ redipsInit=function(){
 			}else{
 					b=mensaje;
 			}
-			
-			
-			
 			console.log("imprimir"+b);
-		 // =	document.getElementById('2').innerHTML;
+         	// =	document.getElementById('2').innerHTML;
 			var ruta="I="+b+"&loc="+matriz[row][col];
 		 	$.ajax({
                 data:  ruta, //datos que se envian a traves de ajax

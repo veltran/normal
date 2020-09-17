@@ -36,7 +36,7 @@
         ?>
     </tbody>
 
-    <table>
+    <table style=" font-size: 0.7em; text-align:center;">
     <thead>
         <tr class="text-center">
             <td>ELABORÓ</td>

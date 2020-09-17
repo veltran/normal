@@ -10,11 +10,13 @@
 	$Periodo=$_SESSION["periodo"];
 	$Carrera=$_SESSION["carrera"];
 	$Semestre=$_SESSION["semestre"];
+	$Grupo=$_SESSION["grupo"];
 
-	echo "id_asigna:".$_SESSION["asigna_h"];
-	echo "<br> id_carrera:".$_SESSION["carrera"];
-	echo "<br> id_semestre".$_SESSION["semestre"];
-	echo "<br> id_periodo:".$_SESSION["idperiodo"];
+	 echo "id_asigna:".$_SESSION["asigna_h"];
+	 echo "<br> id_carrera:".$_SESSION["carrera"];
+	 echo "<br> id_semestre".$_SESSION["semestre"];
+	 echo "<br> id_periodo:".$_SESSION["idperiodo"];
+	 echo "<br> id_grupo: ".$_SESSION["grupo"];
 include 'conexion.php';
 ?>
 <!DOCTYPE html>
@@ -48,7 +50,11 @@ include 'conexion.php';
 								<div class=" bg-light">
 									<div class="text-center">
 										<h6>Agregar Materias</h6>
+										<div>
+										
+										</div>
 									</div>
+									<!-- tabla-->
 									<div id="tAsignarM"class="text-centerx pt-3 ">
 									</div>
 									<div class="text-right">
@@ -92,6 +98,8 @@ include 'conexion.php';
 						<label >  Perfil  </label>
 						<label id="nombreU" name="nombre" for=""   class="form-control input-sm"  >
 						</label>
+						<div di="info">
+						</div>
 						<label >Seleccione la materia a agregar:</label>
  						<select  class="form-control input-sm" name="id_materia" id="" required="">
 							<?php 
@@ -170,28 +178,7 @@ include 'conexion.php';
 				});
 
 	</script>
-	<!-- <script>
-
-		$("#plantilla").click(
-		function(){
-			var plantilla=document.getElementById('plantilla').value;
-
-			var ruta="Plantilla="+plantilla;
-
-			$.ajax({
-				url:'tabla_asignarM.php',
-				type:'POST',
-				data:ruta,
-			}).done(function(res){
-				$("#tAsignarM").html(res);
-			});
-
-		});
-		//$('#tAsignarM').load('tabla_asignarM.php');
-	</script>	 -->
-	<!-- <script>
-		$("#plantilla")
-	</script> -->
+	
 	<script>
 		$('#ModalAgregarMateria').on('show.bs.modal',function(event){
 			var button = $(event.relatedTarget)

@@ -13,21 +13,19 @@
     $p="";
     $per="";
     $p=$_SESSION["idperiodo"];
-    
-    
-          $consulta=mysqli_query($sql, "SELECT des_periodo from periodos WHERE periodos.id_periodo=$p");
-          while($roow=mysqli_fetch_array($consulta)){
-            $per=$roow['des_periodo'];
-            
-          } 
-          if(!$consulta)
-          {
-              $_SESSION["periodo"]="";
-            $_SESSION["periodo"]=$per;
-          }else
-          {
+      $consulta=mysqli_query($sql, "SELECT des_periodo from periodos WHERE periodos.id_periodo=$p");
+      while($roow=mysqli_fetch_array($consulta)){
+        $per=$roow['des_periodo'];
+        
+      } 
+      if(!$consulta)
+      {
+          $_SESSION["periodo"]="";
+        $_SESSION["periodo"]=$per;
+      }else
+      {
 
-          }
+    }
   }            
 ?>
 <!DOCTYPE html>
@@ -63,7 +61,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="home.php"><i class="fas fa-home"></i>Inicio <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="home.php" ><i class="fas fa-home" title="Inicio" style="font-size:20px;"></i> </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown " role="button" data-toggle="dropdown" aria_haspopup="true" aria-expanded="false" >
@@ -76,23 +74,7 @@
           </div>
           
         </li>
-       <!--  <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdow" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Horarios
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Carrera</a>
-            <a class="dropdown-item" href="#">Segundo</a>
-            <a class="dropdown-item" href="#">Tercero</a>
-                  <a class="dropdown-item" href="#">Cuarto</a>
-            <a class="dropdown-item" href="#">Quinto</a>
-            <a class="dropdown-item" href="#">Sexto</a>
-                  <a class="dropdown-item" href="#">Septimo</a>
-            <a class="dropdown-item" href="#">Octavo</a>
-            <a class="dropdown-item" href="#">Noveno</a>
-
-          </div>
-        </li> -->
+      
         <li class="nav-item">
           <a class="nav-link" href="view_docentes.php">Docentes</a>
         </li>
@@ -116,12 +98,16 @@
         </ul>
 
         <div class="">
-          <a class="" ><?php echo $per; ?></a>
+          <a class="btn bg-info text-light" ><?php echo $per; ?></a>
         </div>
        
     </div>
-     <div clas="nav-item ml-4" >
-          <a  class="nav-link text-success" href="logout.php">Salir</a>
+    <div class="nav-item ml-4">
+    <a href="" title="Ajustes" ><i class="fas fa-cog " style="font-size:20px;"></i></a>
+    </div>
+     <div class="nav-item ml-4" >
+        
+          <a  class="nav-link text-success" href="logout.php" title="Cerrar sesión"><i class="fas fa-sign-out-alt" style="font-size:20px;" ></i></a>
         </div>
   </nav>
   

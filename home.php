@@ -13,6 +13,7 @@ include "conexion.php";
 	$_SESSION["carrera"]="";
 	$_SESSION["semestre"]="";
 	$_SESSION["asigna_h"]="";
+	$_SESSION["grupo"]="";
 
  ?>
 <!DOCTYPE html>
