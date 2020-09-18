@@ -30,7 +30,7 @@ $grupo=$_SESSION["grupo"];
 				//Echo "Se inserto correctamente";
 				$mate_horas=mysqli_query($sql,"SELECT * FROM horas_materias WHERE id_asigna_m=$id ");
 					if(mysqli_num_rows($mate_horas)==0){
-						$insertar=mysqli_query($sql,"INSERT INTO horas_materias (id_hora,id_asigna_m,tot_horas_as)VALUES(null,$id,0)");
+						$insertar=mysqli_query($sql,"INSERT INTO horas_materias (id_hora,id_asigna_m,tot_horas_as)VALUES(null,$id,1)");
 						if(!$insertar){
 							echo "Error en query";
 						}

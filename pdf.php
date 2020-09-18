@@ -610,11 +610,7 @@ border-collapse: collapse;
     <tbody>
         <?php
         include ('conexion.php');
-            $consulta=mysqli_query($sql,"SELECT materias.nom_materia as materia,docentes.tot_horas_clase as horas,
-            docentes.nom_docente as docente,categorias.des_cat as cat from asigna_materias,docentes,materias,carreras,semestres,categorias
-            where asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente AND
-            docentes.id_cat=categorias.id_cat AND materias.id_carrera=carreras.id_carrera AND
-            materias.id_semestre=semestres.id_semestre AND asigna_materias.id_asigna_h=$id_as AND asigna_materias.id_grupo=$id_gr");
+            $consulta=mysqli_query($sql,"SELECT materias.nom_materia as materia,horas_materias.tot_horas_as as horas, docentes.nom_docente as docente,categorias.des_cat as cat from asigna_materias,docentes,materias,carreras,semestres,categorias,horas_materias where horas_materias.id_asigna_m=asigna_materias.id_asigna_m AND asigna_materias.id_materia=materias.id_materia and asigna_materias.id_docente=docentes.id_docente AND docentes.id_cat=categorias.id_cat AND materias.id_carrera=carreras.id_carrera AND materias.id_semestre=semestres.id_semestre AND asigna_materias.id_asigna_h=$id_as AND asigna_materias.id_grupo=$id_gr ");
             while($row=mysqli_fetch_array($consulta)){
                 $nombre=$row["materia"];
                 $hora=$row["horas"];
