@@ -25,9 +25,25 @@ echo "el id es =" .$id."   El bloque es a eliminar es = ".$bloque;
 			}
 			else{
 				echo " <br>Se borro correctamente";
+				$mate_horas=mysqli_query($sql,"SELECT * FROM horas_materias WHERE id_asigna_m=$id ");
+					if(mysqli_num_rows($mate_horas)==0){
+					
+					}
+					else{
+						$con=mysqli_query($sql,"SELECT tot_horas_as FROM horas_materias WHERE id_asigna_m=$id");
+						while ($row=mysqli_fetch_array($con)) {
+							$hora=$row['tot_horas_as'];
+						} 
+						$contador=$hora-1;
+						$actualizar=mysqli_query($sql,"UPDATE horas_materias SET tot_horas_as=$contador WHERE horas_materias.id_asigna_m = $id");
+						if(!$actualizar){
+							Echo "Error al actualizar";
+						}
+					}
+				}
 			}
 		}
 
-	}
+	
 
 ?>

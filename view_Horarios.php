@@ -42,58 +42,65 @@
 									<div>
 										<div class="text-center redips-mark">
 											<h5 class="redips-mark">Horario Grupo</h5>
-											
 											<!-- Mostrando todos las opciones para consultar el horario-->
 												<div id="menu de consulta">
 												<form>
-  <div class="form-row">
-    <div class="col">
-	  <select id="Periodo" class="form-control">
-	  <?php 
-			$con="SELECT * FROM periodos" ;
-			$res=mysqli_query($sql,$con);
-			while($row=mysqli_fetch_array($res)){
-		?>
-		<option id="Per" name="Per" value="<?php echo $row['id_periodo']; ?>"><?php echo $row['des_periodo']; ?></option>
-		<?php	
-		}
-
-		?>
-	  </select>
-    </div>
-    <div class="col">
-	   <select id="Carrera" class="form-control">
-	  <?php 
-			$con="SELECT * FROM carreras" ;
-			$r=mysqli_query($sql,$con);
-			while($row=mysqli_fetch_array($r)){
-		?>
-		<option id="Carr" name="Carr" value="<?php echo $row['id_carrera']; ?>"><?php echo $row['nom_carrera']; ?></option>
-		<?php	
-		}
-
-		?>
-	  </select>
-	
-	</div>
-	<div class="col">
-	   <select id="Semestre" class="form-control">
-	  <?php 
-			$con="SELECT * FROM semestres" ;
-			$re=mysqli_query($sql,$con);
-			while($row=mysqli_fetch_array($re)){
-		?>
-		<option id="Sem" name="Sem" value="<?php echo $row['id_semestre']; ?>"><?php echo $row['des_semestre']; ?></option>
-		<?php	
-		}
-		?>
-	  </select>
-	</div>
-	<button type="button" id="consultar" class="btn btn-primary">Continuar</button>
-  </div>
-</form>
-												
-												
+													<div class="form-row">
+														<div class="col">
+														<select id="Periodo" class="form-control">
+														<?php 
+																$con="SELECT * FROM periodos" ;
+																$res=mysqli_query($sql,$con);
+																while($row=mysqli_fetch_array($res)){
+															?>
+															<option id="Per" name="Per" value="<?php echo $row['id_periodo']; ?>"><?php echo $row['des_periodo']; ?></option>
+															<?php	
+															}
+															?>
+														</select>
+														</div>
+														<div class="col">
+														<select id="Carrera" class="form-control">
+														<?php 
+																$con="SELECT * FROM carreras" ;
+																$r=mysqli_query($sql,$con);
+																while($row=mysqli_fetch_array($r)){
+															?>
+															<option id="Carr" name="Carr" value="<?php echo $row['id_carrera']; ?>"><?php echo $row['nom_carrera']; ?></option>
+															<?php	
+															}
+															?>
+														</select>
+														</div>
+														<div class="col">
+															<select id="Semestre" class="form-control">
+															<?php 
+																	$con="SELECT * FROM semestres" ;
+																	$re=mysqli_query($sql,$con);
+																	while($row=mysqli_fetch_array($re)){
+																?>
+																<option id="Sem" name="Sem" value="<?php echo $row['id_semestre']; ?>"><?php echo $row['des_semestre']; ?></option>
+																<?php	
+																}
+																?>
+															</select>
+														</div>
+														<div class="col">
+															<select id="Grupo" class="form-control">
+															<?php 
+																	$con="SELECT * FROM grupos" ;
+																	$re=mysqli_query($sql,$con);
+																	while($row=mysqli_fetch_array($re)){
+																?>
+																<option id="Gr" name="Gr" value="<?php echo $row['id_grupo']; ?>"><?php echo $row['des_grupo']; ?></option>
+																<?php	
+																}
+																?>
+															</select>
+														</div>
+														<button type="button" id="consultar" class="btn btn-primary">Continuar</button>
+													</div>
+												</form>
 											</div>
 											</br>
 											<div id="tHora">
@@ -122,11 +129,12 @@
 					var periodo=0;
 						var	carrera=0;
 						var semestre =0;
-
+						var grupo=0;
 						periodo=document.getElementById('Periodo').value;
 						carrera=document.getElementById('Carrera').value;
 						semestre =document.getElementById('Semestre').value;
-						ruta="Per="+periodo+"&Car="+carrera+"&Sem="+semestre;
+						grupo=document.getElementById('Grupo').value;
+						ruta="Per="+periodo+"&Car="+carrera+"&Sem="+semestre+'&Gr='+grupo;
 						console.log(ruta);
 						$.ajax({
 							url:'tabla_mostrarHorario.php',
