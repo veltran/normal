@@ -34,10 +34,8 @@
 				<td><?php echo $row['des_perfil'];?></td>
 				<td><?php echo $row['tot_horas_clase'];?></td>
 				<td class="text-center"> <a type="button" class="btn btn-outline-primary " 
-
 						data-toggle="modal"
 						data-target="#ModalAgregarMateria"
-
 						data-id="<?php echo $row['id_docente']; ?>" 
 						data-nombre="<?php echo $row['nom_docente']; ?>"
 						data-ap="<?php echo $row['ap_paterno']; ?>"
@@ -51,14 +49,12 @@
 					<a type="button" class="btn btn-outline-warning editar_btn" id="<?php echo $row['id_docente'] ?>"
 					data-toggle="modal"
 					data-target="#ModalEditarMateria"
-					
 						data-id="<?php echo $row['id_docente']; ?>"
 						data-nombre="<?php echo $row['nom_docente']; ?>"
 						data-ap="<?php echo $row['ap_paterno']; ?>"
 						data-materno="<?php echo $row['ap_materno']; ?>"
 						data-horaClase="<?php echo $row['tot_horas_clase']; ?>"
 						data-perfil="<?php echo $row['des_perfil']; ?>"
-
 					>Editar</a>
 				</td>
 				

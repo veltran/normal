@@ -44,10 +44,10 @@ $grupo=$_SESSION["grupo"];
 							$hora=$row['tot_horas_as'];
 						} 
 						$contador=$hora+1;
-						$actualizar=mysqli_query($sql,"UPDATE horas_materias SET tot_horas_as=$contador WHERE horas_materias.id_asigna_m = $id");
-						if(!$actualizar){
+							$actualizar=mysqli_query($sql,"UPDATE horas_materias SET tot_horas_as=$contador WHERE horas_materias.id_asigna_m = $id");
+							if(!$actualizar){
 							Echo "Error al actualizar";
-						}
+							}
 					}
 				}
 				

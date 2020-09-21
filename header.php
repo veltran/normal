@@ -103,7 +103,7 @@
        
     </div>
     <div class="nav-item ml-4">
-    <a href="" title="Ajustes" ><i class="fas fa-cog " style="font-size:20px;"></i></a>
+    <a  title="Ajustes" href="seting.php" ><i class="fas fa-cog " style="font-size:20px;"></i></a>
     </div>
      <div class="nav-item ml-4" >
         

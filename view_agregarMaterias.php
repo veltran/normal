@@ -150,7 +150,7 @@ include 'conexion.php';
 						<label id="perfilE" name="nombre" for=""   class="form-control input-sm"  >
 						</label>
 						
- 						<div id="tabla_editarM">
+ 						<div class="text-info" id="tabla_editarM">
  							
  							
  						</div>
@@ -201,10 +201,8 @@ include 'conexion.php';
 	<script>
 //Carga de materias De docente
 		$(document).ready(function(){
-
 			 $(document).on('click', '.editar_btn', function(){
               var id=$(this).attr('id'); // this hace referencia al botón con la clase .edit
-    			
     			 $ruta="id="+id;
 				console.log($ruta);
 				 $.ajax({
@@ -215,16 +213,11 @@ include 'conexion.php';
 				 .done(function(res) {	
 				 	$('#tabla_editarM').html(res);
 					// function(){$('#tabla_editarM').load('tabla_editarMaterias.php');}
-
-
 				});
-
-   			 });
-
+   			});
 		}); 
 		//Modal editar una materia
 		$('#ModalEditarMateria').on('show.bs.modal',function(event){
-		
 			var button = $(event.relatedTarget)
 			var id_doc = button.data('id');
 			var nom_doc = button.data('nombre');
@@ -237,31 +230,24 @@ include 'conexion.php';
 			modal.find('.modal-body input#idDocE').text(id_doc); 
 			modal.find('.modal-body label#perfilE').text(perfil);
 			modal.find('.modal-body label#perfilE').val(perfil);
-
 			// $r= document.getElementById('idDocE').value;
 			// 	console.log($r);
-			
 		 });
 				//Eliminar un a materia
 			$(document).ready(function(){ $(document).on('click', '.delete_materia', function(){
               var id_delete=$(this).attr('id'); // this hace referencia al botón con la clase .edit
-    			
-    			 $ruta="id="+id_delete;
+	   			$ruta="id="+id_delete;
 				console.log($ruta);
-				 $.ajax({
+				$.ajax({
 				 	url:'delete_materiaD.php',
 				 	type:'POST',
 				 	data:$ruta,
-				 })
-				 .done(function(res) {	
-				 	 $('#tabla_editarM').html(res);//Respuesta de la consulta 
+				})
+				.done(function(res) {	
+				$('#tabla_editarM').html(res);//Respuesta de la consulta 
 					// function(){$('#tabla_editarM').load('tabla_editarMaterias.php');}
-// 
-
 				});
-
-   			 });
-
+   			});
 		});
 	</script>
 

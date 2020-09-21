@@ -17,7 +17,7 @@ echo "el id es =" .$id."   El bloque es a eliminar es = ".$bloque;
 			echo "El registro no existe o los parametros estan erroneos ";
 		
 		}else{
-			echo "Si existe, a hora eliminalo..FROM.";
+			echo "Si existe, a hora eliminalo..";
 			$delete=mysqli_query($sql," DELETE  FROM horarios WHERE id_asigna_bh=$bloque AND horarios.id_asigna_m=$id; ");
 			if(!$delete){
 				echo "Error en query";
@@ -35,10 +35,20 @@ echo "el id es =" .$id."   El bloque es a eliminar es = ".$bloque;
 							$hora=$row['tot_horas_as'];
 						} 
 						$contador=$hora-1;
-						$actualizar=mysqli_query($sql,"UPDATE horas_materias SET tot_horas_as=$contador WHERE horas_materias.id_asigna_m = $id");
-						if(!$actualizar){
-							Echo "Error al actualizar";
+						echo "valor de contador  ".$contador;
+						if($contador<1){
+							$eliminar=mysqli_query($sql,"DELETE FROM horas_materias WHERE horas_materias.id_asigna_m=$id ");
+							if(!$eliminar){
+								echo "Error al eliminar";
+							}
+						}else{
+							$actualizar=mysqli_query($sql,"UPDATE horas_materias SET tot_horas_as=$contador WHERE horas_materias.id_asigna_m = $id");
+							if(!$actualizar){
+								Echo "Error al actualizar";
+							}
 						}
+					
+						
 					}
 				}
 			}

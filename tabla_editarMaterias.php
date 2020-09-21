@@ -3,6 +3,7 @@
  session_start();
  $asi=0;
  $asi=$_SESSION["asigna_h"];
+ $id_gr=$_SESSION["grupo"];
   ?>
 <table class="table  table-striped table-hover thead-light">
 	<thead class="">
@@ -16,11 +17,15 @@
 	<tbody>
 			<?php				
 					$id = $_POST['id'];
-					$consulta=mysqli_query($sql,"SELECT asigna_materias.id_asigna_m as id_asigna, materias.id_semestre as semestre, materias.nom_materia AS nom_materia, materias.tot_horas as horas FROM asigna_materias,materias,docentes WHERE asigna_materias.id_materia=materias.id_materia AND asigna_materias.id_docente=docentes.id_docente AND asigna_materias.id_docente=$id and asigna_materias.id_asigna_h=	$asi;");
+					$consulta=mysqli_query($sql,"SELECT asigna_materias.id_asigna_m as id_asigna, materias.id_semestre 
+					as semestre, materias.nom_materia AS nom_materia, materias.tot_horas as horas FROM 
+					asigna_materias,materias,docentes WHERE asigna_materias.id_materia=materias.id_materia AND 
+					asigna_materias.id_docente=docentes.id_docente AND asigna_materias.id_docente=$id and 
+					asigna_materias.id_asigna_h=$asi and asigna_materias.id_grupo=$id_gr");
 				while($row=mysqli_fetch_array($consulta)){
 					$id=$row["id_asigna"];
 					$semestre=$row['semestre'];
-				$materia=$row['nom_materia'];
+					$materia=$row['nom_materia'];
 					$materia=$row['horas'];
 	 		?>
 	 		<tr>
@@ -34,7 +39,5 @@
 			<?php  
 				}
 			?>
-				  
-		
 	</tbody>
 </table>
