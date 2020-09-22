@@ -68,7 +68,7 @@
                                     
                                     <td class="border border-0">
                                         <div class="conf">
-                                        <a href="" id="mat">
+                                        <a href="conf_materias.php" id="mat">
                                             <i class="fas fa-book-open"></i>
                                         </a>
                                         </div>
@@ -79,7 +79,7 @@
                                 <tr>
                                     <td>
                                     <div class="conf">
-                                    <a href="" id="gr">
+                                    <a href="conf_grupos.php" id="gr">
                                         <i class="fas fa-users"></i>
                                     </a></div>    Grupos</td>
                                     <td>

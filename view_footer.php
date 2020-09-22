@@ -21,9 +21,7 @@
 						<div class="col-4">
 							<img src="img/logo.png" alt="">
 							<div class="centrar">
-								<a href="https://www.facebook.com/"><i class="fab fa-facebook fb" ></i></a>
-								<a href=""><i class="fab fa-twitter-square estilo-ico"></i></a>
-							</div>
+								
 							
 						</div>
 					</div>

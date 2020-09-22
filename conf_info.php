@@ -70,14 +70,20 @@
                                             <td id="<?php echo $id; ?>">
                                                 <?php echo $titulo;?>
                                             </td>
-                                            <td><?php echo $nom;?></td>
-                                            <td><?php echo $desc;?></td>
                                             <td>
-                                                <button class="btn btn-outline-primary" 
+												<?php echo $nom;?>
+											</td>
+                                            <td>
+												<?php echo $desc;?>
+											</td>
+                                            <td>
+                                                <button class="btn btn-outline-success" 
                                                 data-toggle="modal"
-                                                data-target="#ModalEditarCarreras"
-                                                data-id="<?php echo $id_car; ?>"
-                                                data-nombre="<?php echo $nom_c; ?>"
+                                                data-target="#ModalEditarInfo"
+                                                data-id="<?php echo $id; ?>"
+												data-titulo="<?php echo $titulo; ?>"
+                                                data-nombre="<?php echo $nom; ?>"
+												data-desc="<?php echo $desc;?>"
                                                 >
                                                     <i class="far fa-edit"></i>
                                                 
@@ -99,8 +105,8 @@
 		include('view_footer.php');
 	?> -->
 <div>
-	<form action="insertar_carrera.php" method="POST">
-				<div class="modal fade" id="ModalAgregarCarrera" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<form action="editar_info.php" method="POST">
+				<div class="modal fade" id="ModalEditarInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -109,13 +115,16 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body text-center">
-						
-                        
-						<label id="nombreU" name="nombre" for=""   class="form-control input-sm"  >
-						Nombre de la carrera
+				<div class="modal-body">
+						<input id="id" name="id" type="text" hidden="true">
+						<label  for=""   >
+							Titulo
                         </label>
-						<input class="form-control input-sm" name="name" type="text" required>
+						<input id="tit" name="tit" class="form-control input-sm"  type="text" required>
+						<label >Nombre de encargado</label>
+						<input id="nom" name="nom" class="form-control input-sm" type="text" required>
+						<label for="">Descripción</label>
+						<input id="desc" name="desc" class="form-control input-sm" type="text" required>
 						
 				</div>
 				<div class="modal-footer">
@@ -132,45 +141,22 @@
     </form>
 </div>
 </div>
-	<!-- Modal Editar Carreras -->
-<div>
-	<form action="insertar_carrera.php" method="POST">
-				<div class="modal fade" id="ModalEditarCarreras" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Editar carrera</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-						<input id="idCar" name="id" hidden="true">
-						<label >  Nombre de carrera </label>
-						<input type="text" id="idNom" name="name" class="form-control input-sm"  >
-                        <label id="idNom"for=""></label>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar
-					</button>
-					<button type="submit" class="btn btn-primary"  id="agregar_m">Aceptar
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-    </form>
-</div>
+
 </body>
 	<script>
         	//Modal editar una carrera
-		$('#ModalEditarCarreras').on('show.bs.modal',function(event){
+		$('#ModalEditarInfo').on('show.bs.modal',function(event){
         var button = $(event.relatedTarget)
-        var id_doc = button.data('id');
-        var nom_car = button.data('nombre');
+        var id= button.data('id');
+		var titulo=button.data('titulo');
+        var nom = button.data('nombre');
+		var desc=button.data('desc');
         var modal = $(this)
-        modal.find('.modal-title').text('Carrera: ' +nom_car);
-        modal.find('.modal-body input#idCar').val(id_doc); 
+        modal.find('.modal-title').text('Editar información '+titulo );
+        modal.find('.modal-body input#id').val(id); 
+		modal.find('.modal-body input#tit').val(titulo);
+		modal.find('.modal-body input#nom').val(nom);
+		modal.find('.modal-body input#desc').val(desc);
     });
     </script>
 </html>

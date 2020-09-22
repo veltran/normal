@@ -3,7 +3,6 @@
 		<table id="tDocentes" class="table table-striped table-bordered">
 			<thead style="background-color: #007bff; color:white; font-weight: bold;">
 			<tr>
-				<td>#</td>
 				<td>Nombre</td>
 				<td>Apellido paterno</td>
 				<td>Apellido materno</td>
@@ -19,7 +18,6 @@
 			?>
 			<?php foreach ($result as $key => $row) : ?>
 			<tr>
-				<td><?php echo $row['id_docente'];?></td>
 				<td><?php echo $row['nom_docente'];?></td>
 				<td><?php echo $row['ap_paterno'];?></td>
 				<td><?php echo $row['ap_materno'];?></td>
