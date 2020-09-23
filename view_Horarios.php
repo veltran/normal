@@ -35,7 +35,6 @@
 			<!--Menú orizontal -->
 			<div class="col-12" id="Principal">
 				<div class="row" id="redips-drag">
-					
 					<div id="contenido" class="col-12  ">
 						<div class="row bg-light ml-3">
 							<div class="container col-12">
@@ -104,15 +103,10 @@
 											</div>
 											</br>
 											<div id="tHora">
-
 											</div>
-											
 										</div>
-										
-										
 									</div>
 							</div>
-						
 						</div> 
 					</div>
 				</div>

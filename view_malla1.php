@@ -82,24 +82,19 @@
 
 								</div>
 							</div>
-					
 						</div>
-						
 					</div>
 				</div>
 			</div>
 		</div>
-		
 	<?php
 		include('view_footer.php');
 	?>
-		
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	
 	<script>
 		$(document).ready(fucntion(){
-			$('#tablaMalla1').load('tablaMalla1.php');
+			$('#tablaMalla1').load('tabla_materias.php');
 		});
 	</script>
 	
