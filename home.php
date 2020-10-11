@@ -52,7 +52,7 @@ include "conexion.php";
 										</a>
 									</li>
 									<li class="nav-item">
-										<a id="l4" class="nav-link texto-menu 	bg-light" href="view_dicenarHorario.php" tabindex="-1" >			Horarios  
+										<a id="l4" class="nav-link texto-menu bg-light" href="view_dicenarHorario.php" tabindex="-1" >			Horarios  
 										</a>
 									</li>
 								
