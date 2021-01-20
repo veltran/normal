@@ -51,7 +51,7 @@
                                 <tr class="border border-0">
                                     <td class="border border-0">
                                         <div class="conf" >
-                                            <a href="" id="us"> 
+                                            <a href="conf_usuarios.php" id="us"> 
                                             <i class="fas fa-user " > </i>
                                             </a>
                                         </div>Usuario

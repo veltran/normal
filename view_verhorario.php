@@ -5,11 +5,17 @@
 	if($nombre== null || $nombre==''){
 		header("location:index.php");
 	}
-	echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
-	echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
-	echo "CARRERA:". $_SESSION["carrera"]."<br>";
-	echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
-	echo "GRUPO".$_SESSION["grupo"];
+	if($_SESSION["asigna_h"]==""){
+		header("location:home.php");	
+
+	}
+
+
+	// echo "asigna_horario :". $_SESSION["asigna_h"]."<br>";
+	// echo "PERIODO :". $_SESSION["idperiodo"]."<br>";
+	// echo "CARRERA:". $_SESSION["carrera"]."<br>";
+	// echo "SEMESTRE:".$_SESSION["semestre"]."<br>";
+	// echo "GRUPO".$_SESSION["grupo"];
 			$carr=0;
 			$sem=0;
 			$per=0;

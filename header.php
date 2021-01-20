@@ -84,7 +84,7 @@
         <li class="nav-item">
           <a class="nav-link" href="view_agregarMaterias.php">Materias</a>
         </li>
-        <li clas="nav-item dropdown" >
+        <!-- <li clas="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" id="navbarDropdown " role="button" data-toggle="dropdown" aria_haspopup="false" aria-expanded="false" >
             Periodos
           </a>
@@ -93,7 +93,7 @@
              <a class="dropdown-item" id="81"href="home.php">Septiembre 2020-Febrero2021</a>
             <a class="dropdown-item" id="82" href="home.php"> Marzo 2021-Agosto2021 </a>
           </div>
-        </li>
+        </li> -->
         
         </ul>
 

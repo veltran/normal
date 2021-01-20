@@ -12,11 +12,12 @@
 	$Semestre=$_SESSION["semestre"];
 	$Grupo=$_SESSION["grupo"];
 
-	 echo "id_asigna:".$_SESSION["asigna_h"];
+/** echo "id_asigna:".$_SESSION["asigna_h"];
 	 echo "<br> id_carrera:".$_SESSION["carrera"];
 	 echo "<br> id_semestre".$_SESSION["semestre"];
 	 echo "<br> id_periodo:".$_SESSION["idperiodo"];
 	 echo "<br> id_grupo: ".$_SESSION["grupo"];
+	 **/
 include 'conexion.php';
 ?>
 <!DOCTYPE html>
