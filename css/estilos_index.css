@@ -1,0 +1,46 @@
+body{
+    background-image: url("../img/wall.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+input{color: rgb(255, 255, 255);}
+.formulario{
+ 
+    background: rgba(0,-0,-0,-.1);   /* tranpaencia del formulario*/
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgb(255, 255, 255); /* Sonbra del formulario */
+    color: white;
+
+}
+.form-control{
+    /* Transparencia dela primera entrada */
+    
+    background: rgba(240, 231, 231,-.3);
+    border-style:none;
+    transition: 0.5s ease-in;
+    outline: none;
+    box-shadow: none;
+}
+.form-control:focus{
+    background:none; 
+     box-shadow: none;
+    outline: none;
+}
+.form-control::placeholder{
+    color: rgb(173, 194, 235);
+}
+/* Estilos del boton ingresar */
+.ingresar{
+    background:#4563af;
+    padding: 10px;
+    font-size:16px ;
+    font-weight: 700!important;
+    box-shadow: 0 0 30px rgb(255, 255, 255);
+    color:white;
+    transition: 0.5s ease-in;
+}
+.ingresar:hover{
+    color: white;
+}
