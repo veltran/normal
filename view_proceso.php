@@ -4,6 +4,12 @@
 	if($nombre== null || $nombre==''){
 		header("location:index.php");
 	}
+	$_SESSION["idperiodo"]="";
+	$_SESSION["periodo"]="";
+	$_SESSION["carrera"]="";
+	$_SESSION["semestre"]="";
+	$_SESSION["asigna_h"]="";
+	$_SESSION["grupo"]="";
  ?><!DOCTYPE html>
 <html lang="en">
 <head>

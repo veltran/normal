@@ -14,7 +14,7 @@
 			</thead>
 			<?php
 				include('conexion.php');
-				$result=mysqli_query($sql,"SELECT id_docente,nom_docente,ap_paterno,ap_materno,des_perfil,des_cat,des_estado from docentes,perfiles,categorias,estados where docentes.id_perfil=perfiles.id_perfil and docentes.id_cat=categorias.id_cat and docentes.id_estado=estados.id_estado;");
+				$result=mysqli_query($sql,"SELECT id_docente,nom_docente,ap_paterno,ap_materno,des_perfil,des_cat,des_estado,docentes.id_perfil as id_perfil,docentes.id_cat as id_cat,docentes.id_estado as id_estado from docentes,perfiles,categorias,estados where docentes.id_perfil=perfiles.id_perfil and docentes.id_cat=categorias.id_cat and docentes.id_estado=estados.id_estado;");
 			?>
 			<?php foreach ($result as $key => $row) : ?>
 			<tr>
@@ -32,9 +32,9 @@
 									data-nombre="<?php echo $row['nom_docente']; ?>"
 									data-ap="<?php echo $row['ap_paterno']; ?>"
 									data-materno="<?php echo $row['ap_materno']; ?>"
-									data-perfil="<?php echo $row['des_perfil']; ?>"
-									data-cat="<?php echo $row['des_cat']; ?>"
-									data-estado="<?php echo $row['des_estado']; ?>"
+									data-perfil="<?php echo $row['id_perfil']; ?>"
+									data-cat="<?php echo $row['id_cat']; ?>"
+									data-estado="<?php echo $row['id_estado']; ?>"
 																>
 							<i class="far fa-edit  text-white"></i>
 						</button>	

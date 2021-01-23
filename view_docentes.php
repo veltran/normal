@@ -95,16 +95,16 @@
 						<label for="">Perfil docente</label>
 						
 						<select name="perfilU"id="perfilU" class="form-control input-sm"  required="false">
-							<option>   </option>
+							<!-- <option id="default" name="default" value>   </option> -->
 							<?php 
 								include 'conexion.php';
 								$consulta = "SELECT * FROM perfiles " ;
+								//$idperfil=
 								$perfil= mysqli_query($sql,$consulta);
 								while($row = mysqli_fetch_array($perfil)){
 									$id=$row['id_perfil'];
 									$des=$row['des_perfil'];
 								?>
-									
 									<option value="<?php echo $id; ?>"><?php echo $des?></option>
 								<?php
 								}
@@ -134,10 +134,10 @@
 
 						<div class="text-center">
 							<label>Activo</label>
-						<input  class="mr-3"name="estadoU" type="radio"   value="9" required="">
+						<input id="estadoU" class="mr-3"name="estadoU" type="radio"   value="9" required="" >
 
 						<label class="" >Inactivo</label>
-						<input  class=""name="estadoU" type="radio" value="10" required="">	
+						<input id="estadoF" class=""name="estadoU" type="radio" value="10" required="">	
 
 						</div>
 					
@@ -208,16 +208,18 @@
 			$(document).ready(function(){
 				$('#tabladocentes').load('tabla_docentes.php');
 			});
+		
 		</script>
 		<script type="text/javascript">
 			$('#ModalEditarDocente').on('show.bs.modal',function(event){
 				var button =$(event.relatedTarget)
-
+				
 				var id_doc = button.data('id')
 				var nomdoc = button.data('nombre')
 				var appaterno = button.data('ap')
 				var apmaterno = button.data('materno')
-				var perfil = button.data('perfil')
+				var perfil=0;				
+				 perfil = button.data('perfil')
 				var cat = button.data('cat')
 				var estado = button.data('estado')
 
@@ -227,10 +229,15 @@
 				modal.find('.modal-body input#nomU').val(nomdoc)
 				modal.find('.modal-body input#apPaternoU').val(appaterno)
 				modal.find('.modal-body input#apMaternoU').val(apmaterno)
-				modal.find('.modal-body select#perfilU').val(perfil)
 				modal.find('.modal-body option#categoriaU').val(cat)
-				modal.find('.modal-body input#estadoU').val(estado)
+				$('#perfilU > option[value='+perfil+' ]').attr('selected', 'selected');
+				$('#categoriaU > option[value='+cat+' ]').attr('selected', 'selected');	
+				if(estado==9){
+					$('#estadoU').attr('checked', 'checked');		
+				}else $('#estadoF' ).attr('checked', 'checked');	
 			});
+	
+</script>
 		</script>
 	</body>
 </html>
