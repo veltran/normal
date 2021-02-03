@@ -23,16 +23,16 @@ session_start();
 				header('location:home.php');
 			}else{
 			
-			   echo '<script language="javascript">';
-				echo 'alert(" Datos incorrectos")';
-				echo '</script>';
-				// header('location: ./');
+			//    echo '<script language="javascript">';
+			// 	echo 'alert(" Datos incorrectos")';
+			// 	echo '</script>';
+				 header('location: index.php');
 
 			}
 		}
 		else{
 			print 'No se ha encontrado en el registro<br>';
-			
+			header('location: index.php');
 		}
 	}else{
 		header('location: ./');

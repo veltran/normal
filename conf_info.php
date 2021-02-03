@@ -39,7 +39,6 @@
 	<?php
 		include ('header.php');
 	?>
-		
 	<div id="contenido" class=" container mt-2">
 			<!-- contenido -->
 				<div class="bg-light  m-2">
@@ -58,41 +57,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php include 'conexion.php';
-                                    $cueri=mysqli_query($sql,"SELECT * FROM datos_horario");
-                                    while($row=mysqli_fetch_array($cueri)){
-                                            $id=$row['id_dato'];
-                                            $titulo=$row['titulo'];
-                                            $nom=$row['nombre_responsable'];
-                                            $desc=$row['desc_puesto'];
-                                        ?>
-                                        <tr>
-                                            <td id="<?php echo $id; ?>">
-                                                <?php echo $titulo;?>
-                                            </td>
-                                            <td>
-												<?php echo $nom;?>
-											</td>
-                                            <td>
-												<?php echo $desc;?>
-											</td>
-                                            <td>
-                                                <button class="btn btn-outline-success" 
-                                                data-toggle="modal"
-                                                data-target="#ModalEditarInfo"
-                                                data-id="<?php echo $id; ?>"
-												data-titulo="<?php echo $titulo; ?>"
-                                                data-nombre="<?php echo $nom; ?>"
-												data-desc="<?php echo $desc;?>"
-                                                >
-                                                    <i class="far fa-edit"></i>
-                                                
-                                                </button>
-                                            </td>
-                                        </tr>      
-                                        <?php     
-                                    }
-                                ?>
+                                  
                             </tbody>
                             </table>
 					    </div>

@@ -103,9 +103,9 @@
 		</div>
 	</div>
 		
-	<!-- <?php
+	 <?php
 		include('view_footer.php');
-	?> -->
+	?>
 <div>
 <!-- modal Agregar usuario -->
 	<form action="agregar_usuario.php" method="POST">

@@ -1,8 +1,8 @@
-<?php 
+<?php
 include "conexion.php";
 	session_start();
 	$nombre=$_SESSION["usuario"];
-	
+
 	if($nombre== null || $nombre==''){
 		header("location:index.php");
 	}
@@ -31,8 +31,8 @@ include "conexion.php";
 		<div class="container-fluid mt-2">
 			<!--Menú orizontal -->
 			<div class="col-12" id="Principal">
-				<div class="row">
-					<div class="col-sm-2 pr-2"> 
+				<div class="row ">
+					<!-- <div class="col-sm-2 pr-2 pt-2">
 						<div class="row">
 							<ul class=" nav  estilo-menu bg-light">
 								<li>
@@ -40,44 +40,41 @@ include "conexion.php";
 									</a>
 								</li>
 								<li class="nav-item">
-									<a id="l2"class="nav-link texto-menu 	bg-light"  href="">Calendario 
+									<a id="l2"class="nav-link texto-menu 	bg-light"  href="">Calendario
 									</a>
 								</li>
-								<li class="nav-item">
-									<a id="l3"class="nav-link texto-menu 	bg-light" href="">Descripción	
+								 <li class="nav-item">
+									<a id="l3"class="nav-link texto-menu 	bg-light" href="">Descripción
 									</a>
-								</li>
-								<li class="nav-item">
-									<a id="l4" class="nav-link texto-menu bg-light" href="view_dicenarHorario.php" tabindex="-1" >			Horarios  
+								</li> 
+								<li class="nav-item ">
+									<a id="l4" class="nav-link texto-menu bg-light" href="view_dicenarHorario.php" tabindex="-1" >Horarios
 									</a>
 								</li>
 							</ul>
 						</div>
-					</div> 
-					<div id="contenido" class="col-10  ">
-						<div class="row bg-light ml-3">
+					</div> -->
+					<div id="contenido " class="col-12  ">
+						<div class="row bg-light pt-4">
 							<div class="container col-12">
-								<img  class="est_img"src="img/cale.png" width="900px" height="300px"  alt="">
-								<div class="text-center">
-									<button class="btn">
-										<a class="btn btn-primary"href="view_proceso.php">Start</a>
-									</button>
-								</div>
+								
+								<div class="text-center"><img  class="est_img"src="img/cale.png" width="900px" height="300px"  alt="">
+								</div> 
 							</div>
-						</div> 
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<?php
 		include('view_footer.php');
 		?>
-		
+
 		<script type="text/javascript" src="js/jquery.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-	
-		
+
+
 	</body>
 </html>

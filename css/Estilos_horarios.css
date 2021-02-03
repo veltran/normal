@@ -50,3 +50,6 @@
 	font-size: 200px;
 	background-color: red;
 }
+.contenedorimagen{
+	background-image: url("../img/cale.png");
+}

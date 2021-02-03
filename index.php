@@ -22,8 +22,9 @@ include "conexion.php";
                                 </h1>
                                 <div class="form-group mx-sm-4 pt-3">
                                     <input type="text"  id="caja1" name="usuario" class=" text-white form-control" placeholder="Ingrese su usuario">
-                                </div>
-                                <div class="form-group mx-sm-4 pt-3">
+                                </div> 
+                                <div class="form-group mx-sm-4 pt-3 ">
+
                                     <input type="Password" type="password" name="password" class="form-control text-white" placeholder="Ingrese su password">
                                 </div>
                                 <div class="from-group mx-sm-4 pb-5">

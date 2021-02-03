@@ -9,7 +9,7 @@
         }
         else{
             
-            header('conf_usuarios.php');
+            header('location:conf_usuarios.php');
         }
      }
 

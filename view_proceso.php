@@ -27,8 +27,8 @@
 		include ('header.php');
 	?>
 			<div class="mt-2">
-					<div id="contenido" class="col-10 container ">
-						<div class="row ml-1 ">
+					<div id="contenido" class="col-12 container ">
+						<div class="row ml-1  ">
 							<div  class="col-12  ">
 								<!-- contenido -->
 								<div class="container bg-light">
@@ -102,7 +102,7 @@
 								</form>	
 									<div class="text-right pr-5 pb-5">
 										<a class="btn btn-danger mr-5" href="home.php"> Cancelar</a>
-									<a type="button" class="btn btn-primary" id="Enviar" href="view_agregarMaterias.php">Continuar</a></div>	
+									<a type="button" class="btn btn-primary" id="Enviar" >Continuar</a></div>	
 									</div>
 							</div>
 						</div>
@@ -110,9 +110,9 @@
 				</div>
 			</div>
 		</div>
-	<!-- <?php
+	 <?php
 		include('view_footer.php');
-	?> -->
+	?> 
 </body>
 	<script>
 		$('#Enviar').click(function(){
@@ -128,7 +128,26 @@
 				data: ruta,
 			})
 			.done(function(res){
-				$('#respuesta').html(res)
+				if(res=='Exite'){
+				location.href ="view_agregarMaterias.php";
+					//window.location.replace("localhost/normal/view_agregarMaterias.php");
+			}
+				else {
+					//var ruta="Per="+Periodo+"&Carr="+Carrera+"&Sem="+Semestre+"&Gr="+Grupo;
+					console.log("mensaje"+ruta);
+					$.ajax({
+						url:'insertar_nuevoH.php',
+						type:'POST',
+						data: ruta,
+					}).done(function(res){
+						if(res=='Exite'){
+							location.href ="view_agregarMaterias.php";
+						//window.location.replace("localhost/normal/view_agregarMaterias.php");
+						}
+					});
+				}
+				
+				
 			});
 		});
 	</script>
