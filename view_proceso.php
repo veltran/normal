@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-reboot.css">
 		<link rel="stylesheet" href="css/all.css">
-		<link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<link rel="stylesheet" type="text/css" href="alertify/css/alertify.css">
 		<link rel="stylesheet" type="text/css" href="alertify/css/themes/bootstrap.css">
 </head>
@@ -27,11 +27,11 @@
 		include ('header.php');
 	?>
 			<div class="mt-2">
-					<div id="contenido" class="col-12 container ">
+					<div id="contenido" class="col-12 container  ">
 						<div class="row ml-1  ">
 							<div  class="col-12  ">
 								<!-- contenido -->
-								<div class="container bg-light">
+								<div class="container bg-light" style=" ">
 									<div class="text-center"><h4>Comenzar Proceso</h4></div>
 									<form  class="pt-4 	">
 										<div class="text-center form-group row">
@@ -102,7 +102,7 @@
 								</form>	
 									<div class="text-right pr-5 pb-5">
 										<a class="btn btn-danger mr-5" href="home.php"> Cancelar</a>
-									<a type="button" class="btn btn-primary" id="Enviar" >Continuar</a></div>	
+									<a type="button" class="btn  btn-success text-white " id="Enviar" >Continuar</a></div>	
 									</div>
 							</div>
 						</div>

@@ -12,8 +12,8 @@
 				<td>Nombre</td>
 				<td>Apellido paterno</td>
 				<td>Apellido materno</td>
-				<td>Perfil profecional</td>
-				<td>Total horas </td>
+				<td>Perfil profesional</td>
+				<!--<td>Total horas </td>-->
 				<td>Agregar Materia</td>
 				<td>Editar</td>
 
@@ -32,7 +32,7 @@
 				<td><?php echo $row['ap_paterno'];?></td>
 				<td><?php echo $row['ap_materno'];?></td>
 				<td><?php echo $row['des_perfil'];?></td>
-				<td><?php echo $row['tot_horas_clase'];?></td>
+				<!--<td><?php echo $row['tot_horas_clase'];?></td>-->
 				<td class="text-center"> <a type="button" class="btn btn-outline-primary " 
 						data-toggle="modal"
 						data-target="#ModalAgregarMateria"

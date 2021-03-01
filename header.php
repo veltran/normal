@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-reboot.css">
     <link rel="stylesheet" href="css/all.css">
-    <link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
   </head>
   
   <div class="row ">
@@ -77,11 +77,11 @@
         <li class="nav-item">
           <a class="nav-link" href="view_docentes.php">Docentes</a>
         </li>
-        
+         <!--
         <li class="nav-item">
           <a  class="nav-link" href="">Ciclo escolar</a>
         </li>
-        <!-- <li class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" href="view_agregarMaterias.php">Materias</a>
         </li> -->
         <li class="nav-item"> 

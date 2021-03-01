@@ -5,12 +5,15 @@ $Periodo=$_POST['Per'];
 $Carrera=$_POST['Car'];
 $Semestre=$_POST['Sem'];
 $id_gr=$_POST['Gr'];					$arreglo= array();
+$bandera = false;
 
     $c=mysqli_query($sql,"SELECT asigna_horario.id_asigna_h as asignah FROM asigna_horario WHERE
      asigna_horario.id_periodo=$Periodo AND asigna_horario.id_carrera=$Carrera And
       asigna_horario.id_semestre=$Semestre ");
    if(mysqli_num_rows($c)==0){
-    //echo "llego aqui";
+    echo "El horario que selecciono no existe";
+    return $bandera = true;
+
     }else{	
        while($row=mysqli_fetch_array($c)){
 													
@@ -27,6 +30,7 @@ $id_gr=$_POST['Gr'];					$arreglo= array();
 			horarios.id_asigna_bh=asigna_bloque_h.id_asigna_bh and 
 			asigna_bloque_h.id_bloque_h=bloques_h.id_bloque_h 
 			and horarios.id_asigna_bh=$v and asigna_materias.id_asigna_h=$as AND asigna_materias.id_grupo=$gr";
+			
 			return $queri;
 	}
 	?>
@@ -58,7 +62,6 @@ $id_gr=$_POST['Gr'];					$arreglo= array();
 				<?php
 				$val=200;
 				$ver=mysqli_query($sql,consulta($val,$id_as,$id_gr));
-				// var_dump($ver);
 				if(mysqli_num_rows($ver)==0){
 				}else{	
 				while($row=mysqli_fetch_array($ver)){

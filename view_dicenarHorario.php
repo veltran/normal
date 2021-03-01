@@ -16,21 +16,21 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-reboot.css">
 		<link rel="stylesheet" href="css/all.css">
-		<link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	</head>
 	<body>
 		<?php
 		include ('header.php');
 		?>
-		<div class="container-fluid mt-2">
+		<div class="container-fluid mt-2 ">
 			<!--Menú orizontal -->
 			
-					<div id="contenido" class="col-12 pb-10 ">
-						<div class="row bg-light ml-3 margin">
-							<div class="container col-12">
+					<div id="contenido" class="col-12 pb-10 contenido">
+						<div class="row bg-light ml-3 margin  ">
+							<div class="container col-12 " >
 								<!-- contenido -->
 								<div class="text-center">
-									<h3>Diseñar Horario</h3>
+									<h3>Ver Horarios Horarios</h3>
 								</div>
 								<form class="form form-group pt-4" action="">
 									

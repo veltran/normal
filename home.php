@@ -22,7 +22,7 @@ include "conexion.php";
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-reboot.css">
 		<link rel="stylesheet" href="css/all.css">
-		<link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	</head>
 	<body>
 		<?php

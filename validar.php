@@ -17,26 +17,16 @@ session_start();
 		
 			$comprobar_pass=password_verify($password,$recoger_dato['passwor']);
 			
-		
 			if ($comprobar_pass){
 				$_SESSION['usuario']=$nombreusuario;
-				header('location:home.php');
+				echo "exito";
 			}else{
-			
-			//    echo '<script language="javascript">';
-			// 	echo 'alert(" Datos incorrectos")';
-			// 	echo '</script>';
-				 header('location: index.php');
-
+				echo "Usuario o contrasena incorrecta";
 			}
 		}
 		else{
-			print 'No se ha encontrado en el registro<br>';
-			header('location: index.php');
+			echo "Usuario o contrasena incorrecta";
 		}
-	}else{
-		header('location: ./');
-	}
-
+	}else {echo "Porfavor llene las casillas";}
 
  ?>

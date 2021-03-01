@@ -13,8 +13,8 @@
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/bootstrap-reboot.css">
 		<link rel="stylesheet" href="css/all.css">
-		<link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">
-		<link rel="stylesheet" href="librerias/datatable/bootstrap.js">
+		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<link rel="stylesheet" href="librerias/datatable/bootstrap.css">
 		<link rel="stylesheet" href="librerias/datatable/dataTables.bootstrap4.min.css">
 	</head>
 	<body>

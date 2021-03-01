@@ -34,7 +34,6 @@
 		<link rel="stylesheet" href="css/bootstrap-reboot.css">
 		<link rel="stylesheet" href="css/all.css">
 		<link rel="stylesheet" href="css/style.css">
-		<link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">
 		<script type="text/javascript" src="js/redips-drag-min.js"></script>
 		<script type="text/javascript" src="js/script_Docente.js"></script>
 	</head>

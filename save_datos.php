@@ -5,7 +5,7 @@ $periodo=$_SESSION["idperiodo"];
 $grupo=$_SESSION["grupo"];
 
 	include 'conexion.php';
-	$id= $_POST['I'];
+	echo $id=$_POST['I'];
 	$bloque=$_POST['loc'];
 				//  corroboramos si el bloque coincide al periodo,carrera,semestre,grupo,grado
 				$conDocente=mysqli_query($sql,"SELECT asigna_materias.id_docente AS doc FROM asigna_materias

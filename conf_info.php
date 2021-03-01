@@ -11,30 +11,7 @@
 	<title>Configuración</title>
 	
 </head>
-<style>
-    .conf{
-        font-size:70px;
-    }
-    #us{
-        color:#b10e09;
-    }
-    #car{
- color:#62a714;
-    }
-    #mat{
- color:#ff7900;
-    }
-    #gr{
- color:#712066;
-    }
-    #in{
 
-    }
-    #doc{
- color:#b10e09;
-    }
-    .conf:hover { color: white; } /* CSS link hover (green) */
-</style>
 <body>
 	<?php
 		include ('header.php');
@@ -47,19 +24,9 @@
                         <br>
                         
                         <div class=" mt-2 mr-4 ml-4 mb-4">
-				            <table class="table table-striped mr-4">
-                            <thead class="bg-primary text-white">
-                                <tr>
-                                    <td>Titulo</td>
-                                    <td>Nombre</td>    
-                                    <td>Descripcion</td>
-                                    <td>Editar</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                  
-                            </tbody>
-                            </table>
+				            <dir id="tabla_info_horarios">
+				            	
+				            </dir>
 					    </div>
                         </div>
 				</div>
@@ -109,6 +76,9 @@
 
 </body>
 	<script>
+		$(document).ready(function(){
+			$('#tabla_info_horarios').load('tabla_info_horarios.php');
+		});
         	//Modal editar una carrera
 		$('#ModalEditarInfo').on('show.bs.modal',function(event){
         var button = $(event.relatedTarget)

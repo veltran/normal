@@ -17,7 +17,7 @@
 		<link rel="stylesheet" href="css/bootstrap-reboot.css">
 		<link rel="stylesheet" href="css/all.css">
 		<link rel="stylesheet" href="css/style.css"> 
- <link rel="stylesheet" type="text/css" href="css/Estilos_horarios.css">		
+ <link rel="stylesheet" type="text/css" href="css/estilos.css">		
 		<script type="text/javascript" src="js/redips-drag-min.js"></script>
 	</head>
 	<body onload="REDIPS.drag.init()">

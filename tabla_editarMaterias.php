@@ -10,18 +10,21 @@
 		<tr>
 			<td>Semestre</td>
 			<td>Materia (s)</td>
-			<td>Horas</td>
+			<td>Total de Horas</td>
 			<td>Eliminar</td>
 		</tr>
 	</thead>
 	<tbody>
 			<?php				
 					$id = $_POST['id'];
-					$consulta=mysqli_query($sql,"SELECT asigna_materias.id_asigna_m as id_asigna, materias.id_semestre 
-					as semestre, materias.nom_materia AS nom_materia, materias.tot_horas as horas FROM 
-					asigna_materias,materias,docentes WHERE asigna_materias.id_materia=materias.id_materia AND 
-					asigna_materias.id_docente=docentes.id_docente AND asigna_materias.id_docente=$id and 
-					asigna_materias.id_asigna_h=$asi and asigna_materias.id_grupo=$id_gr");
+					$consulta=mysqli_query($sql,"SELECT asigna_materias.id_asigna_m AS id_asigna, semestres.des_semestre as semestre, materias.nom_materia AS nom_materia, materias.tot_horas AS horas FROM asigna_materias,materias,docentes,semestres WHERE semestres.id_semestre=materias.id_semestre AND asigna_materias.id_materia=materias.id_materia AND 
+					asigna_materias.id_docente=docentes.id_docente AND asigna_materias.id_docente=$id AND 
+					asigna_materias.id_asigna_h=$asi AND asigna_materias.id_grupo=$id_gr");
+					if(!$consulta)
+					{
+						echo "Reintentar";
+						return $ban=true;
+					}
 				while($row=mysqli_fetch_array($consulta)){
 					$id=$row["id_asigna"];
 					$semestre=$row['semestre'];

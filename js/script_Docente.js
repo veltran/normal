@@ -21,32 +21,33 @@ redipsInit=function(){
 	}//Evento arratrar un objeto
 	rd.event.dropped=function()
 	{	
+		var resultado="";
 		var pos=0;
 		var pos=rd.getPosition(),
 		row = pos[1],
 		col = pos[2];
-			console.log("imprime"+pos+"fila "+row+"col "+col);
+//			console.log("i"+pos+"fila "+row+"col "+col);
 			var b="";
 			var	mensaje=rd.obj.id;
 			
-			console.log("imprimir"+mensaje.length+'contenido'+mensaje);
+//			console.log("imprimir"+mensaje.length+'contenido'+mensaje);
 			if(mensaje.length==4){
-					for (var i = 0; i < mensaje.length-2; i++) {
-									b+=mensaje[i];
-								}
+				for (var i = 0; i < mensaje.length-2; i++) {
+					b+=mensaje[i];
+				}
 			}else{
-					b=mensaje;
+				b=mensaje;
 			}
-			console.log("imprimir"+b);
-         	// =	document.getElementById('2').innerHTML;
-			var ruta="I="+b+"&loc="+matriz[row][col];
+			for (var h = 0; h < b.length-2; h++) {
+					resultado += b[h];
+				}	
+			//console.log(resultado);
+			var ruta="I="+resultado+"&loc="+matriz[row][col];
 		 	$.ajax({
                 data:  ruta, //datos que se envian a traves de ajax
                 url:   'save_datos.php', //archivo que recibe la peticion
                 type:  'post', //método de envio
-                // beforeSend: function () {
-                //         $("#resultado").html("Procesando, espere por favor...");
-                // },
+               
 				success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
 					$('#respuesta').html(response);			
                 	var pos=rd.getPosition(),
@@ -57,7 +58,6 @@ redipsInit=function(){
 			for (var i = 0; i < mess.length-2; i++) {
 				bh+=mess[i];
 			}
-		 // =	document.getElementById('2').innerHTML;
 		 
 		 	var ruta="I="+mess+"&loc="+matriz[row_d][col_d];
  				$.ajax({
@@ -86,16 +86,12 @@ redipsInit=function(){
 			for (var i = 0; i < mes.length-2; i++) {
 				b+=mes[i];
 			}
-		 // =	document.getElementById('2').innerHTML;
 			 var ruta="I="+mes+"&loc="+matriz[row][col];
 			 console.log(ruta);
  				$.ajax({
                 data:  ruta, //datos que se envian a traves de ajax
                 url:   'delete_datos.php', //archivo que recibe la peticion
                 type:  'post', //método de envio
-                // beforeSend: function () {
-                //         $("#resultado").html("Procesando, espere por favor...");
-                // },
                 success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
                 }
 		// delete element (AJAX handler is not needed)
